@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">GeoQuest Web</string>
     <string name="hello">Hello App</string>
+	<string name="share_name">Hello App</string>
 </resources>
