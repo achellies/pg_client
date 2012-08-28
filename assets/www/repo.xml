@@ -1,0 +1,730 @@
+
+<repositories>
+	<repository name="Demos">
+		<game name="StartScreen Demo" xmlformat="5" file="StartScreenDemo"
+			lastmodified="1302120378000" latitude="0" longitude="0">
+			<game name="Image Capture Demo" xmlformat="5" file="DemoImageCapture"
+				lastmodified="1315776675000" latitude="0" longitude="0">
+				<game name="NPCTalk als Intro Demo" xmlformat="5"
+					file="NPCTalk_Intro_Demo" lastmodified="1302119978000" latitude="0"
+					longitude="0">
+					<game name="QRTag Treasure Demo" xmlformat="5"
+						file="QRTag_Treasure_Demo" lastmodified="1302120211000" latitude="0"
+						longitude="0">
+						<game name="Sound Demo" xmlformat="5" file="SoundDemo"
+							lastmodified="1302120314000" latitude="0" longitude="0">
+							<game name="QuestionAndAnswer als Intro Demo" xmlformat="5"
+								file="QuestionAndAnswer_intro_demo" lastmodified="1290267402000"
+								latitude="0" longitude="0">
+								<game name="QRTag Product Demo" xmlformat="5"
+									file="QRTag_Product_Demo" lastmodified="1302120045000"
+									latitude="0" longitude="0">
+									<game name="NPCTalk als Dialog Demo" xmlformat="5"
+										file="NPCTalk_Dialog_Demo" lastmodified="1302119790000"
+										latitude="0" longitude="0"></game>
+								</game>
+							</game>
+						</game>
+					</game>
+				</game>
+			</game>
+		</game>
+	</repository>
+	<repository name="stattreisen">
+		<game name="Dr. Kim auf der Flucht" xmlformat="5" file="DrKim"
+			lastmodified="1303313993000" latitude="50.71862542" longitude="7.1219442">
+			<hotspots>
+				<hotspot latitude="50.7196132" longitude="7.122177" radius="35">
+					<hotspot latitude="50.719477" longitude="7.121452" radius="30">
+						<hotspot latitude="50.719095" longitude="7.120452" radius="30">
+							<hotspot latitude="50.718437" longitude="7.118864"
+								radius="30">
+								<hotspot latitude="50.717473" longitude="7.120041"
+									radius="30">
+									<hotspot latitude="50.718123" longitude="7.121417"
+										radius="30">
+										<hotspot latitude="50.717936" longitude="7.12279"
+											radius="30">
+											<hotspot latitude="50.717939" longitude="7.124843"
+												radius="30">
+												<hotspot latitude="50.718751" longitude="7.124103"
+													radius="30">
+													<hotspot latitude="50.719410" longitude="7.123303"
+														radius="30"></hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspot>
+			</hotspots>
+		</game>
+	</repository>
+	<repository name="Editor">
+		<game name="New game" xmlformat="5" file="12" lastmodified="1324308648000"
+			latitude="0" longitude="0">
+			<game name="New game" xmlformat="5" file="7" lastmodified="1324034232000"
+				latitude="0" longitude="0"></game>
+		</game>
+	</repository>
+	<repository name="jenswiemken">
+		<game name="TreasureMap Demo" xmlformat="5" file="DemoTreasureMap"
+			lastmodified="1315469507000" latitude="0" longitude="0">
+			<game name="Beispieltour Esterwegen" xmlformat="5" file="esterwegen"
+				lastmodified="1315510055000" latitude="0" longitude="0">
+				<game name="Beispieltour Esterwegen" xmlformat="5" file="geoquest"
+					lastmodified="1315971097000" latitude="0" longitude="0"></game>
+			</game>
+		</game>
+	</repository>
+	<repository name="default">
+		<repository name="Tests">
+			<game name="AudioRecord Demo" xmlformat="5" file="DemoLayoutYN"
+				lastmodified="1316199380000" latitude="0" longitude="0">
+				<game name="NPCTalk als Intro Demo" xmlformat="5" file="WebTechTest"
+					lastmodified="1316436253000" latitude="0" longitude="0"></game>
+			</game>
+		</repository>
+		<repository name="matthiasheil">
+			<game name="QRTag Demo" xmlformat="5" file="QRTagDemo"
+				lastmodified="1289389877000" latitude="0" longitude="0"></game>
+		</repository>
+		<repository name="milan">
+			<game name="Verdeckte Sehenswürdigkeiten W" xmlformat="5"
+				file="BonnerCityVerdecktW" lastmodified="1306426761000" latitude="50.734475"
+				longitude="7.10094569231">
+				<hotspots>
+					<hotspot latitude="50.731672" longitude="7.095995" radius="30">
+						<hotspot latitude="50.733692" longitude="7.094952" radius="30">
+							<hotspot latitude="50.734322" longitude="7.09918" radius="30">
+								<hotspot latitude="50.735228" longitude="7.098586"
+									radius="30">
+									<hotspot latitude="50.733594" longitude="7.099448"
+										radius="27">
+										<hotspot latitude="50.735366" longitude="7.102156"
+											radius="30">
+											<hotspot latitude="50.736914" longitude="7.101234"
+												radius="25">
+												<hotspot latitude="50.735065" longitude="7.102921"
+													radius="25">
+													<hotspot latitude="50.736" longitude="7.102878"
+														radius="25">
+														<hotspot latitude="50.736772" longitude="7.106357"
+															radius="50">
+															<hotspot latitude="50.733795" longitude="7.102543"
+																radius="50">
+																<hotspot latitude="50.731765" longitude="7.106264"
+																	radius="25">
+																	<hotspot latitude="50.73399" longitude="7.09978"
+																		radius="45"></hotspot>
+																</hotspot>
+															</hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="Verdeckte Sehenswürdigkeiten" xmlformat="5"
+				file="BonnerCityVerdeckt" lastmodified="1306415817000" latitude="50.7344658462"
+				longitude="7.10094984615">
+				<hotspots>
+					<hotspot latitude="50.731672" longitude="7.095995" radius="30">
+						<hotspot latitude="50.733692" longitude="7.094952" radius="30">
+							<hotspot latitude="50.734322" longitude="7.09918" radius="30">
+								<hotspot latitude="50.735354" longitude="7.098466"
+									radius="30">
+									<hotspot latitude="50.733349" longitude="7.099622"
+										radius="25">
+										<hotspot latitude="50.735366" longitude="7.102156"
+											radius="30">
+											<hotspot latitude="50.736914" longitude="7.101234"
+												radius="25">
+												<hotspot latitude="50.735065" longitude="7.102921"
+													radius="25">
+													<hotspot latitude="50.736" longitude="7.102878"
+														radius="25">
+														<hotspot latitude="50.736772" longitude="7.106357"
+															radius="50">
+															<hotspot latitude="50.733795" longitude="7.102543"
+																radius="50">
+																<hotspot latitude="50.731765" longitude="7.106264"
+																	radius="25">
+																	<hotspot latitude="50.73399" longitude="7.09978"
+																		radius="45"></hotspot>
+																</hotspot>
+															</hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="Bonner City Rundgang" xmlformat="5" file="bonnercity"
+				lastmodified="1308559134000" latitude="50.7348386667" longitude="7.10214277778">
+				<hotspots>
+					<hotspot latitude="50.734289" longitude="7.099174" radius="25">
+						<hotspot latitude="50.735354" longitude="7.098466" radius="25">
+							<hotspot latitude="50.736914" longitude="7.101234"
+								radius="25">
+								<hotspot latitude="50.735065" longitude="7.102921"
+									radius="25">
+									<hotspot latitude="50.736" longitude="7.102878" radius="25">
+										<hotspot latitude="50.736772" longitude="7.106357"
+											radius="50">
+											<hotspot latitude="50.733795" longitude="7.102543"
+												radius="50">
+												<hotspot latitude="50.731765" longitude="7.106264"
+													radius="25">
+													<hotspot latitude="50.733594" longitude="7.099448"
+														radius="27"></hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+		</repository>
+		<repository name="sabinepolko">
+			<game name="Dresden Theater" xmlformat="5" file="DresdenTheater"
+				lastmodified="1309375896000" latitude="51.0484173077" longitude="13.7255283077">
+				<hotspots>
+					<hotspot latitude="51.048891" longitude="13.723633" radius="20">
+						<hotspot latitude="51.04863" longitude="13.723926" radius="20">
+							<hotspot latitude="51.04877" longitude="13.72471" radius="20">
+								<hotspot latitude="51.048776" longitude="13.725483"
+									radius="20">
+									<hotspot latitude="51.049109" longitude="13.726512"
+										radius="20">
+										<hotspot latitude="51.049195" longitude="13.727045"
+											radius="20">
+											<hotspot latitude="51.048999" longitude="13.727717"
+												radius="20">
+												<hotspot latitude="51.048412" longitude="13.727273"
+													radius="20">
+													<hotspot latitude="51.047663" longitude="13.726946"
+														radius="20">
+														<hotspot latitude="51.046925" longitude="13.725948"
+															radius="20">
+															<hotspot latitude="51.047219" longitude="13.724798"
+																radius="20">
+																<hotspot latitude="51.047919" longitude="13.724264"
+																	radius="20">
+																	<hotspot latitude="51.048917" longitude="13.723613"
+																		radius="20"></hotspot>
+																</hotspot>
+															</hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="New_WebTechTest" xmlformat="5" file="New_WebTechTest"
+				lastmodified="1324985646000" latitude="0" longitude="0">
+				<game name="New_WebTechExample" xmlformat="5" file="New_WebTechExample"
+					lastmodified="1323334580000" latitude="0" longitude="0">
+					<game name="Jagd auf Mr. Tux" xmlformat="5" file="JadgAufMrTux"
+						lastmodified="1304542744000" latitude="50.7515412" longitude="7.0969014">
+						<hotspots>
+							<hotspot latitude="50.751843" longitude="7.096065"
+								radius="20">
+								<hotspot latitude="50.751346" longitude="7.096229"
+									radius="15">
+									<hotspot latitude="50.751417" longitude="7.096422"
+										radius="15">
+										<hotspot latitude="50.751271" longitude="7.096548"
+											radius="20">
+											<hotspot latitude="50.75104" longitude="7.096722"
+												radius="20">
+												<hotspot latitude="50.751101" longitude="7.097184"
+													radius="20">
+													<hotspot latitude="50.751242" longitude="7.097634"
+														radius="20">
+														<hotspot latitude="50.751622" longitude="7.097387"
+															radius="20">
+															<hotspot latitude="50.752669" longitude="7.097294"
+																radius="20">
+																<hotspot latitude="50.751861" longitude="7.097529"
+																	radius="20"></hotspot>
+															</hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspots>
+					</game>
+					<game name="DA_Test" xmlformat="5" file="DA_TEST"
+						lastmodified="1324297921000" latitude="0" longitude="0">
+						<game name="SimpleGameExample" xmlformat="5" file="SimpleGameExample"
+							lastmodified="1324291407000" latitude="0" longitude="0">
+							<game name="Der durstige Seminarteilnehmer" xmlformat="5"
+								file="Wasser-Tour" lastmodified="1302290243000" latitude="50.936784"
+								longitude="7.1293735">
+								<hotspots>
+									<hotspot latitude="51.154091" longitude="7.137295"
+										radius="30">
+										<hotspot latitude="50.719477" longitude="7.121452"
+											radius="30"></hotspot>
+									</hotspot>
+								</hotspots>
+							</game>
+							<game name="NPCTalk als Intro Demo" xmlformat="5" file="WebTechTest"
+								lastmodified="1316447826000" latitude="0" longitude="0">
+								<game name="WebTechTest" xmlformat="5" file="Demo_NPCTalk_Dialog"
+									lastmodified="1316448608000" latitude="0" longitude="0">
+									<game name="WebTechExample" xmlformat="5" file="WebTechExample"
+										lastmodified="1320070850000" latitude="0" longitude="0">
+										<game name="Jagd auf Mr. Tux" xmlformat="5" file="Jagd_auf_Mr_Tux"
+											lastmodified="1304575505000" latitude="50.7515412" longitude="7.0969014">
+											<hotspots>
+												<hotspot latitude="50.751843" longitude="7.096065"
+													radius="20">
+													<hotspot latitude="50.751346" longitude="7.096229"
+														radius="15">
+														<hotspot latitude="50.751417" longitude="7.096422"
+															radius="15">
+															<hotspot latitude="50.751271" longitude="7.096548"
+																radius="20">
+																<hotspot latitude="50.75104" longitude="7.096722"
+																	radius="20">
+																	<hotspot latitude="50.751101" longitude="7.097184"
+																		radius="20">
+																		<hotspot latitude="50.751242" longitude="7.097634"
+																			radius="20">
+																			<hotspot latitude="50.751622" longitude="7.097387"
+																				radius="20">
+																				<hotspot latitude="50.752669" longitude="7.097294"
+																					radius="20">
+																					<hotspot latitude="50.751861" longitude="7.097529"
+																						radius="20"></hotspot>
+																				</hotspot>
+																			</hotspot>
+																		</hotspot>
+																	</hotspot>
+																</hotspot>
+															</hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspots>
+										</game>
+										<game name="GeoQuest Taufe" xmlformat="5"
+											file="TaufTour_Sound_Demo" lastmodified="1316438016000"
+											latitude="25.470487" longitude="3.47818">
+											<hotspots>
+												<hotspot latitude="50.940974" longitude="6.95636"
+													radius="40">
+													<hotspot latitude="" longitude="" radius="30"></hotspot>
+												</hotspot>
+											</hotspots>
+										</game>
+									</game>
+								</game>
+							</game>
+						</game>
+					</game>
+				</game>
+			</game>
+		</repository>
+		<repository name="sven">
+			<game name="Hotspot Demo" xmlformat="5" file="Demo_Hotspot"
+				lastmodified="1308663722000" latitude="0" longitude="0">
+				<hotspots>
+					<hotspot latitude="" longitude="" radius="10000"></hotspot>
+				</hotspots>
+			</game>
+		</repository>
+		<repository name="Sven">
+			<game name="External Mission Demo Extended" xmlformat="5"
+				file="StartExternalMission_Demo_Extended" lastmodified="1318332847000"
+				latitude="0" longitude="0"></game>
+		</repository>
+		<repository name="florian">
+			<game name="big" xmlformat="6" file="big" lastmodified="1286189372000"
+				latitude="50.71862542" longitude="7.1219442">
+				<hotspots>
+					<hotspot latitude="50.7196132" longitude="7.122177" radius="15">
+						<hotspot latitude="50.719477" longitude="7.121452" radius="20">
+							<hotspot latitude="50.719095" longitude="7.120452"
+								radius="20">
+								<hotspot latitude="50.718437" longitude="7.118864"
+									radius="20">
+									<hotspot latitude="50.717473" longitude="7.120041"
+										radius="20">
+										<hotspot latitude="50.718123" longitude="7.121417"
+											radius="20">
+											<hotspot latitude="50.717936" longitude="7.12279"
+												radius="20">
+												<hotspot latitude="50.717939" longitude="7.124843"
+													radius="20">
+													<hotspot latitude="50.718751" longitude="7.124103"
+														radius="20">
+														<hotspot latitude="50.719410" longitude="7.123303"
+															radius="20"></hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="Dr. Kim auf der Flucht" xmlformat="6" file="wccb6"
+				lastmodified="1281022216000" latitude="50.71862542" longitude="7.1219442">
+				<hotspots>
+					<hotspot latitude="50.7196132" longitude="7.122177" radius="15">
+						<hotspot latitude="50.719477" longitude="7.121452" radius="20">
+							<hotspot latitude="50.719095" longitude="7.120452"
+								radius="20">
+								<hotspot latitude="50.718437" longitude="7.118864"
+									radius="20">
+									<hotspot latitude="50.717473" longitude="7.120041"
+										radius="20">
+										<hotspot latitude="50.718123" longitude="7.121417"
+											radius="20">
+											<hotspot latitude="50.717936" longitude="7.12279"
+												radius="20">
+												<hotspot latitude="50.717939" longitude="7.124843"
+													radius="20">
+													<hotspot latitude="50.718751" longitude="7.124103"
+														radius="20">
+														<hotspot latitude="50.719410" longitude="7.123303"
+															radius="20"></hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="Dr. Kim in Remscheid" xmlformat="5" file="DemoRemscheidWCCB"
+				lastmodified="1277415469000" latitude="51.1552622" longitude="7.1409996">
+				<hotspots>
+					<hotspot latitude="51.154639" longitude="7.140405" radius="15">
+						<hotspot latitude="51.154925" longitude="7.140899" radius="20">
+							<hotspot latitude="51.155218" longitude="7.141113"
+								radius="20">
+								<hotspot latitude="51.155531" longitude="7.14128"
+									radius="20">
+									<hotspot latitude="51.155534" longitude="7.141639"
+										radius="20">
+										<hotspot latitude="51.155437" longitude="7.142293"
+											radius="20">
+											<hotspot latitude="51.155619" longitude="7.141328"
+												radius="20">
+												<hotspot latitude="51.155629" longitude="7.140561"
+													radius="20">
+													<hotspot latitude="51.154936" longitude="7.140942"
+														radius="20">
+														<hotspot latitude="51.155154" longitude="7.139536"
+															radius="20"></hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+		</repository>
+		<repository name="holger">
+			<game name="GeoQuest - ChangingTheGame" xmlformat="5"
+				file="ChangingTheGame" lastmodified="1309391880000" latitude="25.5244455"
+				longitude="6.8618165">
+				<hotspots>
+					<hotspot latitude="51.048891" longitude="13.723633" radius="20">
+						<hotspot latitude="" longitude="" radius="30"></hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="Rules Demo" xmlformat="5" file="RulesDemo"
+				lastmodified="1299613142000" latitude="0" longitude="0">
+				<game name="TreasureMap Demo" xmlformat="5" file="DemoTreasureMap"
+					lastmodified="1292057312000" latitude="0" longitude="0">
+					<game name="Jagd auf Mr. Tux" xmlformat="5" file="JagdAufMrTux"
+						lastmodified="1304583382000" latitude="50.7515412" longitude="7.0969014">
+						<hotspots>
+							<hotspot latitude="50.751843" longitude="7.096065"
+								radius="20">
+								<hotspot latitude="50.751346" longitude="7.096229"
+									radius="15">
+									<hotspot latitude="50.751417" longitude="7.096422"
+										radius="15">
+										<hotspot latitude="50.751271" longitude="7.096548"
+											radius="20">
+											<hotspot latitude="50.75104" longitude="7.096722"
+												radius="20">
+												<hotspot latitude="50.751101" longitude="7.097184"
+													radius="20">
+													<hotspot latitude="50.751242" longitude="7.097634"
+														radius="20">
+														<hotspot latitude="50.751622" longitude="7.097387"
+															radius="20">
+															<hotspot latitude="50.752669" longitude="7.097294"
+																radius="20">
+																<hotspot latitude="50.751861" longitude="7.097529"
+																	radius="20"></hotspot>
+															</hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspots>
+					</game>
+					<game name="Verkehrszaehlung" xmlformat="5" file="vzTest"
+						lastmodified="1313246986000" latitude="0" longitude="0">
+						<hotspots>
+							<hotspot latitude="" longitude="" radius="20">
+								<hotspot latitude="" longitude="" radius="20"></hotspot>
+							</hotspot>
+						</hotspots>
+					</game>
+					<game name="Start External Mission Demo" xmlformat="5"
+						file="extMissionTest" lastmodified="1313243537000" latitude="0"
+						longitude="0">
+						<game name="Sound Demo" xmlformat="5" file="SoundDemo"
+							lastmodified="1298992856000" latitude="0" longitude="0">
+							<game name="New game" xmlformat="5" file="7" lastmodified="1323969531000"
+								latitude="0" longitude="0">
+								<game name="Dresden Theater" xmlformat="5" file="DresdenDemo"
+									lastmodified="1309375887000" latitude="51.0484173077"
+									longitude="13.7255283077">
+									<hotspots>
+										<hotspot latitude="51.048891" longitude="13.723633"
+											radius="20">
+											<hotspot latitude="51.04863" longitude="13.723926"
+												radius="20">
+												<hotspot latitude="51.04877" longitude="13.72471"
+													radius="20">
+													<hotspot latitude="51.048776" longitude="13.725483"
+														radius="20">
+														<hotspot latitude="51.049109" longitude="13.726512"
+															radius="20">
+															<hotspot latitude="51.049195" longitude="13.727045"
+																radius="20">
+																<hotspot latitude="51.048999" longitude="13.727717"
+																	radius="20">
+																	<hotspot latitude="51.048412" longitude="13.727273"
+																		radius="20">
+																		<hotspot latitude="51.047663" longitude="13.726946"
+																			radius="20">
+																			<hotspot latitude="51.046925" longitude="13.725948"
+																				radius="20">
+																				<hotspot latitude="51.047219" longitude="13.724798"
+																					radius="20">
+																					<hotspot latitude="51.047919" longitude="13.724264"
+																						radius="20">
+																						<hotspot latitude="51.048917" longitude="13.723613"
+																							radius="20"></hotspot>
+																					</hotspot>
+																				</hotspot>
+																			</hotspot>
+																		</hotspot>
+																	</hotspot>
+																</hotspot>
+															</hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspots>
+								</game>
+								<game name="InfoTest" xmlformat="5" file="infoTest2"
+									lastmodified="1312226777000" latitude="0" longitude="0"></game>
+							</game>
+						</game>
+					</game>
+				</game>
+			</game>
+		</repository>
+		<repository name="olaf">
+			<game name="Tauf Tour in Köln" xmlformat="5" file="taufe2"
+				lastmodified="1285678006000" latitude="50.9399785455" longitude="6.95905145455">
+				<hotspots>
+					<hotspot latitude="50.940908" longitude="6.95656" radius="10">
+						<hotspot latitude="50.941263" longitude="6.956427" radius="10">
+							<hotspot latitude="50.94137" longitude="6.959574" radius="15">
+								<hotspot latitude="50.940947" longitude="6.959356"
+									radius="15">
+									<hotspot latitude="50.940373" longitude="6.96238"
+										radius="15">
+										<hotspot latitude="50.93812" longitude="6.962559"
+											radius="15">
+											<hotspot latitude="50.938482" longitude="6.961224"
+												radius="15">
+												<hotspot latitude="50.937641" longitude="6.958138"
+													radius="15">
+													<hotspot latitude="50.938503" longitude="6.958078"
+														radius="50">
+														<hotspot latitude="50.940897" longitude="6.958203"
+															radius="15">
+															<hotspot latitude="50.94126" longitude="6.957067"
+																radius="15"></hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="Tauf Tour in Köln" xmlformat="5" file="Tauftour"
+				lastmodified="1285278143000" latitude="45.74634775" longitude="6.33646985">
+				<hotspots>
+					<hotspot latitude="50.940908" longitude="6.95656" radius="15">
+						<hotspot latitude="50.941263" longitude="6.956427" radius="15">
+							<hotspot latitude="50.94137" longitude="6.959574" radius="15">
+								<hotspot latitude="???" longitude="???" radius="15">
+									<hotspot latitude="50.940373" longitude="6.96238"
+										radius="15">
+										<hotspot latitude="50.93812" longitude="6.962559"
+											radius="15">
+											<hotspot latitude="50.938482" longitude="6.961224"
+												radius="15">
+												<hotspot latitude="50.937641" longitude="6.958138"
+													radius="15">
+													<hotspot latitude="???" longitude="???" radius="15">
+														<hotspot latitude="50.940897" longitude="6.958203"
+															radius="15">
+															<hotspot latitude="50.94126" longitude="6.957067"
+																radius="15">
+																<hotspot latitude="50.719477" longitude="7.121452"
+																	radius="20">
+																	<hotspot latitude="50.719095" longitude="7.120452"
+																		radius="20">
+																		<hotspot latitude="50.718437" longitude="7.118864"
+																			radius="20">
+																			<hotspot latitude="50.717473" longitude="7.120041"
+																				radius="20">
+																				<hotspot latitude="50.718123" longitude="7.121417"
+																					radius="20">
+																					<hotspot latitude="50.717936" longitude="7.12279"
+																						radius="20">
+																						<hotspot latitude="50.717939" longitude="7.124843"
+																							radius="20">
+																							<hotspot latitude="50.718751" longitude="7.124103"
+																								radius="20">
+																								<hotspot latitude="50.719410" longitude="7.123303"
+																									radius="20"></hotspot>
+																							</hotspot>
+																						</hotspot>
+																					</hotspot>
+																				</hotspot>
+																			</hotspot>
+																		</hotspot>
+																	</hotspot>
+																</hotspot>
+															</hotspot>
+														</hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="Dr. Kim in Remscheid" xmlformat="5" file="DemoRemscheidWCCB"
+				lastmodified="1285278143000" latitude="51.1552622" longitude="7.1409996">
+				<hotspots>
+					<hotspot latitude="51.154639" longitude="7.140405" radius="15">
+						<hotspot latitude="51.154925" longitude="7.140899" radius="20">
+							<hotspot latitude="51.155218" longitude="7.141113"
+								radius="20">
+								<hotspot latitude="51.155531" longitude="7.14128"
+									radius="20">
+									<hotspot latitude="51.155534" longitude="7.141639"
+										radius="20">
+										<hotspot latitude="51.155437" longitude="7.142293"
+											radius="20">
+											<hotspot latitude="51.155619" longitude="7.141328"
+												radius="20">
+												<hotspot latitude="51.155629" longitude="7.140561"
+													radius="20">
+													<hotspot latitude="51.154936" longitude="7.140942"
+														radius="20">
+														<hotspot latitude="51.155154" longitude="7.139536"
+															radius="20"></hotspot>
+													</hotspot>
+												</hotspot>
+											</hotspot>
+										</hotspot>
+									</hotspot>
+								</hotspot>
+							</hotspot>
+						</hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="QRTag Demo" xmlformat="5" file="QRTagDemo"
+				lastmodified="1289170015000" latitude="0" longitude="0"></game>
+		</repository>
+		<repository name="IAIS">
+			<game name="Verkehrszaehlung" xmlformat="5" file="vzTest"
+				lastmodified="1313249217000" latitude="0" longitude="0">
+				<hotspots>
+					<hotspot latitude="" longitude="" radius="20">
+						<hotspot latitude="" longitude="" radius="20"></hotspot>
+					</hotspot>
+				</hotspots>
+			</game>
+			<game name="Start External Mission Demo" xmlformat="5"
+				file="extMissionTest" lastmodified="1313248038000" latitude="0"
+				longitude="0"></game>
+		</repository>
+	</repository>
+</repositories>
+
+
