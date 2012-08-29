@@ -27,5 +27,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/GQExternalMissionHelper"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Utilities"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
