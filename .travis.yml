@@ -3,9 +3,12 @@ before_install:
   - sudo apt-get install xvfb
   - sudo apt-get install iceweasel
   - sudo start-stop-daemon --start --quiet --pidfile /var/run/xvfb.pid --make-pidfile --background --exec /usr/bin/Xvfb -- ":99 -nolisten tcp -fbdir /var/run"
+after_install: 
+  - mvn dependency:resolve
+  - ls -la ~
+  - ls -la ~/.m2/repository/org/seleniumhq/selenium/selenium-server/2.25.0/
 before_script:
   - export DISPLAY=:99
-  - echo "This is before install"
   - java -jar ~/.m2/repository/org/seleniumhq/selenium/selenium-server/2.25.0/selenium-server-2.25.0.jar -port 4444 > /tmp/selenium-output.log 2> /tmp/selenium-error.log & echo $! > /tmp/selenium.pid
 after_script:
   - kill -9 `cat /tmp/selenium.pid`
