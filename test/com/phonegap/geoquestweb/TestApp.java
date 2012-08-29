@@ -1,17 +1,15 @@
 package com.phonegap.geoquestweb;
 
-import junit.framework.TestCase;
 
-import org.junit.Assert;
-import org.junit.Ignore;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
-public class TestApp extends TestCase {
+public class TestApp {
 
-	@Ignore
 	@Test
 	public void testApp(){
-//		Assert.fail();
+		assertTrue(true);
 	}
 	
 }
