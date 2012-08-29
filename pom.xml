@@ -43,8 +43,8 @@
  
   
   <build>
-	<sourceDirectory>src</sourceDirectory>
-    <testSourceDirectory>test</testSourceDirectory>
+<!-- 	<sourceDirectory>src</sourceDirectory> -->
+<!--     <testSourceDirectory>test</testSourceDirectory> -->
       
    <plugins>
       <plugin>
