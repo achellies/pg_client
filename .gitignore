@@ -18,3 +18,6 @@ local.properties
 
 # loaded node modules
 assets/node_modules
+
+# temporarily generated JavaScript build directory
+assets/build
