@@ -16,6 +16,8 @@ gen/
 local.properties
 /target
 .settings
+.project
+.classpath
 
 # loaded node modules
 assets/node_modules
