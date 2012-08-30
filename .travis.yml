@@ -11,9 +11,9 @@ before_install:
   - sh $CWD/scripts/$TYPE/before_install.sh
 
 before_script:
-  - sh `$CWD/scripts/$TYPE/before_script.sh`
+  - sh $CWD/scripts/$TYPE/before_script.sh
 
-script: sh `$CWD/scripts/$TYPE/script.sh`
+script: sh $CWD/scripts/$TYPE/script.sh
 
 after_script:
-  - sh `$CWD/scripts/$TYPE/after_script.sh`
+  - sh $CWD/scripts/$TYPE/after_script.sh
