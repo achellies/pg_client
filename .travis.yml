@@ -5,7 +5,7 @@ env:
   - TYPE=JavaScript
 
 before_install:
-  - CWD=pwd
+  - CWD=`pwd`
   - sudo apt-get install jscoverage
   - cd $CWD/assets; npm install; cd $CWD
   - wget -O /tmp/selenium-server-standalone-2.25.0.jar http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
