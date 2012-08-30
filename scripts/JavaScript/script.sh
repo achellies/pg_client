@@ -1,4 +1,4 @@
 #!/bin/sh
-ls | echo
+ls
 cd "assets"
 npm test
