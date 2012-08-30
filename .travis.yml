@@ -6,25 +6,12 @@ env:
 
 before_install:
   - CWD=`pwd`
-  - sudo apt-get install xvfb
-  - sudo apt-get install jscoverage
-  - cd $CWD/assets; npm install; cd $CWD
-  - wget -O /tmp/selenium-server-standalone-2.25.0.jar http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
+  - sh `$CWD/scripts/$TYPE/before_install.sh`
 
 before_script:
-  - pwd
-  - cd $CWD
-  - sudo sh -e /etc/init.d/xvfb start
-  - export DISPLAY=:99
-  - java -jar /tmp/selenium-server-standalone-2.25.0.jar -port 4444 > /tmp/selenium-output.log 2> /tmp/selenium-error.log & echo $! > /tmp/selenium.pid
+  - sh `$CWD/scripts/$TYPE/before_script.sh`
 
-script: sh -c "if [ '$TYPE' = 'Java' ]; then mvn test; else cd $CWD/assets; npm test; fi"
+script: sh `$CWD/scripts/$TYPE/script.sh`
 
 after_script:
-  - cd $CWD
-  - echo "Selenium log:" 
-  - cat /tmp/selenium-output.log
-  - echo "Selenium error log:" 
-  - cat /tmp/selenium-error.log
-  - kill -9 `cat /tmp/selenium.pid`
-  - sudo sh -e /etc/init.d/xvfb stop
+  - sh `$CWD/scripts/$TYPE/after_script.sh`
