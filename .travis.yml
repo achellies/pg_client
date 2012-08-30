@@ -16,7 +16,7 @@ before_script:
 
 script:
   - mvn install -DskipTests=true
-  - cd asset; npm test; cd ..
+  - cd assets; npm test; cd ..
 
 after_script:
   - echo "Selenium log:" 
