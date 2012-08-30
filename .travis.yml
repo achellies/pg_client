@@ -1,5 +1,9 @@
 language: java
 
+env:
+  - TYPE=Java
+  - TYPE=JavaScript
+
 before_install:
   - sudo apt-get install xvfb
   - sudo apt-get install iceweasel
