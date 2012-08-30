@@ -6,7 +6,7 @@ env:
 
 before_install:
   - CWD=`pwd`
-  - chmod -R +x $CDW/scripts
+  - chmod -R +x `$CDW/scripts`
   - sh `$CWD/scripts/$TYPE/before_install.sh`
 
 before_script:
