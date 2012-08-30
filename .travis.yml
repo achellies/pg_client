@@ -3,7 +3,7 @@ before_install:
   - sudo apt-get install xvfb
   - sudo apt-get install iceweasel
   - sudo start-stop-daemon --start --quiet --pidfile /var/run/xvfb.pid --make-pidfile --background --exec /usr/bin/Xvfb -- ":99 -nolisten tcp -fbdir /var/run"
- before_script:
+before_script:
   - pwd
   - ls -l ~/.m2/repository/org/seleniumhq/selenium/selenium-server/2.25.0/
   - export DISPLAY=:99
