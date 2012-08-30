@@ -6,6 +6,7 @@ env:
 
 before_install:
   - CWD=`pwd`
+  - echo $CWD
   - chmod -R +x $CWD/scripts
   - sudo sh `$CWD/scripts/$TYPE/before_install.sh`
 
