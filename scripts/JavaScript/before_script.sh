@@ -1,3 +1,3 @@
 #!/bin/sh
-cd "./assets"
+cd /home/travis/builds/geoquest/pg_client/assets
 pwd
