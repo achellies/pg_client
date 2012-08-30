@@ -1,3 +1,3 @@
 #!/bin/sh
-pwd
-npm test
+#pwd
+#npm test
