@@ -1,6 +1,6 @@
 {
-  "name": "PG Client"
-  , "version": "0.1"
+  "name": "pg_client"
+  , "version": "1.0.0"
   , "scripts": { 
       "test": "node node_modules/mocha/bin/mocha tests",
       "coverage": "node scripts/coverage.js"
