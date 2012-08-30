@@ -1,4 +1,4 @@
 #!/bin/sh
 ls | echo
-cd $CWD/assets
+cd "assets"
 npm test
