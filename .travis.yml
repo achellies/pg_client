@@ -8,7 +8,7 @@ before_install:
   - CWD=`pwd`
   - echo $CWD
   - chmod -R +x $CWD/scripts
-  - sh `$CWD/scripts/$TYPE/before_install.sh`
+  - sh $CWD/scripts/$TYPE/before_install.sh
 
 before_script:
   - sh `$CWD/scripts/$TYPE/before_script.sh`
