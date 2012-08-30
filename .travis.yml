@@ -2,6 +2,7 @@ language: java
 before_install:
   - sudo apt-get install xvfb
   - sudo apt-get install iceweasel
+  - sudo apt-get install jscoverage
   - wget -O /tmp/selenium-server-standalone-2.25.0.jar http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
 before_script:
   - pwd
