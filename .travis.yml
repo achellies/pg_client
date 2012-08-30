@@ -3,11 +3,11 @@ before_install:
   - sudo apt-get install xvfb
   - sudo apt-get install iceweasel
   - sudo start-stop-daemon --start --quiet --pidfile /var/run/xvfb.pid --make-pidfile --background --exec /usr/bin/Xvfb -- ":99 -nolisten tcp -fbdir /var/run"
+  - wget -O /tmp/selenium-server-standalone-2.25.0.jar http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
 before_script:
   - pwd
-  - ls -l ~/.m2/repository/org/seleniumhq/selenium/selenium-server/2.25.0/
   - export DISPLAY=:99
-  - java -jar ~/.m2/repository/org/seleniumhq/selenium/selenium-server/2.25.0/selenium-server-2.25.0.jar -port 4444 > /tmp/selenium-output.log 2> /tmp/selenium-error.log & echo $! > /tmp/selenium.pid
+  - java -jar /tmp/selenium-server-standalone-2.25.0.jar -port 4444 > /tmp/selenium-output.log 2> /tmp/selenium-error.log & echo $! > /tmp/selenium.pid
 after_script:
   - echo "Selenium log:" 
   - cat /tmp/selenium-output.log
