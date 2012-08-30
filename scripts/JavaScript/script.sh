@@ -1,3 +1,4 @@
 #!/bin/sh
-#cd "assets"
+echo "Starting npm test in:"
+pwd
 npm test
