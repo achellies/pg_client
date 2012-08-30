@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" output="target/test-classes" path="test">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -13,5 +13,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="//bitsmb.bit.uni-bonn.de/homes/guest-budau/BITuser/.m2/repository/org/seleniumhq/selenium/selenium-java/2.25.0/selenium-java-2.25.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
