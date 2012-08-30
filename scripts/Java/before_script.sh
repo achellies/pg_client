@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 pwd
 sudo sh -e /etc/init.d/xvfb start
 export DISPLAY=:99

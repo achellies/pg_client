@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo "Selenium log:" 
 cat /tmp/selenium-output.log
 echo "Selenium error log:" 
