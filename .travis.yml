@@ -5,7 +5,7 @@ before_install:
   - sudo start-stop-daemon --start --quiet --pidfile /var/run/xvfb.pid --make-pidfile --background --exec /usr/bin/Xvfb -- ":99 -nolisten tcp -fbdir /var/run"
  before_script:
   - pwd
-  - ls -la ~/.m2/repository/org/seleniumhq/selenium/selenium-server/2.25.0/
+  - ls -l ~/.m2/repository/org/seleniumhq/selenium/selenium-server/2.25.0/
   - export DISPLAY=:99
   - java -jar ~/.m2/repository/org/seleniumhq/selenium/selenium-server/2.25.0/selenium-server-2.25.0.jar -port 4444 > /tmp/selenium-output.log 2> /tmp/selenium-error.log & echo $! > /tmp/selenium.pid
 after_script:
