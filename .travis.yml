@@ -3,8 +3,7 @@ before_install:
   - sudo apt-get install xvfb
   - sudo apt-get install iceweasel
   - sudo apt-get install jscoverage
-  - npm install -g mocha
-  - find / -name mocha
+  - cd assets; npm install
   - wget -O /tmp/selenium-server-standalone-2.25.0.jar http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
 before_script:
   - pwd
