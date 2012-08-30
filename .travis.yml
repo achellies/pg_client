@@ -5,22 +5,22 @@ env:
   - TYPE=JavaScript
 
 before_install:
-  - sudo apt-get install xvfb
-  - sudo apt-get install iceweasel
   - sudo apt-get install jscoverage
-  - cd assets; npm install; cd ..
+  - cd ~/assets; npm install; cd ~
   - wget -O /tmp/selenium-server-standalone-2.25.0.jar http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
 
 before_script:
   - pwd
+  - cd
   - export DISPLAY=:99.0
   - sudo sh -e /etc/init.d/xvfb start
   - export DISPLAY=:99
   - java -jar /tmp/selenium-server-standalone-2.25.0.jar -port 4444 > /tmp/selenium-output.log 2> /tmp/selenium-error.log & echo $! > /tmp/selenium.pid
 
-script: sh -c "if [ '$TYPE' = 'Java' ]; then mvn test; else cd assets; npm test; cd ..; fi"
+script: sh -c "if [ '$TYPE' = 'Java' ]; then mvn test; else cd ~/assets; npm test; fi"
 
 after_script:
+  - cd ~
   - echo "Selenium log:" 
   - cat /tmp/selenium-output.log
   - echo "Selenium error log:" 
