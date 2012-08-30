@@ -1,3 +1,3 @@
 #!/bin/sh
-cd assets
+cd $CWD/assets
 npm test
