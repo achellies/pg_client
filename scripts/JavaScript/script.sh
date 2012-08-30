@@ -1,4 +1,3 @@
 #!/bin/sh
-ls
-cd "assets"
+#cd "assets"
 npm test
