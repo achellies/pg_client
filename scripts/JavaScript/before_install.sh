@@ -1,5 +1,5 @@
 #!/bin/sh
-echo `pwd`
+pwd
 sudo apt-get install jscoverage
-cd assets
+cd /home/travis/builds/geoquest/pg_client/assets
 npm install
