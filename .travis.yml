@@ -18,9 +18,7 @@ before_script:
   - export DISPLAY=:99
   - java -jar /tmp/selenium-server-standalone-2.25.0.jar -port 4444 > /tmp/selenium-output.log 2> /tmp/selenium-error.log & echo $! > /tmp/selenium.pid
 
-script:
-  - mvn install -DskipTests=true
-  - cd assets; npm test; cd ..
+script: sh -c "if [ '$TYPE' = 'Java' ]; then mvn install -DskipTests=true; else cd assets; npm test; cd ..; fi"
 
 after_script:
   - echo "Selenium log:" 
