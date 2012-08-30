@@ -2,4 +2,3 @@
 pwd
 cd /home/travis/builds/geoquest/pg_client/assets
 pwd
-npm test
