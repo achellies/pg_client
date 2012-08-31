@@ -18,19 +18,70 @@
     </dependency>
     
     <dependency>
-	<groupId>org.seleniumhq.selenium</groupId>
-	<artifactId>selenium-java</artifactId>
-	<version>2.25.0</version>
-</dependency>
+    	<groupId>com.google.android</groupId>
+    	<artifactId>android-test</artifactId>
+    	<version>2.3.3</version>
+        <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-java</artifactId>
+		<version>2.25.0</version>
+	</dependency>
+
+    <dependency>
+    	<groupId>com.google.android</groupId>
+    	<artifactId>android</artifactId>
+    	<version>2.3.3</version>
+    </dependency>
   
+    <dependency>
+	    <groupId>cordova</groupId>
+	    <artifactId>cordova</artifactId>
+	    <version>2.0.0</version>
+	    <scope>system</scope>
+	    <systemPath>${project.basedir}/libs/cordova-2.0.0.jar</systemPath>
+	</dependency>
+    
+    <dependency>
+	    <groupId>android-support</groupId>
+	    <artifactId>android-support</artifactId>
+	    <version>4</version>
+	    <scope>system</scope>
+	    <systemPath>${project.basedir}/libs/android-support-v4.jar</systemPath>
+	</dependency>
+    
+    
   </dependencies>
  
+  
+           
   
   <build>
 	<sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
-   
-   <plugins>
-    </plugins> 
+  	<outputDirectory>${basedir}/bin/classes</outputDirectory>
+
+        <plugins>
+            
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <configuration>
+                    <run>
+                        <debug>true</debug>
+                    </run>
+                    <sdk>
+                        <platform>4</platform>
+                    </sdk>
+                    <emulator>
+                        <avd>16</avd>
+                    </emulator>
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                </configuration>
+            </plugin>
+        </plugins>
+    
   </build>
 </project>

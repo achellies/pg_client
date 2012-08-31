@@ -1,15 +1,21 @@
 package com.phonegap.geoquestweb;
 
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-public class TestApp {
+import android.test.ActivityInstrumentationTestCase2;
+import android.test.AndroidTestRunner;
 
-	@Test
-	public void testApp(){
-		assertTrue(true);
+//@RunWith(AndroidTestRunner.class)
+public class TestApp extends ActivityInstrumentationTestCase2<MainActivity> {
+
+	public TestApp() {
+		super(MainActivity.class);
 	}
 	
+	@Test
+	public void testApp(){
+		assertNotNull(getActivity());
+	}
 }
