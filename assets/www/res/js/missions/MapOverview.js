@@ -89,8 +89,8 @@ function MapOverview(mapNode) {
 		google.maps.event.trigger(googleMap, 'resize');
 		$('#content_map').height($('#page_map').innerHeight() - $('#header_map').outerHeight()-30);
 		watchID = navigator.geolocation.watchPosition(updatePosition, gpsError, gpsOptions);
-		$.mobile.loadingMessage = "Warte auf GPS Signal."
-		$.mobile.showPageLoadingMsg();
+//		$.mobile.loadingMessage = "Warte auf GPS Signal."
+//		$.mobile.showPageLoadingMsg();
 	}
 	
 	
@@ -113,6 +113,15 @@ function MapOverview(mapNode) {
 		googleMap.setCenter(latlng);
 		myCircle.setCenter(latlng);
 		myCircle.setRadius(myPosition.coords.accuracy);
+	}
+	
+	this.setPositionAndUpdate = function (lat, long) {
+			latlng = new google.maps.LatLng(lat, long);
+			myPositionMarker.setPosition(latlng);
+			myCircle.setCenter(latlng);
+			myCircle.setRadius(10);
+			googleMap.setCenter(latlng);
+			globalGameHandler.updateHotspotsDistance(lat, long);
 	}
 	
 	function updatePosition(myPosition) {

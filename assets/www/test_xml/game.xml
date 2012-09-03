@@ -34,12 +34,12 @@
 		<dialogitem>Test 2</dialogitem>
 	</mission>
 
-	<mission type="QRTagReading" id="test_QR"
+<!-- 	<mission type="QRTagReading" id="test_QR"
 		buttontext="QR-Tag gefunden!" initial_image="drawable/QR-Tag_Hint.png"
 		taskdescription="Finde den versteckten Zettel, auf dem kodierte Informationen abgebildet sind. Dein Handy wird dir beim entschlüsseln Helfen."
 		mode="treasure" cancel="no" feedbacktext="@result@">
 	</mission>
-	
+	 -->
 
 	<hotspot id="Andy_Follow_3_Hotspot" latitude="50.751101" longitude="7.097184" radius="20">
 	    <img src="drawable/Char_Red.png"/>

@@ -185,7 +185,13 @@ function loadXMLDoc(fileName) {
             }
             else
             {
-        	    alert("Fehler beim lesen der XML Datei! Status:" +	xhttp.status);
+            	//TODO: Just a temporal soluttion. Remove this when client differentiates between local and remote file requests
+            	if (fileName.indexOf('http://')==0){
+            		alert("Fehler beim lesen der XML Datei! Status:" +	xhttp.status);
+            	}
+            	else {
+            		//access to local file - dont throw error
+            	}
             }
         }
     }
@@ -196,7 +202,12 @@ function loadXMLDoc(fileName) {
 		alert("XHTTP Status: " + xhttp.status);
 	}			
 	if (xhttp.status != 200) {
-	    alert("Fehler beim lesen der XML Datei!");
+		if (fileName.indexOf('http://')==0){
+		    alert("Fehler beim lesen der XML Datei!");
+    	}
+    	else {
+    		//access to local file - dont throw error
+    	}
 	}
 	
 	//Notwendig da die RepoListe noch ohne MimeType kommt

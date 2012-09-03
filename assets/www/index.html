@@ -29,6 +29,8 @@
     <script type="text/javascript" charset="utf-8" src="res/js/missions/QRTagReading.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/missions/StartAndExitScreen.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/missions/WebPage.js"></script>    
+    
+	<script type="text/javascript" charset="utf-8" src="res/js/Globals.js"></script>
     <script type="text/javascript">
 
     var DEBUG = false,
@@ -44,14 +46,12 @@
     		    	    	GAMETYPE = "WEB";
     		    	        $.mobile.changePage($('#page_start'), "slide");
      
-    		    	        globalGameHandler = new Handler();
     		      }	        
         });
     }
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     function phoneGapReady() {
-        globalGameHandler = new Handler();
     	GAMETYPE = "PHONEGAP";
         document.addEventListener("backbutton", onBackKeyDown, false);
         document.addEventListener("offline", onOffline, false);
@@ -103,7 +103,7 @@
         <div data-role="content" id="content_start">
              <a href="#page_tests" data-role="button" data-icon="alert">Tests</a> 
 
-             <a href="#" data-role="button" onClick="startSpielMarkt();return false;">GeoQuest Spielmarkt starten</a>
+             <a href="#" id="startGeoQuestSpielmarkt" data-role="button" onClick="startSpielMarkt();return false;">GeoQuest Spielmarkt starten</a>
 			 <a href="#" data-role="button" onClick="qaSpielMarkt()();return false;">QA-Test Spielmarkt starten</a>
 			 
 <!--              <a href="#" data-role="button" onClick="startDemoSpielMarkt();return false;">Demo Spielmarkt starten</a>  --> 

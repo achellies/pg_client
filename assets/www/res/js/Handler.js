@@ -1,14 +1,11 @@
 function Handler() {
 
-	globalActionHandler = new ActionHandler(); // Das Aktionshandler Objekt
-
 	var hotspots = {}, // Dieses Objekt speichert die HotSpots
 		missions = {}, // Dieses Objekt speichert die Missionen
 		onStart = {}, // Dieses Objekt speichert die onStart Knoten zur Mission
 		onEnd = {}, // Dieses Objekt speichert die onEnd Knoten zur Mission
 		onEnter = {}, // Dieses Objekt speichert die onEnter Knoten zum HotSpot
 		onLeave = {}, // Dieses Objekt speichert die onLeave Knoten zum HotSpot
-		globalMap, // Das globale Map Objekt, wird mit addMap() ueberschrieben
 		loadMap; // legt fest, ob die Karte beim beenden einer Mission geladen
 				// werden muss
 
@@ -209,6 +206,10 @@ function Handler() {
 	function addMap(missionID, mapObj) {
 		globalMap = mapObj;
 		missions[missionID] = mapObj;
+	}
+	
+	this.getCurrentMap = function(){
+		return globalMap;
 	}
 
 	this.addMarker = function(hotspotID, latitude, longitude, charImage) {
