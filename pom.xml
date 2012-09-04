@@ -4,9 +4,14 @@
   <artifactId>GeoQuestPhoneGapClient</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>GeoQuest</name>
+  <packaging>apk</packaging>
   
   <properties>
+  	<robolectric.version>1.1</robolectric.version>
+    <android.sdk.path>${ANDROID_SDK_HOME}</android.sdk.path>
   </properties>
+  
+  
   
   <dependencies>
 
@@ -52,6 +57,19 @@
 	    <systemPath>${project.basedir}/libs/android-support-v4.jar</systemPath>
 	</dependency>
     
+	<dependency>
+		<groupId>com.pivotallabs</groupId>
+		<artifactId>robolectric</artifactId>
+		<version>1.1</version>
+	</dependency>
+	
+	
+            <!-- Androlog is a logging and reporting library for Android -->
+            <dependency>
+                <groupId>de.akquinet.android.androlog</groupId>
+                <artifactId>androlog</artifactId>
+                <version>1.0.5</version>
+            </dependency>
     
   </dependencies>
  
@@ -61,26 +79,32 @@
   <build>
 	<sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
-  	<outputDirectory>${basedir}/bin/classes</outputDirectory>
+<!--   	<outputDirectory>${basedir}/bin/classes</outputDirectory> -->
 
         <plugins>
             
-            <plugin>
+                       <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
-                    <run>
-                        <debug>true</debug>
-                    </run>
                     <sdk>
-                        <platform>4</platform>
+                        <!-- platform or api level (api level 4 = platform 1.6)-->
+                        <platform>10</platform>
                     </sdk>
-                    <emulator>
-                        <avd>16</avd>
-                    </emulator>
                     <undeployBeforeDeploy>true</undeployBeforeDeploy>
                 </configuration>
+                <extensions>true</extensions>
             </plugin>
+
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.2</version>
+                    <configuration>
+                       <source>1.6</source>
+                       <target>1.6</target>
+                    </configuration>
+                </plugin>
         </plugins>
     
   </build>
