@@ -10,7 +10,7 @@ before_install:
   - chmod -R +x $CWD/scripts
   - sh $CWD/scripts/before_install.sh
   - sh $CWD/scripts/$TYPE/before_install.sh
-  - echo ANDROID_SDK_HOME:
+  - export ANDROID_SDK_HOME=/tmp/android-sdk-linux
   - echo $ANDROID_SDK_HOME
 
 before_script:
