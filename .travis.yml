@@ -12,6 +12,9 @@ before_install:
   - export ANDROID_SDK_HOME=/tmp/android-sdk-linux
   - echo $ANDROID_SDK_HOME
 
+install:
+  - sh $CWD/scripts/$TYPE/install.sh
+
 before_script:
   - sh $CWD/scripts/$TYPE/before_script.sh
 
