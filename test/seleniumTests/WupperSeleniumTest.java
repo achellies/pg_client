@@ -59,16 +59,16 @@ public class WupperSeleniumTest {
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
 		assertTrue(selenium.isTextPresent("Das obere Bild zeigt die Koordinaten des gesuchten Schatzes. "));
-		assertFalse(selenium.isTextPresent("Die roten Buchstaben stehen für fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten müsst. "));
+		assertFalse(selenium.isTextPresent("Die roten Buchstaben stehen fÃ¼r fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten mÃ¼sst. "));
 		
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
-		assertTrue(selenium.isTextPresent("Die roten Buchstaben stehen für fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten müsst. "));
-		assertFalse(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste Rätsel. "));
+		assertTrue(selenium.isTextPresent("Die roten Buchstaben stehen fÃ¼r fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten mÃ¼sst. "));
+		assertFalse(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste RÃ¤tsel. "));
 		
         selenium.click("//div[@id='footer_NPCTalk']"); 
 		
-		assertTrue(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste Rätsel. "));
+		assertTrue(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste RÃ¤tsel. "));
 
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
@@ -86,7 +86,7 @@ public class WupperSeleniumTest {
 		System.out.println(returnValue);
 		
 		//The client should go to the next game element
-		assertTrue(selenium.isTextPresent("Hier wird es rätselhaft! Bevor ihr auf den Wanderweg nach links abbiegt, schaut, welche Bezeichnung er hat und wählt sie unten aus."));
+		assertTrue(selenium.isTextPresent("Hier wird es rÃ¤tselhaft! Bevor ihr auf den Wanderweg nach links abbiegt, schaut, welche Bezeichnung er hat und wÃ¤hlt sie unten aus."));
 		
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
