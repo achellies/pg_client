@@ -15,9 +15,6 @@ gen/
 # Local configuration file (sdk path, etc)
 local.properties
 /target
-.settings
-.project
-.classpath
 
 # loaded node modules
 assets/node_modules
