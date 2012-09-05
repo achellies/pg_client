@@ -15,7 +15,7 @@ public class TestApp extends ActivityInstrumentationTestCase2<MainActivity> {
 	}
 	
 //	@Test
-	public void testApp(){
-		assertNotNull(getActivity());
-	}
+//	public void testApp(){
+//		assertNotNull(getActivity());
+//	}
 }
