@@ -14,7 +14,7 @@ public class TestApp extends ActivityInstrumentationTestCase2<MainActivity> {
 		super(MainActivity.class);
 	}
 	
-	@Test
+//	@Test
 	public void testApp(){
 		assertNotNull(getActivity());
 	}
