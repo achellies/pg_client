@@ -79,7 +79,29 @@ public class WupperSeleniumTest {
 		assertTrue(selenium.isElementPresent("//div[@id='header_map']"));
 		assertTrue(selenium.isElementPresent("//div[@id='content_map']"));
 		
+		// check if initial position is correct
+		String returnValue = selenium.getEval("this.browserbot.getCurrentWindow().globalMap.getMyPositionMarker().position");
+		returnValue = returnValue.trim().substring(1, returnValue.length()-1);
+		String[] buff = returnValue.split(",");
+        assertEquals(Double.parseDouble("50.751843"), Double.parseDouble(buff[0]), 0.000000001); 
+        assertEquals(Double.parseDouble("7.096065"), Double.parseDouble(buff[1]), 0.000000001);
 		
+		// move to first checkpoint
+	    selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.155867, 7.141565)");
+		
+
+		//The client should go to the next game element
+		assertTrue(selenium.isTextPresent("Hier wird es rätselhaft! Bevor ihr auf den Wanderweg nach links abbiegt, schaut, welche Bezeichnung er hat und wählt sie unten aus."));
+
+		//make sure 3 options are available...
+		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
+		assertTrue(selenium.isElementPresent("//div[@id='answer_index_1']"));
+		assertTrue(selenium.isElementPresent("//div[@id='answer_index_2']"));
+
+		//with the values
+		assertTrue(selenium.isTextPresent("A1"));
+		assertTrue(selenium.isTextPresent("A3"));
+		assertTrue(selenium.isTextPresent("A9"));
 	}
 
 	@After
