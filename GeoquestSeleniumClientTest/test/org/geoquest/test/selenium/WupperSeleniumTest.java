@@ -87,8 +87,7 @@ public class WupperSeleniumTest {
         assertEquals(Double.parseDouble("7.096065"), Double.parseDouble(buff[1]), 0.000000001);
 		
 		// move to first checkpoint
-	    selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.155867, 7.141565)");
-		
+	    selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.155867, 7.141565)");	
 
 		//The client should go to the next game element
 		assertTrue(selenium.isTextPresent("Hier wird es rätselhaft! Bevor ihr auf den Wanderweg nach links abbiegt, schaut, welche Bezeichnung er hat und wählt sie unten aus."));
@@ -102,6 +101,50 @@ public class WupperSeleniumTest {
 		assertTrue(selenium.isTextPresent("A1"));
 		assertTrue(selenium.isTextPresent("A3"));
 		assertTrue(selenium.isTextPresent("A9"));
+		
+		
+		// test wrong answers
+		selenium.click("//*[contains(child::text(),'A1')]");
+		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Guckt noch einmal genauer hin!"));
+		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
+		assertTrue(selenium.isTextPresent("Mission gescheitert!"));
+		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
+		
+		// test wrong answers
+		selenium.click("//*[contains(child::text(),'A3')]");
+		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Schaut noch einmal nach!"));
+		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
+		assertTrue(selenium.isTextPresent("Mission gescheitert!"));
+		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
+		
+		// test wrong answers
+		selenium.click("//*[contains(child::text(),'A9')]");
+		assertTrue(selenium.isTextPresent("Das ist richtig!"));
+		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
+		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		
+		
+		// new interaction 
+		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
+		assertTrue(selenium.isTextPresent("Super! Ihr habt die Zahl für den roten Buchstaben A erraten und seid dem Schatz nun ein Stückchen näher. Sucht nun die nächste Fahne auf der Karte und begebt Euch dort hin. "));
+		selenium.click("//div[@id='footer_NPCTalk']"); 
+		
+		
+		// now present at the map again and head for new function
+		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.159399, 7.1344329999999445)");	
+	
+		//The client should go to the next game element
+	    assertTrue(selenium.isTextPresent("Schaut Euch die Infotafel an. An welchem Datum wurde der letzte Niet in die Brücke geschlagen? Die Quersumme der ersten beiden Ziffern des Datums _ _. 03. 1897 liefert den nächsten Hinweis."));
+
+		//make sure 3 options are available...
+		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
+		assertTrue(selenium.isElementPresent("//div[@id='answer_index_1']"));
+		assertTrue(selenium.isElementPresent("//div[@id='answer_index_2']"));
+		
+		//with the values
+		assertTrue(selenium.isTextPresent("8"));
+		assertTrue(selenium.isTextPresent("6"));
+		assertTrue(selenium.isTextPresent("9"));
 	}
 
 	@After
