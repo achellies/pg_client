@@ -24,3 +24,6 @@ assets/node_modules
 
 # temporarily generated JavaScript build directory
 assets/build
+
+# log files
+npm-debug.log
