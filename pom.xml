@@ -82,8 +82,7 @@
 <!--   	<outputDirectory>${basedir}/bin/classes</outputDirectory> -->
 
         <plugins>
-            
-                       <plugin>
+            <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
                 <version>3.3.0</version>
@@ -91,6 +90,7 @@
                     <sdk>
                         <!-- platform or api level (api level 4 = platform 1.6)-->
                         <platform>10</platform>
+                        <path>${ANDROID_SDK_HOME}</path>
                     </sdk>
                     <undeployBeforeDeploy>true</undeployBeforeDeploy>
                 </configuration>

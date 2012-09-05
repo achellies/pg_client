@@ -1,3 +1,3 @@
 #!/bin/sh
-mvn install -B -DskipTests=true
+mvn install -B --quiet -DskipTests=true
 #echo 'install skipped'
