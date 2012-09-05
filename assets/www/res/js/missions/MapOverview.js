@@ -8,7 +8,7 @@ function MapOverview(mapNode) {
 		watchID,
 		zoomLevel = 18, 	//Default ZoomLevel
 		myAccuracy = 60; 	// Fixed Accuracy
-
+	
 	if (!GEOQUEST_RESUME){
 			localStorage[localStorage["game"]+ID] = "new";
 	}
@@ -30,6 +30,7 @@ function MapOverview(mapNode) {
 			streetViewControl : false, //Kein streetview
 			mapTypeId : google.maps.MapTypeId.HYBRID // default
 		};		
+	
 	
 	//MapKind aus den Atributen auslesen, falls vorhanden ist.
 	if (mapAttributes.getNamedItem("mapkind")){
@@ -114,15 +115,7 @@ function MapOverview(mapNode) {
 		myCircle.setCenter(latlng);
 		myCircle.setRadius(myPosition.coords.accuracy);
 	}
-	
-	this.setPositionAndUpdate = function (lat, long) {
-			latlng = new google.maps.LatLng(lat, long);
-			myPositionMarker.setPosition(latlng);
-			myCircle.setCenter(latlng);
-			myCircle.setRadius(10);
-			googleMap.setCenter(latlng);
-			globalGameHandler.updateHotspotsDistance(lat, long);
-	}
+
 	
 	function updatePosition(myPosition) {
 		if (myPosition.coords.accuracy < myAccuracy){ //Feste Genauigkeit
@@ -196,5 +189,25 @@ function MapOverview(mapNode) {
 		googleMarkers[id].setMap(null);
 		localStorage[localStorage["game"]+"_Marker_"+id] = null;
 	};
+	
+
+	//getter functions for testing
+	this.getGoogleMarkers = function(){
+		return googleMarkers;
+	}
+	
+	this.getMyPositionMarker = function(){
+		return myPositionMarker;
+	}
+
+	//setter functions for testing
+	this.setPositionAndUpdate = function (lat, long) {
+			latlng = new google.maps.LatLng(lat, long);
+			myPositionMarker.setPosition(latlng);
+			myCircle.setCenter(latlng);
+			myCircle.setRadius(10);
+			googleMap.setCenter(latlng);
+			globalGameHandler.updateHotspotsDistance(lat, long);
+	}
 	return instance;
 }

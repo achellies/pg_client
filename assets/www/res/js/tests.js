@@ -6,8 +6,8 @@ function startSpielMarkt(){
 	GAMEFILENAME="spielmarkt_2012";
 	GAMENAME="spielmarkt_2012";
 	localStorage["game"] = GAMEFILENAME;
-	//C:\agile\clientworkspace\pg_client\assets\www\games\spielmarkt_2012
-	GAMEURL= "C:/agile/clientworkspace/pg_client/assets/www/games/spielmarkt_2012/";//BASEURL + REPONAME + "/games/" + GAMEFILENAME + "/";//
+	//get path to the local files
+	GAMEURL= location.href.substring(0, location.href.lastIndexOf('/'))+"/games/spielmarkt_2012/";
 	
 	GEOQUEST_RESUME=false;
 
