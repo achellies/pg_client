@@ -8,7 +8,7 @@
   
   <properties>
   	<robolectric.version>1.1</robolectric.version>
-    <android.sdk.path>${ANDROID_SDK_HOME}</android.sdk.path>
+    <android.sdk.path>${ANDROID_HOME}</android.sdk.path>
   </properties>
   
   
@@ -90,7 +90,6 @@
                     <sdk>
                         <!-- platform or api level (api level 4 = platform 1.6)-->
                         <platform>10</platform>
-                        <path>${ANDROID_SDK_HOME}</path>
                     </sdk>
                     <undeployBeforeDeploy>true</undeployBeforeDeploy>
                 </configuration>

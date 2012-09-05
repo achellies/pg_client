@@ -9,10 +9,9 @@ before_install:
   - echo $CWD
   - chmod -R +x $CWD/scripts
   - $CWD/scripts/$TYPE/before_install.sh
-  - export ANDROID_SDK_HOME=/tmp/android-sdk-linux
   - export ANDROID_HOME=/tmp/android-sdk-linux
-  - export PATH=${PATH}:${ANDROID_SDK_HOME}/tools:${ANDROID_SDK_HOME}/platform-tools
-  - echo $ANDROID_SDK_HOME
+  - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+  - echo $ANDROID_HOME
 
 install:
   - $CWD/scripts/$TYPE/install.sh
