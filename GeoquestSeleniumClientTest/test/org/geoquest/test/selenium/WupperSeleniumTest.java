@@ -61,16 +61,16 @@ public class WupperSeleniumTest {
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
 		assertTrue(selenium.isTextPresent("Das obere Bild zeigt die Koordinaten des gesuchten Schatzes. "));
-		assertFalse(selenium.isTextPresent("Die roten Buchstaben stehen für fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten müsst. "));
+		assertFalse(selenium.isTextPresent("Die roten Buchstaben stehen fÃ¼r fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten mÃ¼sst. "));
 		
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
-		assertTrue(selenium.isTextPresent("Die roten Buchstaben stehen für fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten müsst. "));
-		assertFalse(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste Rätsel. "));
+		assertTrue(selenium.isTextPresent("Die roten Buchstaben stehen fÃ¼r fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten mÃ¼sst. "));
+		assertFalse(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste RÃ¤tsel. "));
 		
         selenium.click("//div[@id='footer_NPCTalk']"); 
 		
-		assertTrue(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste Rätsel. "));
+		assertTrue(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste RÃ¤tsel. "));
 
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
@@ -90,7 +90,7 @@ public class WupperSeleniumTest {
 	    selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.155867, 7.141565)");	
 
 		//The client should go to the next game element
-		assertTrue(selenium.isTextPresent("Hier wird es rätselhaft! Bevor ihr auf den Wanderweg nach links abbiegt, schaut, welche Bezeichnung er hat und wählt sie unten aus."));
+		assertTrue(selenium.isTextPresent("Hier wird es rÃ¤tselhaft! Bevor ihr auf den Wanderweg nach links abbiegt, schaut, welche Bezeichnung er hat und wÃ¤hlt sie unten aus."));
 
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -121,12 +121,12 @@ public class WupperSeleniumTest {
 		selenium.click("//*[contains(child::text(),'A9')]");
 		assertTrue(selenium.isTextPresent("Das ist richtig!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		
 		
 		// new interaction 
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Super! Ihr habt die Zahl für den roten Buchstaben A erraten und seid dem Schatz nun ein Stückchen näher. Sucht nun die nächste Fahne auf der Karte und begebt Euch dort hin. "));
+		assertTrue(selenium.isTextPresent("Super! Ihr habt die Zahl fÃ¼r den roten Buchstaben A erraten und seid dem Schatz nun ein StÃ¼ckchen nÃ¤her. Sucht nun die nÃ¤chste Fahne auf der Karte und begebt Euch dort hin. "));
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
 		
@@ -134,7 +134,7 @@ public class WupperSeleniumTest {
 		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.159399, 7.1344329999999445)");	
 	
 		//The client should go to the next game element
-	    assertTrue(selenium.isTextPresent("Schaut Euch die Infotafel an. An welchem Datum wurde der letzte Niet in die Brücke geschlagen? Die Quersumme der ersten beiden Ziffern des Datums _ _. 03. 1897 liefert den nächsten Hinweis."));
+	    assertTrue(selenium.isTextPresent("Schaut Euch die Infotafel an. An welchem Datum wurde der letzte Niet in die BrÃ¼cke geschlagen? Die Quersumme der ersten beiden Ziffern des Datums _ _. 03. 1897 liefert den nÃ¤chsten Hinweis."));
 
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
