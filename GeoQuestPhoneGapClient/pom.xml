@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 	<groupId>org.geoquest</groupId>
-    <artifactId>geoquest-phonegap-client</artifactId>
+    <artifactId>GeoQuestPhoneGapClient</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>GeoQuest Phonegap Client</name>
   <packaging>apk</packaging>
@@ -19,21 +19,6 @@
  
   
   <dependencies>
-
-<!--     <dependency> -->
-<!--       <groupId>junit</groupId> -->
-<!--       <artifactId>junit</artifactId> -->
-<!--       <version>4.8.2</version> -->
-<!--       <scope>test</scope> -->
-<!--     </dependency> -->
-    
-<!--     <dependency> -->
-<!--     	<groupId>com.google.android</groupId> -->
-<!--     	<artifactId>android-test</artifactId> -->
-<!--     	<version>2.3.3</version> -->
-<!--         <scope>test</scope> -->
-<!--     </dependency> -->
-    
     
     <dependency>
     	<groupId>com.google.android</groupId>
@@ -58,30 +43,11 @@
 	    <systemPath>${project.basedir}/libs/android-support-v4.jar</systemPath>
 	</dependency>
     
-<!-- 	<dependency> -->
-<!-- 		<groupId>com.pivotallabs</groupId> -->
-<!-- 		<artifactId>robolectric</artifactId> -->
-<!-- 		<version>1.1</version> -->
-<!-- 	</dependency> -->
-	
-	
-            <!-- Androlog is a logging and reporting library for Android -->
-<!--             <dependency> -->
-<!--                 <groupId>de.akquinet.android.androlog</groupId> -->
-<!--                 <artifactId>androlog</artifactId> -->
-<!--                 <version>1.0.5</version> -->
-<!--             </dependency> -->
-    
   </dependencies>
- 
-  
-           
+            
   
   <build>
 	<sourceDirectory>src</sourceDirectory>
-    <testSourceDirectory>test</testSourceDirectory>
-<!--   	<outputDirectory>${basedir}/bin/classes</outputDirectory> -->
-
         <plugins>
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
@@ -89,7 +55,7 @@
                 <version>3.3.0</version>
                 <configuration>
                     <sdk>
-                        <!-- platform or api level (api level 4 = platform 1.6)-->
+                        <!-- platform or api level (api level 10 = platform 2.3.3)-->
                         <platform>10</platform>
                     </sdk>
                     <undeployBeforeDeploy>true</undeployBeforeDeploy>
