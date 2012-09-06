@@ -454,7 +454,7 @@ public class WupperSeleniumTest {
 		selenium.click("//div[@id='footer_NPCTalk']");
 
 		//check whether index page is opened
-		assertTrue(selenium.isTextPresent("GeoQuest Web"));
+		assertTrue(selenium.isTextPresent("GeoQuest Web")); 
 	}
 
 	@After
