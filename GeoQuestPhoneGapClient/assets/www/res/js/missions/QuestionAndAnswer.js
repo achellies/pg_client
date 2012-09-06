@@ -134,7 +134,7 @@ function QuestionAndAnswerMission(missionNode){
 	
 	function finishQuestion(){
 		
-			if (correctAnswersNeeded >> correctAnswers){
+			if (correctAnswersNeeded > correctAnswers){
 				$('#question_QuestionAndAnswer').empty().append("Mission gescheitert!");
 				setStatus("fail");
 			}
