@@ -62,16 +62,16 @@ public class WupperSeleniumTest {
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
 		assertTrue(selenium.isTextPresent("Das obere Bild zeigt die Koordinaten des gesuchten Schatzes. "));
-		assertFalse(selenium.isTextPresent("Die roten Buchstaben stehen für fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten müsst. "));
+		assertFalse(selenium.isTextPresent("Die roten Buchstaben stehen fÃ¼r fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten mÃ¼sst. "));
 		
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
-		assertTrue(selenium.isTextPresent("Die roten Buchstaben stehen für fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten müsst. "));
-		assertFalse(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste Rätsel. "));
+		assertTrue(selenium.isTextPresent("Die roten Buchstaben stehen fÃ¼r fehlende Zahlen in den Koordinaten, die Ihr Euch noch erarbeiten mÃ¼sst. "));
+		assertFalse(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste RÃ¤tsel. "));
 		
         selenium.click("//div[@id='footer_NPCTalk']"); 
 		
-		assertTrue(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste Rätsel. "));
+		assertTrue(selenium.isTextPresent("Begebt Euch nun zu der roten Fahne auf der Karte. Dort findet Ihr das erste RÃ¤tsel. "));
 
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
@@ -93,7 +93,7 @@ public class WupperSeleniumTest {
 	    
 	    /** Mission 1 **/
 		//The client should go to the next game element
-		assertTrue(selenium.isTextPresent("Hier wird es rätselhaft! Bevor ihr auf den Wanderweg nach links abbiegt, schaut, welche Bezeichnung er hat und wählt sie unten aus."));
+		assertTrue(selenium.isTextPresent("Hier wird es rÃ¤tselhaft! Bevor ihr auf den Wanderweg nach links abbiegt, schaut, welche Bezeichnung er hat und wÃ¤hlt sie unten aus."));
 
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -124,13 +124,13 @@ public class WupperSeleniumTest {
 		selenium.click("//*[contains(child::text(),'A9')]");
 		assertTrue(selenium.isTextPresent("Das ist richtig!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		
 		
 		// new interaction 
 		selenium.click("//div[@id='footer_QuestionAndAnswer']");
 		assertTrue(selenium.isElementPresent("//img[contains(@src, 'Schatzkarte-1.png')]")); 
-		assertTrue(selenium.isTextPresent("Super! Ihr habt die Zahl für den roten Buchstaben A erraten und seid dem Schatz nun ein Stückchen näher. Sucht nun die nächste Fahne auf der Karte und begebt Euch dort hin. "));
+		assertTrue(selenium.isTextPresent("Super! Ihr habt die Zahl fÃ¼r den roten Buchstaben A erraten und seid dem Schatz nun ein StÃ¼ckchen nÃ¤her. Sucht nun die nÃ¤chste Fahne auf der Karte und begebt Euch dort hin. "));
 		selenium.click("//div[@id='footer_NPCTalk']"); 
 		
 		
@@ -141,7 +141,7 @@ public class WupperSeleniumTest {
 		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.159399, 7.1344329999999445)");	
 	
 		//The client should go to the next game element
-	    assertTrue(selenium.isTextPresent("Schaut Euch die Infotafel an. An welchem Datum wurde der letzte Niet in die Brücke geschlagen? Die Quersumme der ersten beiden Ziffern des Datums _ _. 03. 1897 liefert den nächsten Hinweis."));
+	    assertTrue(selenium.isTextPresent("Schaut Euch die Infotafel an. An welchem Datum wurde der letzte Niet in die BrÃ¼cke geschlagen? Die Quersumme der ersten beiden Ziffern des Datums _ _. 03. 1897 liefert den nÃ¤chsten Hinweis."));
 
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -172,7 +172,7 @@ public class WupperSeleniumTest {
 		selenium.click("//*[contains(child::text(),'4')]");
 		assertTrue(selenium.isTextPresent("Das ist richtig!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 
 		assertTrue(selenium.isElementPresent("//img[contains(@src, 'Schatzkarte-2.png')]"));
@@ -184,7 +184,7 @@ public class WupperSeleniumTest {
 		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.156907, 7.136112)");	
 	
 		//The client should go to the next game element
-	    assertTrue(selenium.isTextPresent("Schaut Euch die Infotafel an. Wieviele gelbe Wörter, incl. Überschrift, gibt es auf der linken Seite der Tafel?"));
+	    assertTrue(selenium.isTextPresent("Schaut Euch die Infotafel an. Wieviele gelbe WÃ¶rter, incl. Ãœberschrift, gibt es auf der linken Seite der Tafel?"));
 
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -198,7 +198,7 @@ public class WupperSeleniumTest {
 		
 		// test wrong answers
 		selenium.click("//*[contains(child::text(),'5')]");
-		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Wenn Ihr richtig zählt, werdet Ihr feststellen, dass es mehr Wörter sind."));
+		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Wenn Ihr richtig zÃ¤hlt, werdet Ihr feststellen, dass es mehr WÃ¶rter sind."));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		assertTrue(selenium.isTextPresent("Mission gescheitert!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
@@ -206,7 +206,7 @@ public class WupperSeleniumTest {
 		// test wrong answers
 		selenium.click("//*[contains(child::text(),'\t9\n')]");
 		
-		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Zählt noch einmal nach! Es sind weniger Wörter."));
+		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. ZÃ¤hlt noch einmal nach! Es sind weniger WÃ¶rter."));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		assertTrue(selenium.isTextPresent("Mission gescheitert!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
@@ -215,7 +215,7 @@ public class WupperSeleniumTest {
 		selenium.click("//*[contains(child::text(),'7')]");
 		assertTrue(selenium.isTextPresent("Das ist richtig!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 
 		assertTrue(selenium.isElementPresent("//img[contains(@src, 'Schatzkarte-3.png')]"));
@@ -227,7 +227,7 @@ public class WupperSeleniumTest {
 		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.155736, 7.136207)");	
 	
 		//The client should go to the next game element
-	    assertTrue(selenium.isTextPresent("Wieviele \"Backen\" könnt Ihr entdecken?"));
+	    assertTrue(selenium.isTextPresent("Wieviele \"Backen\" kÃ¶nnt Ihr entdecken?"));
 
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -241,7 +241,7 @@ public class WupperSeleniumTest {
 		
 		// test wrong answers
 		selenium.click("//*[contains(child::text(),'\t0\n')]");
-		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Ihr habt die Backen wohl übersehen. Sucht noch einmal in der Nähe vom Wasserfall."));
+		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Ihr habt die Backen wohl Ã¼bersehen. Sucht noch einmal in der NÃ¤he vom Wasserfall."));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		assertTrue(selenium.isTextPresent("Mission gescheitert!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
@@ -249,7 +249,7 @@ public class WupperSeleniumTest {
 		// test wrong answers
 		selenium.click("//*[contains(child::text(),'\t5\n')]");
 		
-		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Es sind weniger Backen. Sucht noch einmal in der Nähe vom Wasserfall."));
+		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Es sind weniger Backen. Sucht noch einmal in der NÃ¤he vom Wasserfall."));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		assertTrue(selenium.isTextPresent("Mission gescheitert!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
@@ -258,7 +258,7 @@ public class WupperSeleniumTest {
 		selenium.click("//*[contains(child::text(),'\t2\n')]");
 		assertTrue(selenium.isTextPresent("Das ist richtig!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 
 		assertTrue(selenium.isElementPresent("//img[contains(@src, 'Schatzkarte-4.png')]"));
@@ -269,7 +269,7 @@ public class WupperSeleniumTest {
 		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.153869, 7.135617)");	
 	
 		//The client should go to the next game element
-	    assertTrue(selenium.isTextPresent("Findet heraus was über die Wupper gegangen ist und zählt nach, aus wievielen Buchstaben es besteht. Welche Antwortmöglichkeit entspricht der Buchstabenanzahl + 1?"));
+	    assertTrue(selenium.isTextPresent("Findet heraus was Ã¼ber die Wupper gegangen ist und zÃ¤hlt nach, aus wievielen Buchstaben es besteht. Welche AntwortmÃ¶glichkeit entspricht der Buchstabenanzahl + 1?"));
 
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -283,7 +283,7 @@ public class WupperSeleniumTest {
 		
 		// test wrong answers
 		selenium.click("//*[contains(child::text(),'\t9\n')]");
-		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Das gesuchte Wort ist in Stein gemeißelt und hat deutlich weniger Buchstaben!"));
+		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Das gesuchte Wort ist in Stein gemeiÃŸelt und hat deutlich weniger Buchstaben!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		assertTrue(selenium.isTextPresent("Mission gescheitert!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
@@ -291,7 +291,7 @@ public class WupperSeleniumTest {
 		// test wrong answers
 		selenium.click("//*[contains(child::text(),'\t7\n')]");
 		
-		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Das gesuchte Wort ist in Stein gemeißelt und hat weniger Buchstaben!"));
+		assertTrue(selenium.isTextPresent("Das stimmt leider nicht. Das gesuchte Wort ist in Stein gemeiÃŸelt und hat weniger Buchstaben!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		assertTrue(selenium.isTextPresent("Mission gescheitert!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
@@ -300,10 +300,10 @@ public class WupperSeleniumTest {
 		selenium.click("//*[contains(child::text(),'\t5\n')]");
 		assertTrue(selenium.isTextPresent("Das ist richtig!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		
-		assertTrue(selenium.isTextPresent("Super! Noch ein roter Buchstabe und Ihr habt die Koordinaten für den Schatz! Begebt Euch nun zur letzten Fahne. "));
+		assertTrue(selenium.isTextPresent("Super! Noch ein roter Buchstabe und Ihr habt die Koordinaten fÃ¼r den Schatz! Begebt Euch nun zur letzten Fahne. "));
 
 		assertTrue(selenium.isElementPresent("//img[contains(@src, 'Schatzkarte-5.png')]"));
 		selenium.click("//div[@id='footer_NPCTalk']"); 		
@@ -314,7 +314,7 @@ public class WupperSeleniumTest {
 		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.152587, 7.135797)");	
 	
 		//The client should go to the next game element
-	    assertTrue(selenium.isTextPresent("Zählt die Anzahl der Kuhlen. Welchen Wert erhält man, wenn man die Anzahl durch sieben teilt?"));
+	    assertTrue(selenium.isTextPresent("ZÃ¤hlt die Anzahl der Kuhlen. Welchen Wert erhÃ¤lt man, wenn man die Anzahl durch sieben teilt?"));
 
 		//make sure 3 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -345,7 +345,7 @@ public class WupperSeleniumTest {
 		selenium.click("//*[contains(child::text(),'\t2\n')]");
 		assertTrue(selenium.isTextPresent("Das ist richtig!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		
 		assertTrue(selenium.isTextPresent("Ihr habt den Ort, an dem der Schatz versteckt ist gefunden. Er wird durch ein Fadenkreuz auf der Karte markiert. "));
@@ -363,7 +363,7 @@ public class WupperSeleniumTest {
 		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.153751, 7.14045)");	
 	
 		//The client should go to the next game element
-	    assertTrue(selenium.isTextPresent("Sucht nun den Schatz, der hier ganz in der Nähe versteckt ist. Wenn ihr Ihn gefunden habt drückt \"Gefunden\". Falls Ihr Hilfe braucht, drückt \"Hilfe\"."));
+	    assertTrue(selenium.isTextPresent("Sucht nun den Schatz, der hier ganz in der NÃ¤he versteckt ist. Wenn ihr Ihn gefunden habt drÃ¼ckt \"Gefunden\". Falls Ihr Hilfe braucht, drÃ¼ckt \"Hilfe\"."));
 
 		//make sure 2 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -376,7 +376,7 @@ public class WupperSeleniumTest {
 		
 		// test Help
 		selenium.click("//*[contains(child::text(),'\tHilfe!\n')]");
-		assertTrue(selenium.isTextPresent("Geht zum Erste-Hilfe Zeichen auf der Karte. Dort erhaltet Ihr einen Tip über das Versteck des Schatzes."));
+		assertTrue(selenium.isTextPresent("Geht zum Erste-Hilfe Zeichen auf der Karte. Dort erhaltet Ihr einen Tip Ã¼ber das Versteck des Schatzes."));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		
 		// now present at the map again and head for the new station/mission
@@ -395,7 +395,7 @@ public class WupperSeleniumTest {
 		//test deny help
 		selenium.click("//*[contains(child::text(),'\tNein!\n')]");
 		
-		assertTrue(selenium.isTextPresent("Na gut, dann probiert es noch einmal selbst. Geht wieder zum Kreuz auf der Karte zurück."));
+		assertTrue(selenium.isTextPresent("Na gut, dann probiert es noch einmal selbst. Geht wieder zum Kreuz auf der Karte zurÃ¼ck."));
 		
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		
@@ -413,17 +413,17 @@ public class WupperSeleniumTest {
 		//test deny help
 		selenium.click("//*[contains(child::text(),'\tJa!\n')]");
 		
-		assertTrue(selenium.isTextPresent("Der Hinweis lautet - Buchen sollst du suchen! Geht jetzt wieder zum Kreuz auf der Karte zurück."));
+		assertTrue(selenium.isTextPresent("Der Hinweis lautet - Buchen sollst du suchen! Geht jetzt wieder zum Kreuz auf der Karte zurÃ¼ck."));
 		
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		
 		// now present at the map again and head for the new station/mission
 		selenium.getEval("this.browserbot.getCurrentWindow().globalMap.setPositionAndUpdate(51.153751, 7.14045)");	
 	
 		//The client should go to the next game element
-	    assertTrue(selenium.isTextPresent("Sucht nun den Schatz, der hier ganz in der Nähe versteckt ist. Wenn ihr Ihn gefunden habt drückt \"Gefunden\". Falls Ihr Hilfe braucht, drückt \"Hilfe\"."));
+	    assertTrue(selenium.isTextPresent("Sucht nun den Schatz, der hier ganz in der NÃ¤he versteckt ist. Wenn ihr Ihn gefunden habt drÃ¼ckt \"Gefunden\". Falls Ihr Hilfe braucht, drÃ¼ckt \"Hilfe\"."));
 
 		//make sure 2 options are available...
 		assertTrue(selenium.isElementPresent("//div[@id='answer_index_0']"));
@@ -437,19 +437,19 @@ public class WupperSeleniumTest {
 		// test Help
 		selenium.click("//*[contains(child::text(),'\tGefunden!\n')]");
 		
-		assertTrue(selenium.isTextPresent("Herzlichen Glückwunsch zu Eurem Fund!"));
+		assertTrue(selenium.isTextPresent("Herzlichen GlÃ¼ckwunsch zu Eurem Fund!"));
 		
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		
-		assertTrue(selenium.isTextPresent("Genügend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
+		assertTrue(selenium.isTextPresent("GenÃ¼gend Fragen richtig beantwortet!\nMission erfolgreich abgeschlossen!"));
 		selenium.click("//div[@id='footer_QuestionAndAnswer']"); 
 		
-		assertTrue(selenium.isTextPresent("Wir hoffen unsere GeoCaching Demonstration hat euch gefallen und Spaß gemacht! :) "));
+		assertTrue(selenium.isTextPresent("Wir hoffen unsere GeoCaching Demonstration hat euch gefallen und SpaÃŸ gemacht! :) "));
 
 		selenium.click("//div[@id='footer_NPCTalk']");
 		
-		assertTrue(selenium.isTextPresent("Wir hoffen unsere GeoCaching Demonstration hat euch gefallen und Spaß gemacht! :) "));
-		assertTrue(selenium.isTextPresent("Bitte begebt Euch jetzt zurück zur Akademie und gebt das Handy wieder an unserem Stand ab. "));
+		assertTrue(selenium.isTextPresent("Wir hoffen unsere GeoCaching Demonstration hat euch gefallen und SpaÃŸ gemacht! :) "));
+		assertTrue(selenium.isTextPresent("Bitte begebt Euch jetzt zurÃ¼ck zur Akademie und gebt das Handy wieder an unserem Stand ab. "));
 
 		selenium.click("//div[@id='footer_NPCTalk']");
 
