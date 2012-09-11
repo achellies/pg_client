@@ -1,0 +1,15 @@
+Object = {
+	"id" : "Intro_2",
+	"charimage" : "Schatzkarte-0.png",
+	"nextdialogbuttontext" : "Weiter ...",
+	"endbuttontext" : "Caching starten...",
+	"name" : "Intro",
+	"dialogItem" : [ {
+		"text" : "this is dialog 1"
+	}, {
+		"text" : "this is dialog 2"
+	}, {
+		"text" : "this is dialog 3"
+	} ],
+	"onEnd" : "showMessage"
+}

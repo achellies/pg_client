@@ -24,6 +24,18 @@ qx.Class.define("npctalkui.Application",
   extend : qx.application.Mobile,
 
 
+//  properties :
+//  {
+//      npcDialogue :
+//      {
+//        check : "qx.data.Array",
+//        nullable : true,
+//        init : null
+//        //event : "changeTweets",
+//        //apply : "_applyDialogue" // just for logging the data
+//      }
+//  },
+  
 
   /*
   *****************************************************************************
@@ -39,6 +51,7 @@ qx.Class.define("npctalkui.Application",
      */
     main : function()
     {
+    	
       // Call super class
       this.base(arguments);
 
@@ -58,41 +71,29 @@ qx.Class.define("npctalkui.Application",
       -------------------------------------------------------------------------
       */
 
-      var page1 = new qx.ui.mobile.page.NavigationPage();
-      page1.setTitle("Page 1");
-      page1.addListener("initialize", function()
-      {
-        var button = new qx.ui.mobile.form.Button("Next Page");
-        page1.getContent().add(button);
-
-        button.addListener("tap", function() {
-          page2.show();
-        }, this);
-      },this);
-
-      var page2 = new qx.ui.mobile.page.NavigationPage();
-      page2.setTitle("Page 2");
-      page2.setShowBackButton(true);
-      page2.setBackButtonText("Back");
-      page2.addListener("initialize", function()
-      {
-        var label = new qx.ui.mobile.basic.Label("Content of Page 2");
-        page2.getContent().add(label);
-      },this);
-
-      page2.addListener("back", function() {
-        page1.show({reverse:true});
-      }, this);
-      
-      // Add the pages to the page manager.
       var manager = new qx.ui.mobile.page.Manager(false);
-      manager.addDetail([
-        page1,
-        page2
-      ]);
+
+      var npcTalkPage = new npctalkui.pages.NPCTalk();
+      manager.addDetail(npcTalkPage);
       
-      // Page1 will be shown at start
-      page1.show();
+//      npcTalkPage.addListener("showNextDialogue", function(evt) {
+//    	  
+//    	}, this);
+
+      //npcTalkPage.setMaxIndex();
+//      npcTalkPage.setIndex(2);
+      npcTalkPage.show();
+//      alert( npcTalkPage.getIndex() );
+      
     }
+
+//    loadMission : function() {
+//    	
+//		  var url = "../gameResources/npcTalk.json";
+//		  var missionData = new qx.data.store.Json(url);
+//		  //var nextDialogue;
+//		  
+//    }
+    
   }
 });
