@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>PhoneGap</title>
+		<script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/websocket.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/socket.io.min.js"></script>
+		
+</head>
+<body>
+
+	
+	<h1>Hello PhoneGap</h1>
+	 <!-- <script type="text/javascript">
+	    var socket = new WebSocket('ws://localhost:8282');
+	 	alert('closed');
+	 </script> -->
+	
+	
+	<script type="text/javascript">
+	// Create a socket-connection to the server, using the port given by the controller
+	var socket = io.connect('http://131.220.149.151:9876');
+	
+	// Make the socket listen for messages coming from the server...
+	socket.on('chat', function(data) {
+		// ... and write the messages to the chat window
+		var chat = document.getElementById('chat-window');
+		chat.innerHTML = data.msg;
+	});
+	
+	// Function to send a Message over the previously established socket
+	function emitMsg(msgToEmit) {
+		socket.emit('chat', {msg:msgToEmit});
+	}
+	
+		
+// 			var socket = new WebSocket('http://131.220.149.151:9876');
+			 
+// 			// push a message after the connection is established.
+// 			socket.onopen = function() {
+// 				alert('socket offen');
+// 			 socket.send('{ "type": "join", "game_id": "game/6"}')
+// 			};
+		
+// 			// alerts message pushed from server
+// 			socket.onmessage = function(msg) {
+// 			 alert(JSON.stringify(msg.data));
+// 			};
+		
+// 			// alert close event
+// 			socket.onclose = function() {
+// 			 	alert('closed');
+// 			};
+			
+// 			// error event
+// 			socket.onerror = function(err) {
+// 				alert(err);
+// 				console.log(err);
+// 			};			
+	</script>
+	
+	<div id="chat-window"></div>
+	
+</body> 	
+</html>

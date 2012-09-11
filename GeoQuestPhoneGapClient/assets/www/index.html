@@ -30,6 +30,11 @@
     <script type="text/javascript" charset="utf-8" src="res/js/missions/StartAndExitScreen.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/missions/WebPage.js"></script>    
     
+	<!-- Needed for Websocket communication -->
+	<script type="text/javascript" charset="utf-8" src="libs/websocket.js"></script>
+	<script type="text/javascript" charset="utf-8" src="libs/socket.io.min.js"></script>
+    
+    
 	<script type="text/javascript" charset="utf-8" src="res/js/Globals.js"></script>
     <script type="text/javascript">
 
@@ -122,6 +127,8 @@
 <!--              <a href="#page_tests" data-role="button" data-icon="alert">Tests</a>  -->
 			 <a href="#game_list_page" id="show_games" data-role="button" >Show Games</a>
              <a href="#" id="startGeoQuestSpielmarkt" data-role="button" onClick="startSpielMarkt();return false;">GeoQuest Spielmarkt starten</a>
+			 <a href="#websockets_gui" id="websockets_example" data-role="button" >Start WebSockets Example</a>
+
 <!-- 			  <a href="#" data-role="button" onClick="qaSpielMarkt()();return false;">QA-Test Spielmarkt starten</a> -->
 			 
 <!--              <a href="#" data-role="button" onClick="startDemoSpielMarkt();return false;">Demo Spielmarkt starten</a>  --> 
@@ -129,6 +136,34 @@
         </div>
     </div>
 <!-- End Start-->
+
+<!-- Websockets Example -->
+<!-- Example to demonstrate usage of websockets with phonegap. Relies on the example server which is integrated in node_server project. -->
+<!-- Run the phone gap client and choose 'Start WebSockets Example' on the start page. For starting the server side see  node_server project. -->
+<!-- Requires libraries websocket.js and socket.io.min.js. allready imported here, see above. -->
+	<div data-role="page" id="websockets_gui" style="min-height:100%;height:100%">
+	    <script type="text/javascript">
+			// Create a socket-connection to the server, using the port given by the controller
+			//Do not use localhost. Real IP of server machine needed 
+			var socket = io.connect('http://131.220.149.151:9876');
+			
+			// Make the socket listen for messages coming from the server...
+			socket.on('chat', function(data) {
+				// ... and write the messages to the chat window
+				var chat = document.getElementById('chat-window');
+				chat.innerHTML = data.msg;
+			});
+			
+			// Function to send a Message over the previously established socket
+			function emitMsg(msgToEmit) {
+				socket.emit('chat', {msg:msgToEmit});
+			}
+		</script>
+
+		<div id="chat-window"></div>
+		<input type="text" onkeyup="emitMsg(this.value)" />
+	</div>
+<!-- Websockets Example -->
 
 <!-- Game list -->
 	<div data-role="page" id="game_list_page" style="min-height:100%;height:100%">
