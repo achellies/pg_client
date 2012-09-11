@@ -37,7 +37,16 @@
         GAMENAME = null,
         GAMETYPE = null;
     
-    
+    function jsonCallback(games){
+    	for (var gameId= 0; gameId<games['games'].length; gameId++){
+        	var game = games['games'][gameId];
+        	//add button
+        	$('#game_list').append('<a href="#"  data-role="button" data-theme="c" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">'+game['content']['title']+'</span></span></a>');
+    	}
+    	if (games['games'].length==0){
+    		$('#game_list').append('No games available :(');
+    	}
+    }
     function onLoad() {
     	$(document).ready(function() {
 
@@ -48,6 +57,15 @@
      
     		      }	        
         });
+    	
+    	$.ajax({
+    		   	type: 'GET',
+    		    url: 'http://localhost:3000/games/findAll',
+    		    async: false,
+    			jsonpCallback: 'jsonCallback',
+    			contentType: "application/json",
+    			dataType: 'jsonp'
+    	});
     }
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
@@ -101,16 +119,29 @@
             <h1>GeoQuest Web</h1>
         </div>
         <div data-role="content" id="content_start">
-             <a href="#page_tests" data-role="button" data-icon="alert">Tests</a> 
-
+<!--              <a href="#page_tests" data-role="button" data-icon="alert">Tests</a>  -->
+			 <a href="#game_list_page" id="show_games" data-role="button" >Show Games</a>
              <a href="#" id="startGeoQuestSpielmarkt" data-role="button" onClick="startSpielMarkt();return false;">GeoQuest Spielmarkt starten</a>
-			 <a href="#" data-role="button" onClick="qaSpielMarkt()();return false;">QA-Test Spielmarkt starten</a>
+<!-- 			  <a href="#" data-role="button" onClick="qaSpielMarkt()();return false;">QA-Test Spielmarkt starten</a> -->
 			 
 <!--              <a href="#" data-role="button" onClick="startDemoSpielMarkt();return false;">Demo Spielmarkt starten</a>  --> 
 <!--              <a href="#" data-role="button" data-icon="alert" onClick="globalGameHandler.endProgram();return false;">GeoQuest Beenden!</a>  -->
         </div>
     </div>
 <!-- End Start-->
+
+<!-- Game list -->
+	<div data-role="page" id="game_list_page" style="min-height:100%;height:100%">
+	    <div data-role="header" id="header_map" data-backbtn="false">
+	    	<h1>Games</h1>
+	    </div>
+	    <div data-role="content" id="content_map" style="height:100%;">
+	    	<div id="game_list">
+	    	</div>
+		</div>
+
+	</div>
+<!-- Game list -->
 
 <!-- MapOverview Page -->
 	<div data-role="page" id="page_map" style="min-height:100%;height:100%">
