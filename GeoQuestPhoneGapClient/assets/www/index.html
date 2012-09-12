@@ -31,6 +31,27 @@
     <script type="text/javascript" charset="utf-8" src="res/js/missions/WebPage.js"></script>    
     
 	<script type="text/javascript" charset="utf-8" src="res/js/Globals.js"></script>
+
+	<!-- Test code for QR Code : START-->
+	<script type="text/javascript" src="res/js/libs/cordova-2.0.0.js"></script>
+	<script type="text/javascript">
+	
+	var scanCode = function() {
+		
+		cordova.exec(function(result) {
+			
+			
+	        alert("Scanned Code: " + result.text 
+	                + ". Format: " + result.format
+	                + ". Cancelled: " + result.cancelled);
+	    }, function(error) {
+	        alert("Scan failed: " + error);
+	    }, "BarcodeScanner", "scan", []);
+	};
+	
+	</script>
+	<!-- Test code for QR Code : END-->
+
     <script type="text/javascript">
 
     var DEBUG = false,
@@ -122,6 +143,11 @@
 <!--              <a href="#page_tests" data-role="button" data-icon="alert">Tests</a>  -->
 			 <a href="#game_list_page" id="show_games" data-role="button" >Show Games</a>
              <a href="#" id="startGeoQuestSpielmarkt" data-role="button" onClick="startSpielMarkt();return false;">GeoQuest Spielmarkt starten</a>
+             
+             <!-- Test code for QR Code : START-->
+             <a href="#" data-role="button" onclick="scanCode(); return false;"> Test QRCode</a>
+             <!-- Test code for QR Code : END-->
+             
 <!-- 			  <a href="#" data-role="button" onClick="qaSpielMarkt()();return false;">QA-Test Spielmarkt starten</a> -->
 			 
 <!--              <a href="#" data-role="button" onClick="startDemoSpielMarkt();return false;">Demo Spielmarkt starten</a>  --> 
