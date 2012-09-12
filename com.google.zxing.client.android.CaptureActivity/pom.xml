@@ -1,22 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-	<groupId>org.geoquest</groupId>
-    <artifactId>GeoQuestPhoneGapClient</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>GeoQuest Phonegap Client</name>
-  <packaging>apk</packaging>
-
-  <parent>
-	<groupId>org.geoquest</groupId>
-    <artifactId>geoquest-client-parent</artifactId>
-	<version>0.1</version>
-  </parent>
+  <modelVersion>4.0.0</modelVersion> 
+  <groupId>com.google.zxing.client.android</groupId>
+            <artifactId>CaptureActivity</artifactId>
+            <version>3.61.1-SNAPSHOT</version>
+ 	 <name>Zxing Library Project</name>
+  <packaging>apklib</packaging>
   
   <properties>
   	<robolectric.version>1.1</robolectric.version>
     <android.sdk.path>${ANDROID_HOME}</android.sdk.path>
   </properties>
  
+  <parent>
+	<groupId>org.geoquest</groupId>
+    <artifactId>geoquest-client-parent</artifactId>
+	<version>0.1</version>
+  </parent>
   
   <dependencies>
     
@@ -27,28 +26,6 @@
         <scope>provided</scope>	
     </dependency>
   
-    <dependency>
-	    <groupId>cordova</groupId>
-	    <artifactId>cordova</artifactId>
-	    <version>2.0.0</version>
-	    <scope>system</scope>
-	    <systemPath>${project.basedir}/libs/cordova-2.0.0.jar</systemPath>
-	</dependency>
-    
-    <dependency>
-	    <groupId>android-support</groupId>
-	    <artifactId>android-support</artifactId>
-	    <version>4</version>
-	    <scope>system</scope>
-	    <systemPath>${project.basedir}/libs/android-support-v4.jar</systemPath>
-	</dependency>
-	
-		<dependency>
-            <groupId>com.google.zxing.client.android</groupId>
-            <artifactId>CaptureActivity</artifactId>
-            <version>3.61.1-SNAPSHOT</version>
-            <type>apklib</type>
-        </dependency>
     
   </dependencies>
             
