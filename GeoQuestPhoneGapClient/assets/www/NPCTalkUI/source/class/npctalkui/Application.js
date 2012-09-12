@@ -34,14 +34,13 @@ qx.Class.define("npctalkui.Application",
   {
 	  
 	  
-	
-	  
 	getJsonStringFromFile : function(url){
 		
 		var req = new qx.io.request.Jsonp();
 		req.setUrl(url);
-		req.setRequestHeader("Content-Type", "application/x-javascript");
+		//req.setRequestHeader("Content-Type", "application/x-javascript");
 		
+		req.setCallbackName("game_content");
 		req.addListener("success", function(e) {
 		  var req = e.getTarget();
 
@@ -52,11 +51,28 @@ qx.Class.define("npctalkui.Application",
 		  req.getPhase();
 
 		  // JSON response
-		  console.log("Getting JSON response");
+		  console.log("Getting JSON success");
 		  var temp = req.getResponse();		  
 		  alert("Inside : " + temp);
 		  
 		}, this);
+
+		req.addListener("load", function(e) {
+
+			  // JSON response
+			  console.log("Getting JSON load");
+			  console.log(e);
+			  
+			}, this);
+
+		req.addListener("statusError", function(e) {
+
+			  // JSON response
+			  console.log("Getting JSON statusError");
+			  console.log(e);
+			  
+			}, this);
+		
 
 		// Send request
 		req.send();		
@@ -121,14 +137,33 @@ qx.Class.define("npctalkui.Application",
 	},
 	
 	
-	testPhoneGapAPI : function test() {
+	testPhoneGapAPI : function() {
 		
-		navigator.notification.alert(
-			    'You are the winner!',  // message
-			    function(){ console.log("do nothing");  },         // callback
-			    'Game Over',            // title
-			    'Done'                  // buttonName
-			);
+		alert("Inside testPhoneGapAPI");
+
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+	    // PhoneGap is ready
+	    //
+	    function onDeviceReady() {
+	        // Empty
+	    }
+
+	    // alert dialog dismissed
+	    function alertDismissed() {
+	        // do something
+	    }
+
+	    // Show a custom alert
+	    //
+	    function showAlert() {
+	        navigator.notification.alert(
+	            'You are the winner!',  // message
+	            alertDismissed,         // callback
+	            'Game Over',            // title
+	            'Done'                  // buttonName
+	        );
+	    }
 
 	    
 	},	
@@ -157,19 +192,22 @@ qx.Class.define("npctalkui.Application",
       
       
       
-      var file = "../gameResources/npcTalk.json";
       
       
-      var response = this.getJsonFromRequest(file);
-      this.testPhoneGapAPI();
-      
-      //var obj = qx.lang.Json.parse(jsonData, null);
            
       
       npcTalkPage.show();
       
+      
+      //var app = qx.core.Init.getApplication();
+      //app.getJsonFromRequest(file);
+      
+      
       alert("hello");
-      alert(response);
+      var file = "../gameResources/npcTalk.json";
+      this.getJsonStringFromFile(file);
+      
+      //alert(response);
       
       
       
