@@ -4,7 +4,25 @@ qx.Class.define("npctalkui.pages.NPCTalk",
   extend : qx.ui.mobile.page.NavigationPage,
   
   members : {
+	  maximumIndex : 0,
+	  currentIndex : 0,  
 	  
+	  getCurrentIndex : function(){
+		  return this.currentIndex;  
+	  },
+		  
+	  setCurrentIndex : function(index){
+		  this.CurrentIndex = index;
+	  },
+	  
+	  
+	  getmaximumIndex : function(){
+		  return this.maximumIndex;  
+	  },
+		  
+	  setmaximumIndex : function(index){
+		  this.maximumIndex = index;
+	  },
 	  
 	  _initialize : function() {
 		  
@@ -21,25 +39,22 @@ qx.Class.define("npctalkui.pages.NPCTalk",
 		  this.getContent().add(npcButton);
 	  },
 		  
+	  
 	  _onTap : function(evt) {
-		  this.fireDataEvent("showNextDialogue", null); // Fire a data event. Later we will send the entered "username" as a data.
+		  this.fireDataEvent("getJson", null); // Fire a data event. Later we will send the entered "username" as a data.
 	  },
+	  
+	  
 	  events : {
-		  "showNextDialogue" : "qx.event.type.Data" // Define the event
+		  "showNextDialogue" : "qx.event.type.Data",
+		  "getJson" : "qx.event.type.Data" 
 	  }
   },
   
-//  getIndex: function(){
-//	return this.index;  
-//  },
-//  
-//  setIndex: function(index){
-//	this.index = index;
-//  },
+
 
   construct : function() {
     this.base(arguments);
     this.setTitle("NPC Talk");
-    //this.index = 0;
   }
 });

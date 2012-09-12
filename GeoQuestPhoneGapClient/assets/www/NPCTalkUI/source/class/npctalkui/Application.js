@@ -22,19 +22,6 @@
 qx.Class.define("npctalkui.Application",
 {
   extend : qx.application.Mobile,
-
-
-//  properties :
-//  {
-//      npcDialogue :
-//      {
-//        check : "qx.data.Array",
-//        nullable : true,
-//        init : null
-//        //event : "changeTweets",
-//        //apply : "_applyDialogue" // just for logging the data
-//      }
-//  },
   
 
   /*
@@ -45,25 +32,117 @@ qx.Class.define("npctalkui.Application",
 
   members :
   {
-    /**
-     * This method contains the initial application code and gets called 
-     * during startup of the application
-     */
-    main : function()
-    {
-    	
-      // Call super class
-      this.base(arguments);
+	  
+	  
+	
+	  
+	getJsonStringFromFile : function(url){
+		
+		var req = new qx.io.request.Jsonp();
+		req.setUrl(url);
+		req.setRequestHeader("Content-Type", "application/x-javascript");
+		
+		req.addListener("success", function(e) {
+		  var req = e.getTarget();
 
-      // Enable logging in debug variant
-      if (qx.core.Environment.get("qx.debug"))
-      {
-        // support native logging capabilities, e.g. Firebug for Firefox
-        qx.log.appender.Native;
-        // support additional cross-browser console. Press F7 to toggle visibility
+		  // HTTP status code indicating success, e.g. 200
+		  req.getStatus();
+
+		  // "success"
+		  req.getPhase();
+
+		  // JSON response
+		  console.log("Getting JSON response");
+		  var temp = req.getResponse();		  
+		  alert("Inside : " + temp);
+		  
+		}, this);
+
+		// Send request
+		req.send();		
+	},
+	
+	
+	jsonData : null,
+
+	getJsonFromRequest : function(path){
+		
+		var req = new qx.io.remote.Request(path, "GET", "application/x-javascript");
+		console.log("dfdkfjdljflksdjl");
+		req.toggleCrossDomain();
+		//req.setRequestHeader("Content-Type", "application/json");
+		
+		req.addListener("success", function (e) {
+			var req = e.getTarget();
+
+			  // HTTP status code indicating success, e.g. 200
+			  alert(req.getStatus());
+
+			  // "success"
+			  alert(req.getPhase());
+
+			  // JSON response
+			  console.log("Getting JSON response");
+			  var temp = req.getResponse();		  
+			  alert("Inside : " + temp);
+		  
+		});
+		
+		req.send();
+		
+		var data = req.getData();
+		alert(req.getData());
+		alert(data);
+		
+		
+	},
+	
+	getJsonFromXHR : function(path){
+	
+		//var self = this;
+		var req = new qx.io.request.Xhr(path);
+	
+		
+		
+		var response = null;
+		
+		
+		req.addListener("success", function(e) {
+		  var req = e.getTarget();
+		  console.log("dfdkfjdljflksdjl");
+		  var temp = req.getResponse();		  
+		  alert("Inside : " + temp);
+		}, this);
+	
+		// Send request
+		req.send();
+		
+		return req.getResponse();
+	},
+	
+	
+	testPhoneGapAPI : function test() {
+		
+		navigator.notification.alert(
+			    'You are the winner!',  // message
+			    function(){ console.log("do nothing");  },         // callback
+			    'Game Over',            // title
+			    'Done'                  // buttonName
+			);
+
+	    
+	},	
+	
+	
+    main : function(){  	
+      
+      this.base(arguments);     
+      if (qx.core.Environment.get("qx.debug")){        
+        qx.log.appender.Native;        
         qx.log.appender.Console;
       }
-
+      
+      
       /*
       -------------------------------------------------------------------------
         Below is your actual application code...
@@ -76,24 +155,27 @@ qx.Class.define("npctalkui.Application",
       var npcTalkPage = new npctalkui.pages.NPCTalk();
       manager.addDetail(npcTalkPage);
       
-//      npcTalkPage.addListener("showNextDialogue", function(evt) {
-//    	  
-//    	}, this);
-
-      //npcTalkPage.setMaxIndex();
-//      npcTalkPage.setIndex(2);
-      npcTalkPage.show();
-//      alert( npcTalkPage.getIndex() );
       
-    }
+      
+      var file = "../gameResources/npcTalk.json";
+      
+      
+      var response = this.getJsonFromRequest(file);
+      this.testPhoneGapAPI();
+      
+      //var obj = qx.lang.Json.parse(jsonData, null);
+           
+      
+      npcTalkPage.show();
+      
+      alert("hello");
+      alert(response);
+      
+      
+      
+      
+  }
 
-//    loadMission : function() {
-//    	
-//		  var url = "../gameResources/npcTalk.json";
-//		  var missionData = new qx.data.store.Json(url);
-//		  //var nextDialogue;
-//		  
-//    }
     
   }
 });
