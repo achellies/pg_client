@@ -13,6 +13,8 @@
   </parent>
   
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   	<robolectric.version>1.1</robolectric.version>
     <android.sdk.path>${ANDROID_HOME}</android.sdk.path>
   </properties>
