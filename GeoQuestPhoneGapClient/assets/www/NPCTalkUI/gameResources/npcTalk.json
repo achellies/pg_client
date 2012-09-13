@@ -1,4 +1,4 @@
-{
+game_content({
 	"id":"Intro_2",
 	"charimage":"Schatzkarte-0.png",
 	"nextdialogbuttontext":"Weiter ...",
@@ -10,4 +10,4 @@
 		{"text":"this is dialog 3"}
 		],
 	"onEnd":"showMessage"
-}
+})

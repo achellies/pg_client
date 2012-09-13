@@ -4,57 +4,131 @@ qx.Class.define("npctalkui.pages.NPCTalk",
   extend : qx.ui.mobile.page.NavigationPage,
   
   members : {
+	  
+	  
+	  informationRetriever : null,
+	  url : null,
+	  missionData : null,
 	  maximumIndex : 0,
-	  currentIndex : 0,  
+	  currentIndex : 0,
+
+	  
+	  
+	  npcImage : null,	  
+	  npcButton : null,	  
+	  npcTextarea : null,
+	  
+	  
+	  
+	  getUrl  : function(){
+		return this.url;  
+	  },	  
+	  setUrl : function(url){
+		  this.url = url;
+	  },
+	  
+	  
 	  
 	  getCurrentIndex : function(){
 		  return this.currentIndex;  
-	  },
-		  
+	  },		  
 	  setCurrentIndex : function(index){
 		  this.CurrentIndex = index;
 	  },
 	  
 	  
+	  
 	  getmaximumIndex : function(){
 		  return this.maximumIndex;  
-	  },
-		  
+	  },		  
 	  setmaximumIndex : function(index){
 		  this.maximumIndex = index;
 	  },
+	    
+	  
+	  
+	  getMissionData : function(){
+		  
+		  this.missionData = this.informationRetriever.getJsonData();
+		  this.maximumIndex = this.informationRetriever.getMaxIndex();
+		  
+		  if(this.missionData==null||this.maximumIndex==null){			  
+			  alert("missionData is null !");			  
+		  }
+		  
+	  },
+	  
+	  getNextDialogue : function(){
+		  
+		  if(this.currentIndex > this.maximumIndex){
+			  alert("there's nothing left to be said");
+		  }				  
+		  else{		  
+			  var newText = this.missionData.dialogItem[this.currentIndex].text;			  
+			  this.currentIndex += 1;
+		  }		  
+		  return newText;
+	  },
+	  
+	  
+	  
+	  
+	  
+	  
 	  
 	  _initialize : function() {
 		  
 		  this.base(arguments);
 		  // Create a new button instance and set the title of the button to "Show"
-		  var npcImage = new qx.ui.mobile.basic.Image("../gameResources/images/npc.jpg");
-		  var npcTextarea = new qx.ui.mobile.form.TextArea("Hi");
-		  var npcButton = new qx.ui.mobile.form.Button("Next");
+		  this.npcImage = new qx.ui.mobile.basic.Image("../gameResources/images/npc.jpg");
+		  //this.npcImage.setScale(true);
+		  //this.npcImage.setWidth(64);
+		  //this.npcImage.setHeight(64);
+		  
+		  this.npcTextarea = new qx.ui.mobile.form.TextArea("Hi");
+		  this.npcButton = new qx.ui.mobile.form.Button("Next");
+		  
+		  
+		  
 		  // Add the "tap" listener to the button
-		  npcButton.addListener("tap", this._onTap, this);
+		  this.npcButton.addListener("tap", this._onTap, this);
+		  this.npcTextarea.addListener("addContent", this._onAddContent, this);
+		  this.npcTextarea.setValue("");
+		  
+		  //npcTextArea.bind("changeValue", label, "value");
+		  
 		  // Add the button the content of the page
-		  this.getContent().add(npcImage);
-		  this.getContent().add(npcTextarea);
-		  this.getContent().add(npcButton);
+		  this.getContent().add(this.npcImage);
+		  this.getContent().add(this.npcTextarea);
+		  this.getContent().add(this.npcButton);
 	  },
 		  
 	  
 	  _onTap : function(evt) {
-		  this.fireDataEvent("getJson", null); // Fire a data event. Later we will send the entered "username" as a data.
-	  },
-	  
-	  
-	  events : {
-		  "showNextDialogue" : "qx.event.type.Data",
-		  "getJson" : "qx.event.type.Data" 
+
+		  if(this.missionData==null) this.getMissionData();		  
+		  
+		  var currentText = this.npcTextarea.getValue();
+		  var newText = this.getNextDialogue();
+		  this.npcTextarea.setValue(currentText+newText+'\n');
+		  
 	  }
+	  
   },
-  
 
 
   construct : function() {
-    this.base(arguments);
-    this.setTitle("NPC Talk");
+	  
+	  this.base(arguments);
+	  
+	  this.setTitle("NPC Talk");
+	  	  
+	  if(this.url==null) this.url = "../gameResources/npcTalk.json";	  
+  	  	  
+	  //getting json information
+	  this.informationRetriever = new npctalkui.util.Json();
+	  this.informationRetriever.setUrl(this.url);
+	  this.informationRetriever.getJsonStringFromFile(this.url);
+	  
   }
 });
