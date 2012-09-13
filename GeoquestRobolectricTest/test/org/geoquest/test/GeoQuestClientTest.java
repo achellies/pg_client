@@ -27,7 +27,7 @@ public class GeoQuestClientTest extends TestCase {
 	MainActivity activity;
 	
 	@Before
-	protected void setUp() throws Exception {
+	public void setUp() throws Exception {
 	  activity = new MainActivity();
 	}
 	
