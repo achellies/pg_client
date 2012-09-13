@@ -13,4 +13,4 @@ export ANDROID_HOME=/tmp/android-sdk-linux
 export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 # only update the sdk for the platform/tools android 10 (2.3.3) and android-15 (4.0.3)
-android update sdk --filter android-10,android-15,platform-tools -u --force
+android update sdk --filter android-10,android-15,platform-tools,addon-google_apis-google-10,addon-google_apis-google-15 -u --force

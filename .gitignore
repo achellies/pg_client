@@ -1,0 +1,11 @@
+.DS_Store
+com.google.zxing.client.android.CaptureActivity/target/*
+com.google.zxing.client.android.CaptureActivity/target/*/**
+com.google.zxing.client.android.CaptureActivity/bin/*
+com.google.zxing.client.android.CaptureActivity/bin/*/**
+
+com.google.zxing.client.android.CaptureActivity/bin/classes/com/google/zxing/oned/UPCEANExtensionSupport.class
+
+com.google.zxing.client.android.CaptureActivity/bin/com.google.zxing.client.android.captureactivity.jar
+
+com.google.zxing.client.android.CaptureActivity/gen/com/google/zxing/client/android/R.java
