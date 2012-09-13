@@ -45,20 +45,22 @@
 	    <systemPath>${project.basedir}/libs/android-support-v4.jar</systemPath>
 	</dependency>
 	
-<!-- 	<dependency> -->
-<!--     	<groupId>com.google.zxing.client.android</groupId> -->
-<!--         <artifactId>CaptureActivity</artifactId> -->
-<!--         <version>3.61.1-SNAPSHOT</version> -->
-<!--         <type>apklib</type> -->
-<!--     </dependency> -->
-        
-<!--     <dependency> -->
-<!-- 	    <groupId>com.google.android.maps</groupId> -->
-<!-- 	    <artifactId>maps</artifactId> -->
-<!-- 	    <version>10</version> -->
-<!-- 	    <scope>system</scope> -->
-<!-- 	    <systemPath>${android.sdk.path}/add-ons/addon-google_apis-google-10/libs/maps.jar</systemPath> -->
-<!-- 	</dependency> -->
+		<dependency>
+            <groupId>com.google.zxing.client.android</groupId>
+            <artifactId>CaptureActivity</artifactId>
+            <version>3.61.1-SNAPSHOT</version>
+            <type>apklib</type>
+        </dependency>
+  
+  <!-- Commented until really required:      
+    <dependency>
+	    <groupId>com.google.android.maps</groupId>
+	    <artifactId>maps</artifactId>
+	    <version>10</version>
+	    <scope>system</scope>
+	    <systemPath>${android.sdk.path}/add-ons/addon-google_apis-google-10/libs/maps.jar</systemPath>
+	</dependency>
+	-->
     
   </dependencies>
             
