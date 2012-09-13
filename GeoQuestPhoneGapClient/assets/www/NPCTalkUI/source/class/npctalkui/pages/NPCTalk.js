@@ -11,13 +11,13 @@ qx.Class.define("npctalkui.pages.NPCTalk",
 	  missionData : null,
 	  maximumIndex : 0,
 	  currentIndex : 0,
-
+	  
 	  
 	  
 	  npcImage : null,	  
 	  npcButton : null,	  
 	  npcTextarea : null,
-	  
+	  npcImageContainer : null,
 	  
 	  
 	  getUrl  : function(){
@@ -58,6 +58,8 @@ qx.Class.define("npctalkui.pages.NPCTalk",
 		  
 	  },
 	  
+	  
+	  
 	  getNextDialogue : function(){
 		  
 		  if(this.currentIndex > this.maximumIndex){
@@ -80,11 +82,10 @@ qx.Class.define("npctalkui.pages.NPCTalk",
 		  
 		  this.base(arguments);
 		  // Create a new button instance and set the title of the button to "Show"
-		  this.npcImage = new qx.ui.mobile.basic.Image("../gameResources/images/npc.jpg");
-		  //this.npcImage.setScale(true);
-		  //this.npcImage.setWidth(64);
-		  //this.npcImage.setHeight(64);
 		  
+
+		  
+		  this.npcImage = new qx.ui.mobile.basic.Image("../gameResources/images/npc.jpg");
 		  this.npcTextarea = new qx.ui.mobile.form.TextArea("Hi");
 		  this.npcButton = new qx.ui.mobile.form.Button("Next");
 		  
@@ -95,8 +96,7 @@ qx.Class.define("npctalkui.pages.NPCTalk",
 		  this.npcTextarea.addListener("addContent", this._onAddContent, this);
 		  this.npcTextarea.setValue("");
 		  
-		  //npcTextArea.bind("changeValue", label, "value");
-		  
+		  		  
 		  // Add the button the content of the page
 		  this.getContent().add(this.npcImage);
 		  this.getContent().add(this.npcTextarea);
@@ -110,7 +110,12 @@ qx.Class.define("npctalkui.pages.NPCTalk",
 		  
 		  var currentText = this.npcTextarea.getValue();
 		  var newText = this.getNextDialogue();
-		  this.npcTextarea.setValue(currentText+newText+'\n');
+		  if (newText!=null){
+			  this.npcTextarea.setValue(currentText+newText+'\n');
+			  newNpcTextField = new qx.ui.mobile.form.TextField(newText);
+			  this.getContent().add(newNpcTextField);
+		  }
+		  
 		  
 	  }
 	  

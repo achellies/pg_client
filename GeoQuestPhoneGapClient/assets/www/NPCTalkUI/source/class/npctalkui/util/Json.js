@@ -46,11 +46,6 @@ qx.Class.define("npctalkui.util.Json",{
 			  //save the data retrieved in the instance attribute jsonData
 			  this.jsonData = req.getResponse();
 			  this.maxIndex = this.jsonData.dialogItem.length-1;
-			  	  
-			  alert("jsonData : " + this.jsonData);
-			  alert("number of dialog items : "+this.jsonData.dialogItem.length);
-			  alert("id :"+this.jsonData.id+" name :"+this.jsonData.name);			  
-			  
 			  
 			}, this);
 
