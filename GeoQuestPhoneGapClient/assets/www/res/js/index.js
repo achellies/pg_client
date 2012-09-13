@@ -7,6 +7,23 @@
 	var downloadFinished = false;
 	var serverAddress = "http://131.220.149.154:3000";
 	
+	// Test code for QR Code 
+	
+	var scanCode = function() {
+		
+		cordova.exec(function(result) {
+			
+			
+	        alert("Scanned Code: " + result.text 
+	                + ". Format: " + result.format
+	                + ". Cancelled: " + result.cancelled);
+	    }, function(error) {
+	        alert("Scan failed: " + error);
+	    }, "BarcodeScanner", "scan", []);
+	};
+	
+	// Test code for QR Code : END-->
+	
 	function onLoad() {
 		$(document)
 				.ready(
