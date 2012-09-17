@@ -13,12 +13,18 @@ function Handler() {
 	handler_instance = this;
 	Handler = function() {
 		return handler_instance;
-	}
+	};
+	
 	Handler.prototype = this;
 	handler_instance = new Handler();
 	handler_instance.constructor = Handler;
 	// End Singleton
 
+	//parsing json from agile2012 version to old version
+	this.parseJsonToOldFormat(gameJson){
+		alert(gameJson);
+	};
+	
 	this.parseXML = function() {
 
 		var xmlFileURL = GAMEURL + "game.xml";
@@ -177,31 +183,32 @@ function Handler() {
 						.getElementsByTagName('onLeave')[0];
 			}
 		}
-	}
+	};
 
 	this.endGame = function() {
 		loadMap = false;
 		globalMap.decativate(); // GPS ausschalten
 		localStorage[localStorage["game"] + "currentMission"] = null;
 		$.mobile.changePage($('#page_start'), "slide");
-	}
+	};
 
 	this.endProgram = function() {
 		if (GAMETYPE === "PHONEGAP") {
 			navigator.app.exitApp();
 		}
-	}
+	};
 
 	this.deactivateGPS = function() {
 		globalMap.decativate(); // GPS ausschalten
-	}
+	};
+	
 	this.activateMap = function() {
 		globalMap.activate();
-	}
+	};
 
 	this.addMission = function(missionID, missionObj) {
 		missions[missionID] = missionObj;
-	}
+	};
 
 	function addMap(missionID, mapObj) {
 		globalMap = mapObj;
@@ -210,35 +217,35 @@ function Handler() {
 	
 	this.getCurrentMap = function(){
 		return globalMap;
-	}
+	};
 
 	this.addMarker = function(hotspotID, latitude, longitude, charImage) {
 		globalMap.addMarker(hotspotID, latitude, longitude, charImage);
-	}
+	};
 
 	this.activateHotspot = function(hotspotID) {
 		hotspots[hotspotID].activate(); // HotSpot ist betretbar
 		globalMap.showMarker(hotspotID); // Marker wird auf der Karte
 											// angezeigt
-	}
+	};
 
 	this.deactivateHotspot = function(hotspotID) {
 		hotspots[hotspotID].deactivate(); // HotSpot ist nicht betretbar
 		globalMap.hideMarker(hotspotID); // Marker wird von der Karte
 											// entfernt
-	}
+	};
 
 	this.updateHotspotsDistance = function(currentLatitude, currentLongitude) {
 		for (hotSpotIndexindex in hotspots) {
 			hotspots[hotSpotIndexindex].updateDistance(currentLatitude, currentLongitude);
 		}
-	}
+	};
 
 	this.startGame = function() {
 		missions[xmlGame.getElementsByTagName('mission')[0].attributes
 				.getNamedItem("id").nodeValue].play(); // startet die erste
 														// Mission
-	}
+	};
 
 	this.startMission = function(missionID) {
 		loadMap = false;
@@ -257,7 +264,7 @@ function Handler() {
 			}
 		}
 		missions[missionID].play();
-	}
+	};
 
 	this.finishMission = function(missionID) {
 		loadMap = true;
@@ -278,7 +285,7 @@ function Handler() {
 								// andere Mission gestartet wurde!
 			globalMap.activate();
 		}
-	}
+	};
 
 	this.enterHotspot = function(hotspotID) {
 		if (onEnter[hotspotID]) { // onEnter abarbeiten, falls vorhanden
@@ -294,7 +301,7 @@ function Handler() {
 																					// aufrufen
 			}
 		}
-	}
+	};
 
 	this.leaveHotspot = function(hotspotID) {
 		if (onLeave[hotspotID]) { // onLeave abarbeiten, falls vorhanden
@@ -310,11 +317,11 @@ function Handler() {
 																					// aufrufen
 			}
 		}
-	}
+	};
 
 	this.getMissionStatus = function(id) {
 		return missions[id].getStatus();
-	}
+	};
 
 	return handler_instance;
 }

@@ -16,7 +16,7 @@ function startSpielMarkt(){
 		if (check){
 			GEOQUEST_RESUME=true;
 			globalGameHandler.parseXML();
-			globalGameHandler.startMission(localStorage[localStorage["game"]+"currentMission"])
+			globalGameHandler.startMission(localStorage[localStorage["game"]+"currentMission"]);
 		}
 		else {
 			globalGameHandler.parseXML();
@@ -29,58 +29,58 @@ function startSpielMarkt(){
 	}	
 }
 
-function qaSpielMarkt(){
-	DEBUG = false;
-	
-	BASEURL="http://spielmarkt.wolf-online.net";
-	REPONAME="";
-	GAMEFILENAME="spielmarkt_2012";
-	GAMENAME="spielmarkt_2012";
-	localStorage["game"] = GAMEFILENAME;
-	
-	GAMEURL= BASEURL + REPONAME + "/games/" + GAMEFILENAME + "/";
-	
-	GEOQUEST_RESUME=false;
+//function qaSpielMarkt(){
+//	DEBUG = false;
+//	
+//	BASEURL="http://spielmarkt.wolf-online.net";
+//	REPONAME="";
+//	GAMEFILENAME="spielmarkt_2012";
+//	GAMENAME="spielmarkt_2012";
+//	localStorage["game"] = GAMEFILENAME;
+//	
+//	GAMEURL= BASEURL + REPONAME + "/games/" + GAMEFILENAME + "/";
+//	
+//	GEOQUEST_RESUME=false;
+//
+//	globalGameHandler.parseXML();
+//	globalGameHandler.startMission("Station_1_1")
+//}
 
-	globalGameHandler.parseXML();
-	globalGameHandler.startMission("Station_1_1")
-}
 
-
-function startDemoSpielMarkt(){
-	DEBUG = false;
-	
-	BASEURL="http://spielmarkt.wolf-online.net";
-	REPONAME="";
-	BASEURL="http://spielmarkt.wolf-online.net";
-	REPONAME="";
-	GAMEFILENAME="spielmarkt-demo_2012";
-	localStorage["game"] = GAMEFILENAME;
-	
-	GAMEURL= BASEURL + REPONAME + "/games/" + GAMEFILENAME + "/";
-	
-	GAMENAME="spielmarkt-demo_2012";
-	GEOQUEST_RESUME=false;
-
-	if (localStorage[localStorage["game"]+"currentMission"]){
-		check = confirm("Alten Spielstand für den Quest " + GAMENAME + " gefunden! Möchten Sie diesen fortsetzten?");
-		if (check){
-			GEOQUEST_RESUME=true;
-			globalGameHandler.parseXML();
-			globalGameHandler.startMission(localStorage[localStorage["game"]+"currentMission"])
-//			alert(localStorage[localStorage["game"]+"currentMission"])
-		}
-		else {
-			globalGameHandler.parseXML();
-			globalGameHandler.startGame();
-		}
-	}
-	else {
-
-		globalGameHandler.parseXML();
-		globalGameHandler.startGame();
-	}	
-}
+//function startDemoSpielMarkt(){
+//	DEBUG = false;
+//	
+//	BASEURL="http://spielmarkt.wolf-online.net";
+//	REPONAME="";
+//	BASEURL="http://spielmarkt.wolf-online.net";
+//	REPONAME="";
+//	GAMEFILENAME="spielmarkt-demo_2012";
+//	localStorage["game"] = GAMEFILENAME;
+//	
+//	GAMEURL= BASEURL + REPONAME + "/games/" + GAMEFILENAME + "/";
+//	
+//	GAMENAME="spielmarkt-demo_2012";
+//	GEOQUEST_RESUME=false;
+//
+//	if (localStorage[localStorage["game"]+"currentMission"]){
+//		check = confirm("Alten Spielstand für den Quest " + GAMENAME + " gefunden! Möchten Sie diesen fortsetzten?");
+//		if (check){
+//			GEOQUEST_RESUME=true;
+//			globalGameHandler.parseXML();
+//			globalGameHandler.startMission(localStorage[localStorage["game"]+"currentMission"])
+////			alert(localStorage[localStorage["game"]+"currentMission"])
+//		}
+//		else {
+//			globalGameHandler.parseXML();
+//			globalGameHandler.startGame();
+//		}
+//	}
+//	else {
+//
+//		globalGameHandler.parseXML();
+//		globalGameHandler.startGame();
+//	}	
+//}
 
 function testCache(){
 	//13 Bilder 10 MB bei 770KB pro Bild

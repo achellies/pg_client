@@ -3,7 +3,8 @@ function ActionHandler(){
 	action_instance = this;
 	Action = function() {
 		return action_instance;
-	}
+	};
+	
 	Action.prototype = this;
 	action_instance = new Action();
 	action_instance.constructor = Action;
@@ -11,7 +12,7 @@ function ActionHandler(){
 	
 	this.ExitApp = function(){
     	navigator.app.exitApp();
-	}
+	};
 	
 	
     this.EndGame = function (){
@@ -19,7 +20,7 @@ function ActionHandler(){
     		alert("Action-EndGame!");
     	}
     	globalGameHandler.endGame();
-    }
+    };
   
     this.SetVariable = function (variable, value){
     	if (DEBUG){
@@ -36,7 +37,7 @@ function ActionHandler(){
     	if (DEBUG){
     		alert("SetVariable: " + GAMEFILENAME+"_var_"+variable + ": " + localStorage.getItem(GAMEFILENAME+"_var_"+variable));
     	}
-    }
+    };
 	
     this.DecrementVariable = function (variable){
     	if (DEBUG){
@@ -61,7 +62,7 @@ function ActionHandler(){
     	if (DEBUG){
     		alert(store+": "+localStorage.getItem(store));
     	}
-    }
+    };
     
     this.IncrementVariable = function (variable){
     	if (DEBUG){
@@ -86,7 +87,7 @@ function ActionHandler(){
     	if (DEBUG){
     		alert(store+": "+localStorage.getItem(store));
     	}
-    }
+    };
     
     this.PlayAudio = function (audioFile){
 		var myAudioPath = GAMEURL + audioFile;
@@ -94,17 +95,17 @@ function ActionHandler(){
     		var myAudioFile = new Media(myAudioPath);
     		myAudioFile.play();
     	}
-    }
+    };
     
     this.Vibrate = function (duration){
     	if (navigator.notification){
     		navigator.notification.vibrate(duration);
     	}
-    }
+    };
     
     this.ShowMessage = function (message){
     	alert(message);
-    }
+    };
     
     this.SetHotspotVisibility = function (hotspotID, value){
     	if (value === "true"){
@@ -113,17 +114,16 @@ function ActionHandler(){
     	if (value === "false"){
     		globalGameHandler.deactivateHotspot(hotspotID);
     	}
-    }
+    };
     
     this.StartMission = function (missionId){
     	localStorage[localStorage["game"]+"currentMission"] = missionId;
     	globalGameHandler.startMission(missionId);
-    }
+    };
     
     this.StartExternalMission = function (){
-    	alert("Dieses Feature wird noch nicht unterstützt! Action-StartExternlMission!")
-    	
-    }
+    	alert("Dieses Feature wird noch nicht unterstützt! Action-StartExternlMission!");    	
+    };
     
     return action_instance;
 }

@@ -1,6 +1,6 @@
 	var DEBUG = false,
 	// GAMENAME = null,
-	currentGameFile = "",
+	//currentGameFile = "",
 	currentGameFileName = "",
 	storedGames = new Array();
 	var phonegapReady = false;
@@ -34,14 +34,14 @@
 									phoneGapReadyCallback, false);
 						    
 						      
-						        $.ajax({
-							        type: 'GET',
-							        url: serverAddress+'/games/findAll?jsonCallback=populateGameList',
-							        async: false,
-							        jsonpCallback: 'populateGameList',
-							        contentType: "application/json",
-							        dataType: 'jsonp'
-						       });
+					        $.ajax({
+						        type: 'GET',
+						        url: serverAddress+'/games/findAll?jsonCallback=populateGameList',
+						        async: false,
+						        jsonpCallback: 'populateGameList',
+						        contentType: "application/json",
+						        dataType: 'jsonp'
+					       });
 
 
 						});
@@ -70,9 +70,9 @@
 	
 	/** Callback for the AJAX request * */
 	function jsonCallback(game) {
-		currentGameFile = JSON.stringify(game);
+		var currentGameFile = JSON.stringify(game);
 		currentGameFileName = "game_"+game['game'][0]['_id']+".json";
-		writeFile();
+		writeFile(currentGameFile);
 	}
 	
 	/** Check if games is downloaded **/
@@ -91,7 +91,7 @@
 							for (var index in entries){
 								var entry=entries[index];
 								if (entry instanceof FileEntry){
-								//	alert("found file: "+entry.name);
+								//	TODO: Extract method for parsing ID out of the filename
 									var string = new String(entry.name.toString().split("_")[1]);
 									string = string.substr(0, string.length-5);
 									storedGames.push(string);
@@ -102,7 +102,7 @@
 								//	alert("Undefined entry or null");
 								}
 							}
-					        updateDownloadedGamesUI();
+					        updateTicksDownloadedGamesUI();
 						},
 						fail);
 					}, 
@@ -113,7 +113,7 @@
 			fail);
 	}
 	
-    function updateDownloadedGamesUI(){
+    function updateTicksDownloadedGamesUI(){
     	for (var i=0; i<storedGames.length; i++){
     		var id = storedGames[i];
     		
@@ -125,8 +125,12 @@
     	}
     }	
 	
+    function startGame(gameJson){
+		globalGameHandler.parseJsonToOldFormat(gameJson);
+		globalGameHandler.startGame();
+    }
     
-    function loadGame(gameId){
+    function loadGameAndStart(gameId){
     	currentGameFile = "game_"+gameId+".json";
     	//TODO: Initiate a start game action for the game with "gameId"
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
@@ -137,8 +141,8 @@
 					    var reader = new FileReader();
 					    reader.onloadend = function(evt) {
 					    	//start game
-					        alert(evt.target.result);
 							currentGameFile="";
+							startGame(evt.target.result);
 					    };
 					    reader.readAsText(file);
 					}, fail);
@@ -151,7 +155,7 @@
 	function downloadGame(gameId){
 
 		if ($.inArray(gameId, storedGames)!=-1){
-			loadGame(gameId);
+			loadGameAndStart(gameId);
 		} else {
 			$.ajax({
 					type : 'GET',
@@ -164,7 +168,7 @@
 	   }
 	}
 	
-	function writeFile() {
+	function writeFile(gameFile) {
 		if (!phonegapReady) {
 			alert("Wait for phonegap!");
 			return;
@@ -191,8 +195,7 @@
 												writer.onwriteend = function (evt){
 													checkExistingDownloadedGames();
 												};
-												writer.write(currentGameFile);
-												currentGameFile="";
+												writer.write(gameFile);
 											}, fail);
 									}, fail);
 								}, fail);
