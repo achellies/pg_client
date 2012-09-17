@@ -100,19 +100,7 @@
             <h1>Log in</h1>
         </div>
         <div data-role="content" id="content_login" style="height:100%;">Log in to be able to load saved game states
-            <script type = "text/javascript">
-                //var = ... connect to http://geoquest.qeevee.org:3000/
-                
-                function performLogin(user, pass) {
-                    if (user.length<6){
-                    	alert("User Name is too short!");
-                    } else if (pass.length<6) {
-                        alert("Password is too short!");
-                    } else {
-                    	alert("user and pass seem OK");
-                    }
-                }
-            </script>
+
             <input id="login_username" type="text" />
             <input id="login_password" type="password" />
             <a id = "login_button" data-role="button" onClick="performLogin(login_username.value, login_password.value)">

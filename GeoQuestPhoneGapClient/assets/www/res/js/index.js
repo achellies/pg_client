@@ -5,7 +5,7 @@
 	storedGames = new Array();
 	var phonegapReady = false;
 	var downloadFinished = false;
-	var serverAddress = "http://131.220.149.155:3000";
+	var serverAddress = "http://geoquest.qeevee.org:3000";
 	
 	// Test code for QR Code 
 	
@@ -204,6 +204,17 @@
 	function fail(error) {
 		alert("Error: "+error.code);
 	}
+	
+
+    function performLogin(user, pass) {
+        if (user.length<6){
+        	alert("User Name is too short!");
+        } else if (pass.length<6) {
+            alert("Password is too short!");
+        } else {
+        	alert("user and pass seem OK");
+        }
+    }
 	
 	/** END IO Functions to access the file system * */
 	
