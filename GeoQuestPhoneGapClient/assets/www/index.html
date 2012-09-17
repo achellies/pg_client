@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="res/css/jquery.mobile.css" />
 	<link rel="stylesheet" href="res/css/geoquest.css" />
 
-    <script type="text/javascript" src="res/js/libs/phonegap.js"></script>
+    <script type="text/javascript" src="res/js/libs/cordova-2.0.0.js"></script>
 
 	<script type="text/javascript" src="res/js/libs/jquery.js"></script>
     <script type="text/javascript" src="res/js/libs/jquery.mobile.js"></script>
@@ -31,62 +31,7 @@
     <script type="text/javascript" charset="utf-8" src="res/js/missions/WebPage.js"></script>    
     
 	<script type="text/javascript" charset="utf-8" src="res/js/Globals.js"></script>
-    <script type="text/javascript">
-
-    var DEBUG = false,
-        GAMENAME = null,
-        GAMETYPE = null;
-    
-    function jsonCallback(games){
-    	for (var gameId= 0; gameId<games['games'].length; gameId++){
-        	var game = games['games'][gameId];
-        	//add button
-        	$('#game_list').append('<a href="#"  data-role="button" data-theme="c" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">'+game['content']['title']+'</span></span></a>');
-    	}
-    	if (games['games'].length==0){
-    		$('#game_list').append('No games available :(');
-    	}
-    }
-    function onLoad() {
-    	$(document).ready(function() {
-
-    		    document.addEventListener("deviceready", phoneGapReady, false);
-    		      if (navigator.notification == null) {
-    		    	    	GAMETYPE = "WEB";
-    		    	        $.mobile.changePage($('#page_start'), "slide");
-     
-    		      }	        
-        });
-    	
-    	$.ajax({
-    		   	type: 'GET',
-    		    url: 'http://geoquest.qeevee.org:3000/games/findAll',
-    		    async: false,
-    			jsonpCallback: 'jsonCallback',
-    			contentType: "application/json",
-    			dataType: 'jsonp'
-    	});
-    }
-
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
-    function phoneGapReady() {
-    	GAMETYPE = "PHONEGAP";
-        document.addEventListener("backbutton", onBackKeyDown, false);
-        document.addEventListener("offline", onOffline, false);
-        document.addEventListener("pause", onPause, false);
-
-        $.mobile.changePage($('#page_start'), "slide");  
-    }
-    
-//     function onBackKeyDown() {
-//        Disable backButton 
-//     } 
-
-    function onPause(){
-		//PhoneGAP
-    	globalGameHandler.decativateGPS();
-    }
-    </script>
+    <script type="text/javascript" charset="utf-8" src="res/js/index.js"></script>    
     <title>GeoQuest Web</title>  
    <!-- <link rel="apple-touch-icon" href="res/drawable/icon.png"> -->
 	<!--    Fuer Sense UI -->
@@ -102,7 +47,7 @@
 
 
 
-<body style="height:100%; margin: auto;"" onload="onLoad()">
+<body style="height:100%; margin: auto;" onload="onLoad()">
 
 <!-- Landing Page -->
     <div data-role="page" id="page_landing">
@@ -123,6 +68,11 @@
              <a href="#login_page" id = "login" data-role="button"> Log in </a>
 			 <a href="#game_list_page" id="show_games" data-role="button" >Show Games</a>
              <a href="#" id="startGeoQuestSpielmarkt" data-role="button" onClick="startSpielMarkt();return false;">GeoQuest Spielmarkt starten</a>
+             
+             <!-- Test code for QR Code : START-->
+             <a href="#" data-role="button" onclick="scanCode(); return false;"> Test QRCode</a>
+             <!-- Test code for QR Code : END-->
+             
 <!-- 			  <a href="#" data-role="button" onClick="qaSpielMarkt()();return false;">QA-Test Spielmarkt starten</a> -->
 			 
 <!--              <a href="#" data-role="button" onClick="startDemoSpielMarkt();return false;">Demo Spielmarkt starten</a>  --> 

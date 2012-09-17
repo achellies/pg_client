@@ -8,6 +8,7 @@ import java.io.InputStream;
 
 import junit.framework.TestCase;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -23,10 +24,17 @@ import static org.mockito.Mockito.*;
 @RunWith(RobolectricTestRunner.class)
 public class GeoQuestClientTest extends TestCase {
 
+	MainActivity activity;
+	
+	@Before
+	public void setUp() throws Exception {
+	  activity = new MainActivity();
+	}
+	
 	@Test
 	public void shouldHaveHappySmiles() throws Exception {
-		String hello = new MainActivity().getResources().getString(
-				R.string.app_name);
+		// Call "getActivity" in Test to actually get it (see http://stackoverflow.com/questions/5627903/android-unit-testing-and-interfaces)
+		String hello = activity.getActivity().getResources().getString(R.string.app_name);
 		assertThat(hello, equalTo("Geoquest Client"));
 	}
 

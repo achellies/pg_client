@@ -7,9 +7,10 @@
   <packaging>pom</packaging>
 
 <modules>
+  <module>com.google.zxing.client.android.CaptureActivity</module>
   <module>GeoQuestPhoneGapClient</module>
-  <module>GeoquestSeleniumClientTest</module>
   <module>GeoquestRobolectricTest</module>
+  <module>GeoquestSeleniumClientTest</module>
 </modules>
   
 </project>

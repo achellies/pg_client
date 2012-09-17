@@ -13,6 +13,8 @@
   </parent>
   
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   	<robolectric.version>1.1</robolectric.version>
     <android.sdk.path>${ANDROID_HOME}</android.sdk.path>
   </properties>
@@ -91,6 +93,17 @@
   		<artifactId>mockito-core</artifactId>
   		<version>1.9.5-rc1</version>
   	</dependency>
+  	
+  <!-- Commented until really required:
+    <dependency>
+	    <groupId>com.google.android.maps</groupId>
+	    <artifactId>maps</artifactId>
+	    <version>10</version>
+	    <scope>system</scope>
+	    <systemPath>${android.sdk.path}/add-ons/addon-google_apis-google-10/libs/maps.jar</systemPath>
+	</dependency>
+	-->
+	
   </dependencies>
  
   
