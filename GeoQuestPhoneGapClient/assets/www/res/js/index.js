@@ -212,10 +212,29 @@
         } else if (pass.length<6) {
             alert("Password is too short!");
         } else {
-        	alert("user and pass seem OK");
-        }
+        	loginPOST(user, pass);
+        }        
     }
-	
+    
+    function loginPOST(userName, password){
+    	 $.ajax({
+		        type: 'POST',
+		        url: serverAddress+'/login/mobile' /*?loginCallback=validateLogin&username='+userName + '&password='+password */,
+		        data: {'username': userName, 'password' : password},
+		        success : function( data, textStatus, jqXHR){
+		        	if (data['success']){
+		        		var completeUser =data['fullUser'];
+		        		alert(completeUser['firstname']);
+		        		var user = $("#ajaxResponse.session.user._firstname");
+		        		console.log('user.firstname');
+			        	console.log(JSON.stringify(user));
+		        	}else{
+		        		alert("Login Failed!");
+		        	}		        	
+		        },
+		        dataType: 'json'
+	       });   	
+    }	
 	/** END IO Functions to access the file system * */
 	
 	// function onBackKeyDown() {
