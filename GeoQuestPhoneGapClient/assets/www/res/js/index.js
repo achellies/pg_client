@@ -5,7 +5,7 @@
 	storedGames = new Array();
 	var phonegapReady = false;
 	var downloadFinished = false;
-	var serverAddress = "http://131.220.149.154:3000";
+	var serverAddress = "http://131.220.149.155:3000";
 	
 	// Test code for QR Code 
 	
@@ -126,15 +126,32 @@
     }	
 	
     
-    function startGame(gameId){
+    function loadGame(gameId){
+    	currentGameFile = "game_"+gameId+".json";
     	//TODO: Initiate a start game action for the game with "gameId"
-    	alert("Starting game! Wohooooo!");
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
+			geoDir = fileSystem.root.getDirectory("GeoQuest/games", {
+				create : true
+				}, function(gamesDir){
+					gamesDir.getFile(currentGameFile, {create: true, exclusive: false}, function(file){
+					    var reader = new FileReader();
+					    reader.onloadend = function(evt) {
+					    	//start game
+					        alert(evt.target.result);
+							currentGameFile="";
+					    };
+					    reader.readAsText(file);
+					}, fail);
+				}, 
+				fail);
+			}, 
+			fail);
     }
     
 	function downloadGame(gameId){
 
 		if ($.inArray(gameId, storedGames)!=-1){
-			startGame();
+			loadGame(gameId);
 		} else {
 			$.ajax({
 					type : 'GET',
@@ -152,66 +169,37 @@
 			alert("Wait for phonegap!");
 			return;
 		}
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, writeGameFile,
-						fail);
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+						function (fileSystem) {
+							// Get the data directory, creating it if it doesn't exist.
+							geoDir = fileSystem.root.getDirectory("GeoQuest", {
+								create : true
+							}, 	
+							function (geoDir){
+								gameDir = geoDir.getDirectory("games", {
+									create : true
+								}, 
+								function (gameDir){
+									// Create the lock file, if and only if it doesn't exist.
+									lockFile = gameDir.getFile(currentGameFileName, {
+										create : true,
+										exclusive : false
+									}, 
+									function (fileEntry) {
+										fileEntry.createWriter(
+											function (writer) {
+												writer.onwriteend = function (evt){
+													checkExistingDownloadedGames();
+												};
+												writer.write(currentGameFile);
+												currentGameFile="";
+											}, fail);
+									}, fail);
+								}, fail);
+							}, fail);
+						}, fail);
 	}
 	
-	function readFile() {
-		if (!phonegapReady) {
-			alert("Wait for phonegap!");
-			return;
-		}
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSRead, fail);
-	}
-	
-	/** IO Functions to access the file system * */
-	function writeGameFile(fileSystem) {
-		// Get the data directory, creating it if it doesn't exist.
-		geoDir = fileSystem.root.getDirectory("GeoQuest", {
-			create : true
-		}, writeGameFileGeoDirCreated, fail);
-	}
-	
-	function writeGameFileGeoDirCreated(geoDir){
-		gameDir = geoDir.getDirectory("games", {
-			create : true
-		}, writeGameFileGameDirCreated, fail);
-	}
-	
-	function writeGameFileGameDirCreated(gameDir){
-		// Create the lock file, if and only if it doesn't exist.
-		lockFile = gameDir.getFile(currentGameFileName, {
-			create : true,
-			exclusive : false
-		}, getFileForSaveGameToDisk, fail);
-	}
-	
-	function getFileForSaveGameToDisk(fileEntry) {
-		fileEntry.createWriter(writeGameToDisk, fail);
-	}
-	
-	function writeGameToDisk(writer) {
-		writer.onwriteend = function (evt){
-			checkExistingDownloadedGames();
-		};
-		writer.write(currentGameFile);
-	}
-	
-	function gotFSRead(fileSystem) {
-		fileSystem.root.getFile("GeoQuest/games/game.json", null, gotFileEntryRead, fail);
-	}
-	
-	function gotFileEntryRead(fileEntry) {
-		fileEntry.file(gotFile, fail);
-	}
-	
-	function gotFile(file) {
-		var reader = new FileReader();
-		reader.onloadend = function(evt) {
-			alert(evt.target.result);
-		};
-		reader.readAsText(file);
-	}
 	
 	function fail(error) {
 		alert("Error: "+error.code);
