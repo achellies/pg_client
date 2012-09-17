@@ -60,7 +60,7 @@
     	
     	$.ajax({
     		   	type: 'GET',
-    		    url: 'http://localhost:3000/games/findAll',
+    		    url: 'http://geoquest.qeevee.org:3000/games/findAll',
     		    async: false,
     			jsonpCallback: 'jsonCallback',
     			contentType: "application/json",
@@ -120,6 +120,7 @@
         </div>
         <div data-role="content" id="content_start">
 <!--              <a href="#page_tests" data-role="button" data-icon="alert">Tests</a>  -->
+             <a href="#login_page" id = "login" data-role="button"> Log in </a>
 			 <a href="#game_list_page" id="show_games" data-role="button" >Show Games</a>
              <a href="#" id="startGeoQuestSpielmarkt" data-role="button" onClick="startSpielMarkt();return false;">GeoQuest Spielmarkt starten</a>
 <!-- 			  <a href="#" data-role="button" onClick="qaSpielMarkt()();return false;">QA-Test Spielmarkt starten</a> -->
@@ -142,6 +143,34 @@
 
 	</div>
 <!-- Game list -->
+
+<!-- Login Page -->
+    <div data-role="page" id="login_page" style="min-height:100%;height:100%">
+        <div data-role="header" id="header_login" data-backbtn="true">
+            <h1>Log in</h1>
+        </div>
+        <div data-role="content" id="content_login" style="height:100%;">Log in to be able to load saved game states
+            <script type = "text/javascript">
+                //var = ... connect to http://geoquest.qeevee.org:3000/
+                
+                function performLogin(user, pass) {
+                    if (user.length<6){
+                    	alert("User Name is too short!");
+                    } else if (pass.length<6) {
+                        alert("Password is too short!");
+                    } else {
+                    	alert("user and pass seem OK");
+                    }
+                }
+            </script>
+            <input id="login_username" type="text" />
+            <input id="login_password" type="password" />
+            <a id = "login_button" data-role="button" onClick="performLogin(login_username.value, login_password.value)">
+                Log in
+            </a>
+        </div>
+    </div>
+<!--  End Login Page -->
 
 <!-- MapOverview Page -->
 	<div data-role="page" id="page_map" style="min-height:100%;height:100%">
