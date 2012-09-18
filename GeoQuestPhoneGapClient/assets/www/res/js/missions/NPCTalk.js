@@ -5,20 +5,21 @@ function NPCTalkMission(gameElement){
 		missionAttributes = gameElement,
 		ID = gameElement.id;
 		dialogList = gameElement.dialogItem,
-		name = gameElement.name;
+		name = gameElement.name,
+		charimage = null;
 	
 	if (!GEOQUEST_RESUME){
 			localStorage[localStorage["game"]+ID] = "new"; //default
 	}
 	
 	//get custom next dialog button label if available
-	if(gameElement.nextDialogButtonText){
-		this.nextDialogButtonText = gameElement.nextDialogButtonText;
+	if(gameElement.nextdialogbuttontext){
+		nextDialogButtonText = gameElement.nextdialogbuttontext;
 	}
 	
 	//get custom end button label if available
-	if(gameElement.endButtonText){
-		this.endButtonText = gameElement.endButtonText;
+	if(gameElement.endbuttontext){
+		endButtonText = gameElement.endbuttontext;
 	}
 	
 	
@@ -32,25 +33,30 @@ function NPCTalkMission(gameElement){
 	
 
 	function text_out(dialogIndex) {
-		alert('appending');
 		$('#text_NPCTalk').append(dialogList[dialogIndex].text + "<br><br>");
 		$.mobile.silentScroll(1000);
-//		$('#text_NPCTalk').append("fgfgfgfgfg" + JSON.stringify(dialogList[dialogIndex]) + ":<br>");
-		
 	}
 	
-//	function setStatus(status){
-//		localStorage[localStorage["game"]+ID] = status;
-//	}
-//	
-//	this.getStatus = function(){
-//		return localStorage[localStorage["game"]+ID];
-//	}
+	function setStatus(status){
+		localStorage[localStorage["game"]+ID] = status;
+	}
+	
+	this.getStatus = function(){
+		return localStorage[localStorage["game"]+ID];
+	};
 	
 	
+	function finishMission(){
+		$('#footer_NPCTalk').empty().append("<h3>" + endButtonText + "</h3>" ).unbind().bind('click', function(){
+			//Mission fertig
+			setStatus(STATUS_SUCCESS);
+			$('#footer_NPCTalk').unbind();
+			globalGameHandler.finishMission(ID);
+		});
+	}
 	
 	this.play = function() {
-	//	setStatus("running");
+		setStatus(STATUS_RUNNING);
 		var dialogIndex = 0,
 			dialogLength = dialogList.length;
 			
@@ -69,28 +75,19 @@ function NPCTalkMission(gameElement){
 		
 		text_out(dialogIndex);
 		
-//		//Nur ein dialogitem
-//		if (dialogIndex === dialogLength-1){
-//			$('#footer_NPCTalk').empty().append("<h3>" + endbuttontext + "</h3>" ).unbind().bind('click', function(){
-//				//Mission fertig
-//				setStatus("success");
-//				$('#footer_NPCTalk').unbind();
-//				globalGameHandler.finishMission(ID);
-//			});
-//		}
-//		//mehr als ein dialogitem
-//		else{
-//			$('#footer_NPCTalk').empty().append("<h3>" + nextdialogbuttontext + "</h3>" );
-//			$('#footer_NPCTalk').bind('click', function(){
-//				text_out(++dialogIndex);
-//				if (dialogIndex === dialogLength-1){ //Mission fertig
-//					$('#footer_NPCTalk').empty().append("<h3>" + endbuttontext + "</h3>" ).unbind().bind('click', function(){
-//						setStatus("success");
-//						$('#footer_NPCTalk').unbind();
-//						globalGameHandler.finishMission(ID);
-//					});
-//				}
-//			});
-//		}
+		//Nur ein dialogitem
+		if (dialogIndex === dialogLength-1){
+			finishMission();
+		}
+		//mehr als ein dialogitem
+		else{
+			$('#footer_NPCTalk').empty().append("<h3>" + nextDialogButtonText + "</h3>" );
+			$('#footer_NPCTalk').bind('click', function(){
+				text_out(++dialogIndex);
+				if (dialogIndex === dialogLength-1){ //Mission fertig
+					finishMission();
+				}
+			});
+		}
 	};
 }

@@ -9,6 +9,10 @@ function Handler() {
 		loadMap; // legt fest, ob die Karte beim beenden einer Mission geladen
 				// werden muss
 
+	//TO BE REFACTORED
+	var firstMission = null;
+	
+	
 	// Singleton Pattern
 	handler_instance = this;
 	Handler = function() {
@@ -26,12 +30,19 @@ function Handler() {
 		//fill missions field
 		for (var i=0; i<gameElements.length; i++){
 			var gameElement = gameElements[i];
-			switch (gameElement.type) {
+			var id = gameElement.id;
+			if (!firstMission){
+				firstMission = id;
+			}
+			
+			//extract onEnd actions
+			onEnd[id] = gameElement.onEnd;
+			
+			switch (gameElement.type){
 				case "npcTalk":
 					var mission = new NPCTalkMission(gameElement);
 					// globalGameHandler.addMission(missionID, mission);
-					missions[gameElement.id] = mission;
-
+					missions[id] = mission;
 					break;
 				default :
 					alert("unsupported game element");
@@ -203,8 +214,11 @@ function Handler() {
 
 	this.endGame = function() {
 		loadMap = false;
-		globalMap.decativate(); // GPS ausschalten
+		if (globalMap){
+			globalMap.decativate(); // GPS ausschalten
+		}
 		localStorage[localStorage["game"] + "currentMission"] = null;
+		alert("Game Over.");
 		$.mobile.changePage($('#page_start'), "slide");
 	};
 
@@ -258,9 +272,7 @@ function Handler() {
 	};
 
 	this.startGame = function() {
-		missions[xmlGame.getElementsByTagName('mission')[0].attributes
-				.getNamedItem("id").nodeValue].play(); // startet die erste
-														// Mission
+		missions[firstMission].play(); // startet die erste Mission
 	};
 
 	this.startMission = function(missionID) {
@@ -296,6 +308,8 @@ function Handler() {
 																				// Element
 																				// aufrufen
 			}
+		}else{
+			this.endGame();
 		}
 		if (loadMap === true) { // MAP Mission muss gestartet werden, da keine
 								// andere Mission gestartet wurde!

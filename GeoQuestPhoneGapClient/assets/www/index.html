@@ -63,9 +63,12 @@
     <div data-role="page" id="page_start">
         <div data-role="header" id="header_start" data-backbtn="false">
             <h1>GeoQuest Web</h1>
+            <label id = "loggedInText"> Not logged in.</label>
         </div>
         <div data-role="content" id="content_start">
 <!--              <a href="#page_tests" data-role="button" data-icon="alert">Tests</a>  -->
+             <a href="#login_page" id = "login" data-role="button"> Log in </a>
+             <a href="#" id = "logout" data-role="button" onClick = "logOut()"> Log Out </a>
 			 <a href="#game_list_page" id="show_games" data-role="button" >Show Games</a>
              <a href="#" id="startGeoQuestSpielmarkt" data-role="button" onClick="startSpielMarkt();return false;">GeoQuest Spielmarkt starten</a>
              
@@ -93,6 +96,22 @@
 
 	</div>
 <!-- Game list -->
+
+<!-- Login Page -->
+    <div data-role="page" id="login_page" style="min-height:100%;height:100%">
+        <div data-role="header" id="header_login" data-backbtn="true">
+            <h1>Log in</h1>
+        </div>
+        <div data-role="content" id="content_login" style="height:100%;">Log in to be able to load saved game states
+
+            <input id="login_username" type="text" />
+            <input id="login_password" type="password" />
+            <a href="#page_start" id = "login_button" data-role="button" onClick="performLogin(login_username.value, login_password.value)">
+                Log in
+            </a>
+        </div>
+    </div>
+<!--  End Login Page -->
 
 <!-- MapOverview Page -->
 	<div data-role="page" id="page_map" style="min-height:100%;height:100%">
