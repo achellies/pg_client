@@ -21,8 +21,24 @@ function Handler() {
 	// End Singleton
 
 	//parsing json from agile2012 version to old version
-	this.parseJsonToOldFormat(gameJson){
-		alert(gameJson);
+	this.parseJsonToOldFormat = function(gameJson){
+		var gameElements = gameJson.content.gameElements;
+		//fill missions field
+		for (var i=0; i<gameElements.length; i++){
+			var gameElement = gameElements[i];
+			switch (gameElement.type) {
+				case "npcTalk":
+					var mission = new NPCTalkMission(gameElement);
+					// globalGameHandler.addMission(missionID, mission);
+					missions[gameElement.id] = mission;
+
+					break;
+				default :
+					alert("unsupported game element");
+			}
+			
+		}
+		
 	};
 	
 	this.parseXML = function() {
