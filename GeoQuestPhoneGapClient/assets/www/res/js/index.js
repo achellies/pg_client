@@ -5,7 +5,7 @@
 	storedGames = new Array();
 	var phonegapReady = false;
 	var downloadFinished = false;
-	var serverAddress = "http://131.220.149.155:3000";
+	var serverAddress = "http://geoquest.qeevee.org:3000";
 	
 	// Test code for QR Code 
 	
@@ -25,13 +25,14 @@
 	// Test code for QR Code : END-->
 	
 	function onLoad() {
+		logOut();
 		$(document)
 				.ready(
 						function() {
 							$.mobile.changePage($('#page_start'), "slide");
 							
 							document.addEventListener("deviceready",
-									phoneGapReadyCallback, false);
+								phoneGapReadyCallback, false);
 						    
 						      
 					        $.ajax({
@@ -45,6 +46,11 @@
 
 
 						});
+		$('#logout').hide();
+		$('#loggedInText').text("Not logged in.");
+//		var headerWhatever = $(document).getElementById('header_LoginData');
+//		headerWhatever.innerHTML="Logged in";
+		
 	}
 	
 	// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
@@ -160,9 +166,55 @@
 	function fail(error) {
 		alert("Error: "+error.code);
 	}
-	
-	/** END IO Functions to access the file system * */
-	
+	/** END IO Functions to access the file system. **/
+
+	/** Start of login logic. **/
+    function performLogin(user, pass) {
+        if (user.length<6){
+        	alert("User Name is too short!");
+        } else if (pass.length<6) {
+            alert("Password is too short!");
+        } else {
+        	loginPOST(user, pass);
+        }        
+    }
+    
+    function loginPOST(userName, password){
+    	 $.ajax({
+		        type: 'POST',
+		        url: serverAddress+'/login/mobile' /*?loginCallback=validateLogin&username='+userName + '&password='+password */,
+		        data: {'username': userName, 'password' : password},
+		        async: false,
+		        success : function(data, textStatus, jqXHR) {
+		        	if (data['success']){
+		        		var user = data['fullUser'];
+		        		$('#logout').show();
+			        	$('#login').hide();
+			        	$('#loggedInText').text("Logged in as: " + user['firstname']);
+		        	}else{
+		        		alert("Login Failed!");
+		        	}		        	
+		        },
+		        dataType: 'json'
+	       });   	
+    }	
+
+	function logOut(){
+		
+		$.ajax({
+	        type: 'POST',
+	        url: serverAddress+'/logout',
+			async : false,
+			success: function(data, textStatus, jqXHR) {
+				$('#logout').hide();
+				$('#login').show();
+				$('#loggedInText').text("Not logged in.");
+			}
+	    });
+
+	}
+    
+	/** End of login logic. **/
 	// function onBackKeyDown() {
 	// Disable backButton
 	// }
