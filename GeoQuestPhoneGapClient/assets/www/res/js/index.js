@@ -122,7 +122,7 @@
 	
     function startGame(gameJson){
 		globalGameHandler.parseJsonToOldFormat(gameJson);
-//		globalGameHandler.startGame();
+		globalGameHandler.startGame();
     }
     
     function loadGameAndStart(gameId){
