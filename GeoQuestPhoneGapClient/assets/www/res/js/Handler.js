@@ -31,7 +31,7 @@ function Handler() {
 		for (var i=0; i<gameElements.length; i++){
 			var gameElement = gameElements[i];
 			var id = gameElement.id;
-			if (!firstMission){
+			if (firstMission == null){
 				firstMission = id;
 			}
 			
@@ -294,27 +294,21 @@ function Handler() {
 		missions[missionID].play();
 	};
 
+
+	
+	
 	this.finishMission = function(missionID) {
-		loadMap = true;
+//		loadMap = true;
 		if (onEnd[missionID]) { // onEnd abarbeiten, falls vorhanden
-			var missionOnEnd = onEnd[missionID], 
-				ruleQuantity = missionOnEnd.getElementsByTagName('rule').length, 
-				ruleIndex;
-			for (ruleIndex = 0; ruleIndex < ruleQuantity; ruleIndex++) {
-				xmlRule(missionOnEnd.getElementsByTagName('rule')[ruleIndex]); // xmlRule
-																				// mit
-																				// jedem
-																				// rule
-																				// Element
-																				// aufrufen
-			}
+			var rulesProcessor = new RulesProcessor(onEnd[missionID]);
+			rulesProcessor.executeRules();
 		}else{
 			this.endGame();
 		}
-		if (loadMap === true) { // MAP Mission muss gestartet werden, da keine
-								// andere Mission gestartet wurde!
-			globalMap.activate();
-		}
+//		if (loadMap === true) { // MAP Mission muss gestartet werden, da keine
+//								// andere Mission gestartet wurde!
+//			globalMap.activate();
+//		}
 	};
 
 	this.enterHotspot = function(hotspotID) {
