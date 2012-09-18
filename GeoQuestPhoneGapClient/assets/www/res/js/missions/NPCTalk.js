@@ -1,11 +1,10 @@
-function NPCTalkMission(gameElement){
+function NPCTalkMission(gameElementArg){
 
 	var endButtonText = "Default End", 			//default
 		nextDialogButtonText = "Default Next", 		//default
-		missionAttributes = gameElement,
-		ID = gameElement.id;
-		dialogList = gameElement.dialogItem,
-		name = gameElement.name,
+		gameElement = gameElementArg,
+		ID = gameElement.id,
+		dialogItems = gameElement.dialogItem,
 		charimage = null;
 	
 	if (!GEOQUEST_RESUME){
@@ -33,7 +32,7 @@ function NPCTalkMission(gameElement){
 	
 
 	function text_out(dialogIndex) {
-		$('#text_NPCTalk').append(dialogList[dialogIndex].text + "<br><br>");
+		$('#text_NPCTalk').append(dialogItems[dialogIndex].text + "<br><br>");
 		$.mobile.silentScroll(1000);
 	}
 	
@@ -55,10 +54,14 @@ function NPCTalkMission(gameElement){
 		});
 	}
 	
+	this.toString = function(){
+		return JSON.stringify(gameElement);
+	};
+	
 	this.play = function() {
 		setStatus(STATUS_RUNNING);
 		var dialogIndex = 0,
-			dialogLength = dialogList.length;
+			dialogLength = dialogItems.length;
 			
 		$.mobile.changePage($('#page_NPCTalk'), "slide");
 		// Header mit MissionName anzeigen?
