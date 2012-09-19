@@ -20,6 +20,7 @@ function ActionHandler(){
     	if (DEBUG){
     		alert("Action-EndGame!");
     	}
+    	mapCenterInitialized = false;
     	globalGameHandler.endGame();
     };
   
@@ -108,11 +109,11 @@ function ActionHandler(){
     	alert(message);
     };
     
+    
     this.SetHotspotVisibility = function (hotspotID, value){
-    	if (value === "true"){
+    	if (value){
     		globalGameHandler.activateHotspot(hotspotID);
-    	}
-    	if (value === "false"){
+    	}else{
     		globalGameHandler.deactivateHotspot(hotspotID);
     	}
     };
@@ -125,9 +126,14 @@ function ActionHandler(){
     this.StartExternalMission = function (){
     	alert("Dieses Feature wird noch nicht unterstützt! Action-StartExternlMission!");    	
     };
-    
+
+    var mapCenterInitialized = false;
     this.showMap = function(){
     	globalMap.activate();
+    	if (!mapCenterInitialized){
+        	globalMap.centerMap();
+        	mapCenterInitialized = true;
+    	}
     };
     
     return action_instance;

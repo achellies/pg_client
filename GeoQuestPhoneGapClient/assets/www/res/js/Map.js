@@ -1,10 +1,10 @@
 function Map(hotspots) {		
-
+	
 	var googleMarkers = {},	
-		latlng = new google.maps.LatLng(50.751843, 7.096065),
+		latlng = new google.maps.LatLng(50.720801,7.121484),
 		gpsOptions = {enableHighAccuracy: true},
 		watchID,
-		zoomLevel = 18, 	//Default ZoomLevel
+		zoomLevel = 16, 	//Default ZoomLevel
 		myAccuracy = 60; 	// Fixed Accuracy
 		
 		
@@ -19,6 +19,12 @@ function Map(hotspots) {
 	//Optionen fuer die GoogleMap
 	var mapOverviewOptions = {
 			zoom : zoomLevel,
+			zoomControl: true,
+	        zoomControlOptions: {
+	            style: google.maps.ZoomControlStyle.SMALL,
+	            position: google.maps.ControlPosition.LEFT_TOP
+
+	        },
 			center : latlng,
 			mapTypeControl : false, //MapType darf nicht geaendert werden
 			streetViewControl : false, //Kein streetview
@@ -46,17 +52,17 @@ function Map(hotspots) {
 		myPositionIcon = new google.maps.MarkerImage(	"res/drawable/dot.png",			//Pfad zum Bild 
 														new google.maps.Size(20,20), 	//Image Groesse
 														new google.maps.Point(0,0), 	//Startpunkt
-														new google.maps.Point(10,10)), 	//Anker, Welcher Pixel auf die GPS-Position gesetzt wird 
+														new google.maps.Point(10,10)); 	//Anker, Welcher Pixel auf die GPS-Position gesetzt wird 
 	
-		//Der Eigene PositionsMarker
-		myPositionMarker = new google.maps.Marker({
+	//Der Eigene PositionsMarker
+	var	myPositionMarker = new google.maps.Marker({
 			position : latlng,
 			map : googleMap,
 			icon : myPositionIcon
-		}),
-
-		//Der Kreis um den PositionsMarker
-		myCircle = new google.maps.Circle({
+		});
+	
+	//Der Kreis um den PositionsMarker
+	var	myCircle = new google.maps.Circle({
 			center: latlng,
 			radius: 20,
 			map: googleMap,
@@ -66,72 +72,15 @@ function Map(hotspots) {
 			  fillColor: "#0000FF",
 			  fillOpacity: 0.35,
 		});
+	
 
-	// Durchlaeuft alle Nodes mit Namen "hotspot
-	if (hotspots){
-		for (var hotspotIndex = 0; hotspotIndex < hotspots.length; hotspotIndex++) {
-	
-			var hotspotNode = hotspots[hotspotIndex];
-//	
-//			if (hotspotAttributes.getNamedItem("img")) { // prueft ob ein
-//															// image beim
-//															// HotSpot angegeben
-//															// ist.
-//				image = hotspotAttributes.getNamedItem("img").nodeValue; // falls
-//																			// ja,
-//																			// wird
-//																			// dieser
-//																			// ausgelesen
-//			}
-
-			var hotspot = new Hotspot(hotspotNode); // Erzeugt den HotSpot
-//			hotspots[hotspotID] = hotspot; // Fuegt den HotSpot dem HotSpotsobjekt hinzu
-			this.addMarker(hotspot); // Legt
-																					// den
-																					// Marker
-																					// auf
-																					// der
-																					// Karte
-																					// an
-	
-	
-			if (hotspotNode.getElementsByTagName('onEnter').length) { // onEnter
-																		// Knoten
-																		// vorhanden
-				if (DEBUG) {
-					alert("xmlMission: Hotspot mit '" + hotspotID
-							+ " besitzt einen onEnterKnoten!");
-				}
-				onEnter[hotspotID] = hotspotNode
-						.getElementsByTagName('onEnter')[0];
-			}
-	
-			if (hotspotNode.getElementsByTagName('onLeave').length) { // onLeave
-																		// Knoten
-																		// vorhanden
-				if (DEBUG) {
-					alert("xmlMission: Hotspot mit '" + hotspotID
-							+ " besitzt einen onLeaveKnoten!");
-				}
-				onLeave[hotspotID] = hotspotNode
-						.getElementsByTagName('onLeave')[0];
-			}
-		}
+	function initialCenterMap(myPosition){
+		latlng = google.maps.LatLng(myPosition.coords.latitude, myPosition.coords.longitude);
+		myPositionMarker.setPosition(latlng);
+		googleMap.setCenter(latlng);
+		myCircle.setCenter(latlng);
+		myCircle.setRadius(myPosition.coords.accuracy);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//Die Karte Aktivieren
 	this.activate = function() {
@@ -141,22 +90,11 @@ function Map(hotspots) {
     	google.maps.event.trigger(googleMap, 'resize');
 	};
 	
-//	this.decativate = function(){
-//		//deaktiviert das GPS wenn es nicht benoetigt wird
-//		navigator.geolocation.clearWatch(watchID);
-//		//Macht das Sinn?
-//		setStatus("success");
-//	}
 
-	
-	function initialCenterMap(myPosition){
-		latlng = google.maps.LatLng(myPosition.coords.latitude, myPosition.coords.longitude);
-		myPositionMarker.setPosition(latlng);
-		googleMap.setCenter(latlng);
-		myCircle.setCenter(latlng);
-		myCircle.setRadius(myPosition.coords.accuracy);
-	}
-
+	this.deactivate = function(){
+		//deaktiviert das GPS wenn es nicht benoetigt wird
+		navigator.geolocation.clearWatch(watchID);
+	};
 	
 	function updatePosition(myPosition) {
 		if (myPosition.coords.accuracy < myAccuracy){ //Feste Genauigkeit
@@ -179,36 +117,38 @@ function Map(hotspots) {
 		alert("Fehler beim GPS!");
 	}
 	
-	this.addMarker = function(id, visible, lat, long, image) {
-		var latlng = new google.maps.LatLng(lat, long);
-		var icon = BASEURL + "/res/drawable/icon.png";
-		if (image) {
-			icon = GAMEURL + image;
+	this.addMarker = function(hotspotNode) {
+		
+		var latlng = new google.maps.LatLng(hotspotNode.latitude, hotspotNode.longitude);
+		var icon =  "res/drawable/icon.png";
+		
+		if (hotspotNode.icon) {
+			icon = GAMEURL + hotspotNode.icon;
 			
 			//Caching des Bildes
 			if (document.images) {
 				var imageCache = new Image();
-				imageCache.src = GAMEURL + image;
+				imageCache.src = GAMEURL + hotspotNode.icon;
 			}
 		}
-		googleMarkers[id] = new google.maps.Marker({
+		googleMarkers[hotspotNode.id] = new google.maps.Marker({
 			position : latlng,
-			title : id,
+			title : hotspotNode.id,
 			icon : icon
 		});
 		
 		if (GEOQUEST_RESUME){
-			if (localStorage[localStorage["game"]+"_Marker_"+id] === "true"){	
-				googleMarkers[id].setMap(googleMap);
+			if (localStorage[localStorage["game"]+"_Marker_"+hotspotNode.id] === "true"){	
+				googleMarkers[hotspotNode.id].setMap(googleMap);
 			}
 			else{
-				googleMarkers[id].setMap(null);
+				googleMarkers[hotspotNode.id].setMap(null);
 			}
 		}
 		else {
-			if (visible){
-				googleMarkers[id].setMap(googleMap);
-				localStorage[localStorage["game"]+"_Marker_"+id] = "true";
+			if (hotspotNode.initialVisibility){
+				googleMarkers[hotspotNode.id].setMap(googleMap);
+				localStorage[localStorage["game"]+"_Marker_"+hotspotNode.id] = "true";
 			}
 		}
 	};
@@ -222,16 +162,6 @@ function Map(hotspots) {
 		googleMarkers[id].setMap(null);
 		localStorage[localStorage["game"]+"_Marker_"+id] = null;
 	};
-	
-
-	//getter functions for testing
-	this.getGoogleMarkers = function(){
-		return googleMarkers;
-	};
-	
-	this.getMyPositionMarker = function(){
-		return myPositionMarker;
-	};
 
 	//setter functions for testing
 	this.setPositionAndUpdate = function (lat, long) {
@@ -242,5 +172,35 @@ function Map(hotspots) {
 			googleMap.setCenter(latlng);
 			globalGameHandler.updateHotspotsDistance(lat, long);
 	};
+	
+	this.centerMap = function(){
+		googleMap.setCenter(latlng);
+	};
+	
+	
+	
+	// Durchlaeuft alle Nodes mit Namen "hotspot
+	if (hotspots){
+		for (var hotspotIndex = 0; hotspotIndex < hotspots.length; hotspotIndex++) {
+			var hotspotNode = hotspots[hotspotIndex];
+//	
+//			if (hotspotAttributes.getNamedItem("img")) { // prueft ob ein
+//															// image beim
+//															// HotSpot angegeben
+//															// ist.
+//				image = hotspotAttributes.getNamedItem("img").nodeValue; // falls
+//																			// ja,
+//																			// wird
+//																			// dieser
+//																			// ausgelesen
+//			}
+
+			var hotspot = new Hotspot(hotspotNode); // Erzeugt den HotSpot
+
+			globalGameHandler.addHotspot(hotspot);
+
+			this.addMarker(hotspotNode); // Legt den Marker auf der Karte
+		}
+	}
 	
 }

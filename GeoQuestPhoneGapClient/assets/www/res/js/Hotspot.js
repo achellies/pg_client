@@ -1,25 +1,17 @@
 if (typeof (Number.prototype.toRad) === "undefined") {
 	Number.prototype.toRad = function() {
 		return this * Math.PI / 180;
-	}
+	};
 }
 
 function Hotspot(hotspotNode) {
-
-	
 	var id = hotspotNode.id,
-		lat = hotspotNode.latitude, 
-		long = hotspotNode.longitude, 
-		radius = hotspotNode.radius;
+	lat = parseFloat(hotspotNode.latitude), 
+	long = parseFloat(hotspotNode.longitude), 
+	radius = parseFloat(hotspotNode.radius);
 
-	if (!GEOQUEST_RESUME){
-		if (hotspotNode.initialVisibility) {
-			this.activate();
-		}else{
-			this.deactiviate();
-		}
-	}
-	
+	var onEnter = hotspotNode.onEnter, onLeave = hotspotNode.onLeave;
+
 	function setStatus(newStatus) {
 		if( DEBUG){
 			alert("Neuer Status, " + id + " ist jetzt: " + newStatus);
@@ -46,16 +38,28 @@ function Hotspot(hotspotNode) {
     	return d;
     }
 
+    this.getId = function(){
+    	return id;
+    };
+    
+    this.getOnLeave = function(){
+    	return onLeave;
+    };
+    
+    this.getOnEnter = function(){
+    	return onEnter;
+    };
+    
 	this.updateDistance = function(lat, long) {
 		//TODO: Eventuell nur Aktive HotSpots berechnen
 		var distance = calculateDistance(lat, long);
 		if (distance <= radius && getStatus() === ("accessible")) {
 			setStatus("inRadius");
-			globalGameHandler.enterHotspot(hotspotID)
+			globalGameHandler.enterHotspot(id);
 		}
 		if (distance >= radius && getStatus() === ("inRadius")) {
 			setStatus("accessed");
-			globalGameHandler.leaveHotspot(hotspotID);
+			globalGameHandler.leaveHotspot(id);
 		}
 	};
 	
@@ -66,4 +70,15 @@ function Hotspot(hotspotNode) {
 	this.deactivate = function() {
 		setStatus("hidden");
 	};
+	
+
+
+	if (!GEOQUEST_RESUME){
+		if (hotspotNode.initialVisibility) {
+			this.activate();
+		}else{
+			this.deactivate();
+		}
+	}
+	
 }

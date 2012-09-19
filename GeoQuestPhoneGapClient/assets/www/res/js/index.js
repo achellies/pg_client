@@ -1,11 +1,11 @@
-	var DEBUG = false,
+
 	// GAMENAME = null,
 	//currentGameFile = "",
-	currentGameFileName = "",
-	storedGames = new Array();
+	var currentGameFileName = "",
+		storedGames = new Array();
 	var phonegapReady = false;
 	var downloadFinished = false;
-	var serverAddress = "http://131.220.149.151:3000";
+	var serverAddress = "http://geoquest.qeevee.org:3000";
 	
 	// Test code for QR Code 
 	
