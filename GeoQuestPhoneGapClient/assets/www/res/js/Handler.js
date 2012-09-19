@@ -307,7 +307,6 @@ function Handler() {
 			var rulesProcessor = new RulesProcessor(onEnd[missionID]);
 			rulesProcessor.executeRules();
 		}else{
-			alert('endGame');
 			this.endGame();
 		}
 //		if (loadMap === true) { // MAP Mission muss gestartet werden, da keine

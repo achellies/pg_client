@@ -5,7 +5,7 @@ function NPCTalkMission(gameElementArg){
 		gameElement = gameElementArg,
 		ID = gameElement.id,
 		dialogItems = gameElement.dialogItem,
-		charimage = null;
+		charimage = 'file:///mnt/sdcard/GeoQuest/resources/walkingcomputergeek.jpg';
 	
 	if (!GEOQUEST_RESUME){
 			localStorage[localStorage["game"]+ID] = "new"; //default
@@ -70,7 +70,7 @@ function NPCTalkMission(gameElementArg){
 
 
 		if (charimage){
-				$('#image_NPCTalk').empty().append("<img style='max-width:100%; max-height:100%' id='theImg' src='" + GAMEURL + charimage + "'/>");
+				$('#image_NPCTalk').empty().append("<img style='max-width:100%; max-height:100%' id='theImg' src='" + charimage + "'/>");
 		} else {
 			$('#image_NPCTalk').empty();
 		}
