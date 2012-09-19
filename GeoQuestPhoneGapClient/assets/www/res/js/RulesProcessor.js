@@ -45,6 +45,9 @@ function RulesProcessor(rulesToProcess){
 		var method = action.method;
 		var arguments = action.arguments;
 		switch (method){
+			case "showMap":
+				globalActionHandler.showMap();
+				break;
 			case "showMessage":
 				globalActionHandler.ShowMessage(arguments.message);
 				break;
@@ -60,6 +63,9 @@ function RulesProcessor(rulesToProcess){
 				break;
 			case "endGame":
 				globalActionHandler.EndGame();
+				break;
+			case "setHotspotVisibility":
+				globalActionHandler.SetHotspotVisibility(arguments.id,arguments.visible);
 				break;
 				
 			case "setVariable":
@@ -87,11 +93,6 @@ function RulesProcessor(rulesToProcess){
 			case "playAudio":
 				var AudioFile = actionAttributes.getNamedItem("file").nodeValue;
 				globalActionHandler.PlayAudio(AudioFile);
-				break;
-			case "setHotspotVisibility":
-				var ID = actionAttributes.getNamedItem("id").nodeValue,
-					Value = actionAttributes.getNamedItem("visible").nodeValue;
-				globalActionHandler.SetHotspotVisibility(ID,Value);
 				break;
 			case "startExternalMission":
 				globalActionHandler.StartExternalMission();

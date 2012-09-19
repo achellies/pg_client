@@ -27,7 +27,7 @@ function Handler() {
 	//parsing json from agile2012 version to old version
 	this.parseJsonToOldFormat = function(gameJson){
 		if (mapAvailable){
-			globalMap = new Map(gameJson.hotspots);
+			globalMap = new Map(gameJson.content.hotspots);
 		}
 		
 		var gameElements = gameJson.content.gameElements;
@@ -219,7 +219,7 @@ function Handler() {
 	this.endGame = function() {
 		loadMap = false;
 		if (globalMap){
-			globalMap.decativate(); // GPS ausschalten
+			globalMap.deactivate(); // GPS ausschalten
 		}
 		localStorage[localStorage["game"] + "currentMission"] = null;
 		alert("Game Over.");
@@ -259,8 +259,7 @@ function Handler() {
 
 	this.activateHotspot = function(hotspotID) {
 		hotspots[hotspotID].activate(); // HotSpot ist betretbar
-		globalMap.showMarker(hotspotID); // Marker wird auf der Karte
-											// angezeigt
+		globalMap.showMarker(hotspotID); // Marker wird auf der Karte angezeigt
 	};
 
 	this.deactivateHotspot = function(hotspotID) {
@@ -281,74 +280,42 @@ function Handler() {
 
 	this.startMission = function(missionID) {
 		loadMap = false;
-		if (onStart[missionID]) { // onStart abarbeiten, falls vorhanden
-			globalMap.decativate(); // GPS ausschalten
-			var missionOnStart = onStart[missionID], 
-				ruleQuantity = missionOnStart.getElementsByTagName('rule').length, 
-				ruleIndex;
-			for (ruleIndex = 0; ruleIndex < ruleQuantity; ruleIndex++) {
-				xmlRule(missionOnStart.getElementsByTagName('rule')[ruleIndex]); // xmlRule
-																					// mit
-																					// jedem
-																					// rule
-																					// Element
-																					// aufrufen
-			}
-		}
+		processRules(onStart[missionID]);
 		missions[missionID].play();
 	};
-
-
-	
 	
 	this.finishMission = function(missionID) {
-//		loadMap = true;
-		if (onEnd[missionID]) { // onEnd abarbeiten, falls vorhanden
-			var rulesProcessor = new RulesProcessor(onEnd[missionID]);
-			rulesProcessor.executeRules();
-		}else{
-			this.endGame();
-		}
-//		if (loadMap === true) { // MAP Mission muss gestartet werden, da keine
-//								// andere Mission gestartet wurde!
-//			globalMap.activate();
-//		}
+		processRules(onEnd[missionID]);
 	};
 
-	this.enterHotspot = function(hotspotID) {
-		if (onEnter[hotspotID]) { // onEnter abarbeiten, falls vorhanden
-			var hotspotOnEnter = onEnter[hotspotID], ruleQuantity = hotspotOnEnter
-					.getElementsByTagName('rule').length, ruleIndex;
-
-			for (ruleIndex = 0; ruleIndex < ruleQuantity; ruleIndex++) {
-				xmlRule(hotspotOnEnter.getElementsByTagName('rule')[ruleIndex]); // xmlRule
-																					// mit
-																					// jedem
-																					// rule
-																					// Element
-																					// aufrufen
-			}
+	function processRules(rules) {
+		if (rules) {
+			var ruleProcessor = new RulesProcessor(rules);
+			ruleProcessor.executeRules();
 		}
+	}
+	
+	this.enterHotspot = function(hotspotID) {
+		processRules(onEnter[hotspotID]);
 	};
 
 	this.leaveHotspot = function(hotspotID) {
-		if (onLeave[hotspotID]) { // onLeave abarbeiten, falls vorhanden
-			var hotspotOnLeave = onLeave[hotspotID], ruleQuantity = hotspotOnLeave
-					.getElementsByTagName('rule').length, ruleIndex;
-
-			for (ruleIndex = 0; ruleIndex < ruleQuantity; ruleIndex++) {
-				xmlRule(hotspotOnLeave.getElementsByTagName('rule')[ruleIndex]); // xmlRule
-																					// mit
-																					// jedem
-																					// rule
-																					// Element
-																					// aufrufen
-			}
-		}
+		processRules(onLeave[hotspotID]);
 	};
 
 	this.getMissionStatus = function(id) {
 		return missions[id].getStatus();
+	};
+	
+	this.addHotspot = function(hotspot){
+		hotspots[hotspot.getId()] = hotspot;
+		
+		if (hotspot.getOnEnter()) {
+			onEnter[hotspot.getId()] = hotspot.getOnEnter();
+		}
+		if (hotspot.getOnLeave()) {
+			onLeave[hotspot.getId()] = hotspot.getOnLeave();
+		}
 	};
 
 	return handler_instance;

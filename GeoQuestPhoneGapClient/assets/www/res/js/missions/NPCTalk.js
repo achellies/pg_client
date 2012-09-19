@@ -50,6 +50,7 @@ function NPCTalkMission(gameElementArg){
 			//Mission fertig
 			setStatus(STATUS_SUCCESS);
 			$('#footer_NPCTalk').unbind();
+			$('#footer_NPCTalk').addClass('ui-disabled');
 			globalGameHandler.finishMission(ID);
 		});
 	}
@@ -62,11 +63,10 @@ function NPCTalkMission(gameElementArg){
 		setStatus(STATUS_RUNNING);
 		var dialogIndex = 0,
 			dialogLength = dialogItems.length;
-			
 		$.mobile.changePage($('#page_NPCTalk'), "slide");
 		// Header mit MissionName anzeigen?
-		// $('#header_NPCTalk').empty().append("<h3>" + name + "</h3>");
-		$('#header_NPCTalk h1').empty().append("test");
+		$('#header_NPCTalk h1').empty().append(gameElement.name);
+		$('#footer_NPCTalk').removeClass('ui-disabled');
 
 
 		if (charimage){
