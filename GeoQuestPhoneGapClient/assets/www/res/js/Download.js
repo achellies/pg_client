@@ -12,8 +12,8 @@
 	
 	/** Callback for the AJAX request * */
 	function jsonCallback(game) {
-		currentGameFileName = "game_"+game['game'][0]['_id']+".json";
-		writeFile(game['game'][0], checkExistingDownloadedGames);
+		currentGameFileName = "game_"+game['game']['_id']+".json";
+		writeFile(game['game'], checkExistingDownloadedGames);
 	}
 	
 	function writeFile(gameFile, callback) {

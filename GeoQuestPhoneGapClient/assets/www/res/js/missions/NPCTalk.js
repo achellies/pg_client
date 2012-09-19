@@ -66,7 +66,7 @@ function NPCTalkMission(gameElementArg){
 		$.mobile.changePage($('#page_NPCTalk'), "slide");
 		// Header mit MissionName anzeigen?
 		// $('#header_NPCTalk').empty().append("<h3>" + name + "</h3>");
-		$('#header_NPCTalk').hide();
+		$('#header_NPCTalk h1').empty().append("test");
 
 
 		if (charimage){

@@ -1,26 +1,20 @@
-function MapOverview(mapNode) {		
+function Map(mapNode) {		
 
-	var mapAttributes = mapNode.attributes,
-		ID = mapAttributes.getNamedItem("id").nodeValue,
-		googleMarkers = {},	
+	var googleMarkers = {},	
 		latlng = new google.maps.LatLng(50.751843, 7.096065),
 		gpsOptions = {enableHighAccuracy: true},
 		watchID,
 		zoomLevel = 18, 	//Default ZoomLevel
 		myAccuracy = 60; 	// Fixed Accuracy
-	
-	if (!GEOQUEST_RESUME){
-			localStorage[localStorage["game"]+ID] = "new";
-	}
 		
 		
 	// Erste Abfrage der Position um die Karte zu zentrieren und erste Daten zu laden.
 	navigator.geolocation.getCurrentPosition(initialCenterMap, gpsError, gpsOptions);
 		
 	//ZoomLevel aus den Attributen auslesen, falls dieser vorhanden ist.
-	if (mapAttributes.getNamedItem("zoomlevel")){
-		zoomLevel =+ mapAttributes.getNamedItem("zoomlevel").nodeValue;
-	}	
+//	if (mapAttributes.getNamedItem("zoomlevel")){
+//		zoomLevel =+ mapAttributes.getNamedItem("zoomlevel").nodeValue;
+//	}	
 		
 	//Optionen fuer die GoogleMap
 	var mapOverviewOptions = {
@@ -33,19 +27,19 @@ function MapOverview(mapNode) {
 	
 	
 	//MapKind aus den Atributen auslesen, falls vorhanden ist.
-	if (mapAttributes.getNamedItem("mapkind")){
-		var mapKind = mapAttributes.getNamedItem("mapkind").nodeValue;
-		
-		//Anpassen der GoogleMaps Optionen mit jeweiligem MapType 
-		switch (mapKind){
-		case "terrain":
-			mapOverviewOptions.mapTypeId= google.maps.MapTypeId.TERRAIN;
-			break;
-		case "roadmap":
-			mapOverviewOptions.mapTypeId= google.maps.MapTypeId.ROADMAP;
-			break;
-		}
-	}
+//	if (mapAttributes.getNamedItem("mapkind")){
+//		var mapKind = mapAttributes.getNamedItem("mapkind").nodeValue;
+//		
+//		//Anpassen der GoogleMaps Optionen mit jeweiligem MapType 
+//		switch (mapKind){
+//		case "terrain":
+//			mapOverviewOptions.mapTypeId= google.maps.MapTypeId.TERRAIN;
+//			break;
+//		case "roadmap":
+//			mapOverviewOptions.mapTypeId= google.maps.MapTypeId.ROADMAP;
+//			break;
+//		}
+//	}
 
 	//Die GoogleKarte erzeugen, in content_map DIV mit den Optionen
 	var googleMap = new google.maps.Map($('#content_map')[0], mapOverviewOptions),
@@ -75,44 +69,27 @@ function MapOverview(mapNode) {
 
 	// Singleton Pattern
 	instance = this;
-	MapOverview = function(){
+	Map = function(){
 		return instance;
-	}
-	MapOverview.prototype = this;
-	instance = new MapOverview();
-	instance.constructor = MapOverview;
+	};
+	Map.prototype = this;
+	instance = new Map();
+	instance.constructor = Map;
 
 	//Die Karte Aktivieren
 	this.activate = function() {
-		
-
-    	google.maps.event.trigger(googleMap, 'resize');
-		$('#content_map').height($('#page_map').innerHeight() - $('#header_map').outerHeight()-30);
+		$('#content_map').height($('#map_dialog').innerHeight() - $('#header_map').outerHeight()-30);
 		watchID = navigator.geolocation.watchPosition(updatePosition, gpsError, gpsOptions);
-    	$.mobile.changePage( $('#map_dialog'), { role: 'dialog'} );
-		
-//		setStatus("running");
-//    	localStorage[localStorage["game"]+"currentMission"] = ID;
-//		$.mobile.changePage($('#page_map'), "slide");
-//		google.maps.event.trigger(googleMap, 'resize');
-//		$('#content_map').height($('#page_map').innerHeight() - $('#header_map').outerHeight()-30);
-//		watchID = navigator.geolocation.watchPosition(updatePosition, gpsError, gpsOptions);
-//		$.mobile.loadingMessage = "Warte auf GPS Signal."
-//		$.mobile.showPageLoadingMsg();
-	}
+    	$.mobile.changePage( $('#map_dialog'));
+    	google.maps.event.trigger(googleMap, 'resize');
+	};
 	
-	
-	//ALT muss rausgenommen, MAP ist bald keine Mission mehr sondern ein TOOL 
-	this.play = function() {
-		this.activate();
-	}
-	
-	this.decativate = function(){
-		//deaktiviert das GPS wenn es nicht benoetigt wird
-		navigator.geolocation.clearWatch(watchID);
-		//Macht das Sinn?
-		setStatus("success");
-	}
+//	this.decativate = function(){
+//		//deaktiviert das GPS wenn es nicht benoetigt wird
+//		navigator.geolocation.clearWatch(watchID);
+//		//Macht das Sinn?
+//		setStatus("success");
+//	}
 
 	
 	function initialCenterMap(myPosition){
@@ -143,14 +120,6 @@ function MapOverview(mapNode) {
 	
 	function gpsError(){
 		alert("Fehler beim GPS!");
-	}
-	
-	function setStatus(status){
-		localStorage[localStorage["game"]+ID] = status;
-	}
-	
-	this.getStatus = function(){
-		return localStorage[localStorage["game"]+ID];
 	}
 	
 	this.addMarker = function(id, visible, lat, long, image) {
@@ -201,11 +170,11 @@ function MapOverview(mapNode) {
 	//getter functions for testing
 	this.getGoogleMarkers = function(){
 		return googleMarkers;
-	}
+	};
 	
 	this.getMyPositionMarker = function(){
 		return myPositionMarker;
-	}
+	};
 
 	//setter functions for testing
 	this.setPositionAndUpdate = function (lat, long) {
@@ -215,6 +184,6 @@ function MapOverview(mapNode) {
 			myCircle.setRadius(10);
 			googleMap.setCenter(latlng);
 			globalGameHandler.updateHotspotsDistance(lat, long);
-	}
+	};
 	return instance;
 }

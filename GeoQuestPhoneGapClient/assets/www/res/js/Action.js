@@ -1,6 +1,7 @@
 function ActionHandler(){
 
 	action_instance = this;
+	
 	Action = function() {
 		return action_instance;
 	};
@@ -123,6 +124,10 @@ function ActionHandler(){
     
     this.StartExternalMission = function (){
     	alert("Dieses Feature wird noch nicht unterstützt! Action-StartExternlMission!");    	
+    };
+    
+    this.showMap = function(){
+    	globalMap.activate();
     };
     
     return action_instance;
