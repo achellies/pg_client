@@ -26,6 +26,7 @@ function Handler() {
 
 	//parsing json from agile2012 version to old version
 	this.parseJsonToOldFormat = function(gameJson){
+		GAMEFILENAME = gameJson.name;
 		if (mapAvailable){
 			globalMap = new Map(gameJson.content.hotspots);
 		}
