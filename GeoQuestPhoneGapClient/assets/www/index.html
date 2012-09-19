@@ -21,10 +21,9 @@
     <script type="text/javascript" charset="utf-8" src="res/js/Handler.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/Hotspot.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/Download.js"></script>
-
     <script type="text/javascript" charset="utf-8" src="res/js/RulesProcessor.js"></script>
-    	
-	<script type="text/javascript" charset="utf-8" src="res/js/missions/MapOverview.js"></script>
+	<script type="text/javascript" charset="utf-8" src="res/js/Map.js"></script>
+	
     <script type="text/javascript" charset="utf-8" src="res/js/missions/NPCTalk.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/missions/QuestionAndAnswer.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/missions/QRTagReading.js"></script>
@@ -89,11 +88,7 @@
 	    <div data-role="header" id="header_map" data-backbtn="false">
 	    	<h1>Games</h1>
 	    </div>
-	    <div data-role="content" id="content_map" style="height:100%;">
-	    	<div id="game_list">
-	    	</div>
-		</div>
-
+	    <div id="game_list"></div>
 	</div>
 <!-- Game list -->
 
@@ -113,21 +108,36 @@
     </div>
 <!--  End Login Page -->
 
-<!-- MapOverview Page -->
-	<div data-role="page" id="page_map" style="min-height:100%;height:100%">
-	    <div data-role="header" id="header_map" data-backbtn="false">
-	        <h1>Karte</h1>
-<!-- 	        <a href="#page_settings" data-role="button" data-icon="gear">System</a> -->
-	    </div>
-	    <div data-role="content" id="content_map" style="height:100%;">Initialisiere die Karte ...</div>
+<!-- This is a page used for a map dialog -->
+<div data-role="page" id="map_dialog" data-add-back-btn="true">
 
+    <div data-role="header" id="header_map">
+        <h1>Map</h1>	   
 	</div>
+	<div data-role="content" id="content_map" style="height:100%;">Initialisiere die Karte ...</div>
+</div>
+
+<!-- MapOverview Page -->
+<!-- 	<div data-role="page" id="page_map" style="min-height:100%;height:100%"> -->
+<!-- 	    <div data-role="header" id="header_map" data-backbtn="false"> -->
+<!-- 	        <a data-role="button" data-transition="fade" onClick="globalActionHandler.hideMap()" class="ui-btn-right"> -->
+<!-- 	            X -->
+<!-- 	        </a> -->
+<!-- 	        <h1>Map</h1> -->
+<!-- <!-- 	        <a href="#page_settings" data-role="button" data-icon="gear">System</a> --> -->
+<!-- 	    </div> -->
+<!-- 	    <div data-role="content" id="content_map" style="height:100%;">Initialisiere die Karte ...</div> -->
+
+<!-- 	</div> -->
 <!-- End MapOverview -->
+
+
 
 
 <!-- NPCTalk -->
     <div data-role="page" id="page_NPCTalk">
         <div data-role="header" id="header_NPCTalk" data-backbtn="false">
+	        <a href="#" onClick = "globalActionHandler.showMap();" class="ui-btn-right">Map</a>
             <h1>NPCTalk</h1>
         </div>
         <div data-role="content" id="image_NPCTalk" class="centered">    

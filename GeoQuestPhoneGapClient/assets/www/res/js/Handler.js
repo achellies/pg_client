@@ -11,7 +11,7 @@ function Handler() {
 
 	//TO BE REFACTORED
 	var firstMission = null;
-	
+	var mapAvailable = true;
 	
 	// Singleton Pattern
 	handler_instance = this;
@@ -26,6 +26,10 @@ function Handler() {
 
 	//parsing json from agile2012 version to old version
 	this.parseJsonToOldFormat = function(gameJson){
+		if (mapAvailable){
+			globalMap = new Map(gameJson.hotspots);
+		}
+		
 		var gameElements = gameJson.content.gameElements;
 		//fill missions field
 		for (var i=0; i<gameElements.length; i++){
