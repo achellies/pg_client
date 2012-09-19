@@ -1,15 +1,23 @@
 function RulesProcessor(rulesToProcess){
 	
 	var rules = rulesToProcess,
-	 	operators = ["==","<"];
+	 	operators = ["!=","==","<","<=",">=",">"];
 	
 	
 	this.executeOperator = function(arg1, arg2, op){
 		switch(op){
+			case "!=":
+				return arg1 != arg2;
 			case "==":
 				return arg1 == arg2;
 			case "<":
 				return arg1 < arg2;
+			case "<=":
+				return arg1 <= arg2;
+			case ">=":
+				return arg1 >= arg2;
+			case ">":
+				return arg1 > arg2;
 			default:
 				return false;
 		}
