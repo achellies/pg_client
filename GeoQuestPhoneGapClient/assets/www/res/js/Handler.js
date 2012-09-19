@@ -48,6 +48,11 @@ function Handler() {
 					// globalGameHandler.addMission(missionID, mission);
 					missions[id] = mission;
 					break;
+				case "QRTagReading":
+					var mission = new QRTagReadingMission(gameElement);
+					missions[id] = mission;
+					break;
+					
 				default :
 					alert("unsupported game element");
 			}
@@ -280,7 +285,14 @@ function Handler() {
 	};
 
 	this.startMission = function(missionID) {
-		loadMap = false;
+		
+		if(missions[missionID]){
+			missions[missionID].play(); 
+		}else{
+			alert("Game Over.");
+			$.mobile.changePage($('#page_start'), "slide");
+		}
+		/*loadMap = false;
 		if (onStart[missionID]) { // onStart abarbeiten, falls vorhanden
 			globalMap.decativate(); // GPS ausschalten
 			var missionOnStart = onStart[missionID], 
@@ -295,7 +307,7 @@ function Handler() {
 																					// aufrufen
 			}
 		}
-		missions[missionID].play();
+		missions[missionID].play();*/
 	};
 
 
