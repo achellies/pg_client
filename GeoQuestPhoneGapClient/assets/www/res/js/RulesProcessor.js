@@ -76,31 +76,17 @@ function RulesProcessor(rulesToProcess){
 				globalActionHandler.SetHotspotVisibility(arguments.id,arguments.visible);
 				break;
 				
-			case "setVariable":
-				var Variable = actionAttributes.getNamedItem("var").nodeValue,
-					actionNode = ruleNode.getElementsByTagName('action')[actionIndex];
-	
-				if (actionNode.getElementsByTagName('bool').length){
-					boolNode = actionNode.getElementsByTagName('bool')[0].firstChild;
-					Value = boolNode.nodeValue;
-				}
-				if (actionNode.getElementsByTagName('num').length) {
-					numNode = actionNode.getElementsByTagName('num')[0].firstChild;
-					Value = numNode.nodeValue;
-				}		
-				globalActionHandler.SetVariable(Variable,Value);
+			case "setVariable":		
+				globalActionHandler.SetVariable(arguments['var'],arguments.val);
 				break;
 			case "incrementVariable":
-				var Variable = actionAttributes.getNamedItem("var").nodeValue;
-				globalActionHandler.IncrementVariable(Variable);
+				globalActionHandler.IncrementVariable(arguments['var']);
 				break;
 			case "decrementVariable":
-				var Variable = actionAttributes.getNamedItem("var").nodeValue;
-				globalActionHandler.DecrementVariable(Variable);
+				globalActionHandler.DecrementVariable(arguments['var']);
 				break;
 			case "playAudio":
-				var AudioFile = actionAttributes.getNamedItem("file").nodeValue;
-				globalActionHandler.PlayAudio(AudioFile);
+				globalActionHandler.PlayAudio(arguments.file);
 				break;
 			case "startExternalMission":
 				globalActionHandler.StartExternalMission();
