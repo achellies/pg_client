@@ -218,8 +218,8 @@ function Handler() {
 
 	this.endGame = function() {
 		loadMap = false;
-		if (globalMap){
-			globalMap.decativate(); // GPS ausschalten
+		if (globalMap){			
+			//globalMap.decativate(); // GPS ausschalten
 		}
 		localStorage[localStorage["game"] + "currentMission"] = null;
 		alert("Game Over.");
@@ -307,6 +307,7 @@ function Handler() {
 			var rulesProcessor = new RulesProcessor(onEnd[missionID]);
 			rulesProcessor.executeRules();
 		}else{
+			alert('endGame');
 			this.endGame();
 		}
 //		if (loadMap === true) { // MAP Mission muss gestartet werden, da keine
