@@ -1,4 +1,4 @@
-function Map(mapNode) {		
+function Map(hotspots) {		
 
 	var googleMarkers = {},	
 		latlng = new google.maps.LatLng(50.751843, 7.096065),
@@ -67,15 +67,72 @@ function Map(mapNode) {
 			  fillOpacity: 0.35,
 		});
 
-	// Singleton Pattern
-	instance = this;
-	Map = function(){
-		return instance;
-	};
-	Map.prototype = this;
-	instance = new Map();
-	instance.constructor = Map;
+	// Durchlaeuft alle Nodes mit Namen "hotspot
+	if (hotspots){
+		for (var hotspotIndex = 0; hotspotIndex < hotspots.length; hotspotIndex++) {
+	
+			var hotspotNode = hotspots[hotspotIndex];
+//	
+//			if (hotspotAttributes.getNamedItem("img")) { // prueft ob ein
+//															// image beim
+//															// HotSpot angegeben
+//															// ist.
+//				image = hotspotAttributes.getNamedItem("img").nodeValue; // falls
+//																			// ja,
+//																			// wird
+//																			// dieser
+//																			// ausgelesen
+//			}
 
+			var hotspot = new Hotspot(hotspotNode); // Erzeugt den HotSpot
+//			hotspots[hotspotID] = hotspot; // Fuegt den HotSpot dem HotSpotsobjekt hinzu
+			this.addMarker(hotspot); // Legt
+																					// den
+																					// Marker
+																					// auf
+																					// der
+																					// Karte
+																					// an
+	
+	
+			if (hotspotNode.getElementsByTagName('onEnter').length) { // onEnter
+																		// Knoten
+																		// vorhanden
+				if (DEBUG) {
+					alert("xmlMission: Hotspot mit '" + hotspotID
+							+ " besitzt einen onEnterKnoten!");
+				}
+				onEnter[hotspotID] = hotspotNode
+						.getElementsByTagName('onEnter')[0];
+			}
+	
+			if (hotspotNode.getElementsByTagName('onLeave').length) { // onLeave
+																		// Knoten
+																		// vorhanden
+				if (DEBUG) {
+					alert("xmlMission: Hotspot mit '" + hotspotID
+							+ " besitzt einen onLeaveKnoten!");
+				}
+				onLeave[hotspotID] = hotspotNode
+						.getElementsByTagName('onLeave')[0];
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//Die Karte Aktivieren
 	this.activate = function() {
 		$('#content_map').height($('#map_dialog').innerHeight() - $('#header_map').outerHeight()-30);
@@ -185,5 +242,5 @@ function Map(mapNode) {
 			googleMap.setCenter(latlng);
 			globalGameHandler.updateHotspotsDistance(lat, long);
 	};
-	return instance;
+	
 }

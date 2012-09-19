@@ -6,19 +6,29 @@ if (typeof (Number.prototype.toRad) === "undefined") {
 
 function Hotspot(hotspotNode) {
 
-	var lat,
-		long,
-		radius;
+	
+	var id = hotspotNode.id,
+		lat = hotspotNode.latitude, 
+		long = hotspotNode.longitude, 
+		radius = hotspotNode.radius;
+
+	if (!GEOQUEST_RESUME){
+		if (hotspotNode.initialVisibility) {
+			this.activate();
+		}else{
+			this.deactiviate();
+		}
+	}
 	
 	function setStatus(newStatus) {
 		if( DEBUG){
-			alert("Neuer Status, " + hotspotID + " ist jetzt: " + newStatus);
+			alert("Neuer Status, " + id + " ist jetzt: " + newStatus);
 		}
-		localStorage[localStorage["game"]+hotspotID] = newStatus;
+		localStorage[localStorage["game"]+id] = newStatus;
 	}
 
 	function getStatus() {
-		 return localStorage[localStorage["game"]+hotspotID];
+		 return localStorage[localStorage["game"]+id];
 	}
 
     function calculateDistance(curLat, curLong){		
@@ -47,30 +57,13 @@ function Hotspot(hotspotNode) {
 			setStatus("accessed");
 			globalGameHandler.leaveHotspot(hotspotID);
 		}
-	}
+	};
 	
 	this.activate = function() {
 		setStatus("accessible");
-	}
+	};
 
 	this.deactivate = function() {
 		setStatus("hidden");
-	}
-	
-	
-	
-	var hotspotAttributes = hotspotNode.attributes, 
-		hotspotID = hotspotAttributes.getNamedItem("id").nodeValue,
-		lat =+ hotspotAttributes.getNamedItem("latitude").nodeValue, 
-		long =+ hotspotAttributes.getNamedItem("longitude").nodeValue, 
-		radius =+ hotspotAttributes.getNamedItem("radius").nodeValue;
-
-	if (!GEOQUEST_RESUME){
-		if (hotspotAttributes.getNamedItem("initialVisibility").nodeValue === "true") {
-			this.activate();
-		}
-		else{
-			localStorage[localStorage["game"]+hotspotID] = "hidden";
-		}
-	}
+	};
 }
