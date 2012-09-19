@@ -1,15 +1,23 @@
 function RulesProcessor(rulesToProcess){
 	
 	var rules = rulesToProcess,
-	 	operators = ["==","<"];
+	 	operators = ["!=","==","<","<=",">=",">"];
 	
 	
 	this.executeOperator = function(arg1, arg2, op){
 		switch(op){
+			case "!=":
+				return arg1 != arg2;
 			case "==":
 				return arg1 == arg2;
 			case "<":
 				return arg1 < arg2;
+			case "<=":
+				return arg1 <= arg2;
+			case ">=":
+				return arg1 >= arg2;
+			case ">":
+				return arg1 > arg2;
 			default:
 				return false;
 		}
@@ -30,12 +38,16 @@ function RulesProcessor(rulesToProcess){
 					// the queried variable is the gamestate of a mission
 					var queryID = left.substr(0,left.length-6);
 					left = localStorage[localStorage["game"]+queryID];
-					return this.executeOperator(left, right, op);
 				} else {
-					// the queried variable is a variable that has been created by another earlier action
-					alert("Unsupported action. Can only query the state of missions so far");
-					return true;
+		    		store=GAMEFILENAME+"_var_"+left;
+		        	if (localStorage.getItem(store) != null){
+		        		left=localStorage.getItem(store);	
+		        	}else{
+		    			alert("Die Variable " + variable + " existiert nicht.");
+		    			return false;
+		    		}
 				}
+				return this.executeOperator(left, right, op);
 			}
 		}
 		return true;
@@ -68,31 +80,17 @@ function RulesProcessor(rulesToProcess){
 				globalActionHandler.SetHotspotVisibility(arguments.id,arguments.visible);
 				break;
 				
-			case "setVariable":
-				var Variable = actionAttributes.getNamedItem("var").nodeValue,
-					actionNode = ruleNode.getElementsByTagName('action')[actionIndex];
-	
-				if (actionNode.getElementsByTagName('bool').length){
-					boolNode = actionNode.getElementsByTagName('bool')[0].firstChild;
-					Value = boolNode.nodeValue;
-				}
-				if (actionNode.getElementsByTagName('num').length) {
-					numNode = actionNode.getElementsByTagName('num')[0].firstChild;
-					Value = numNode.nodeValue;
-				}		
-				globalActionHandler.SetVariable(Variable,Value);
+			case "setVariable":		
+				globalActionHandler.SetVariable(arguments['var'],arguments.val);
 				break;
 			case "incrementVariable":
-				var Variable = actionAttributes.getNamedItem("var").nodeValue;
-				globalActionHandler.IncrementVariable(Variable);
+				globalActionHandler.IncrementVariable(arguments['var']);
 				break;
 			case "decrementVariable":
-				var Variable = actionAttributes.getNamedItem("var").nodeValue;
-				globalActionHandler.DecrementVariable(Variable);
+				globalActionHandler.DecrementVariable(arguments['var']);
 				break;
 			case "playAudio":
-				var AudioFile = actionAttributes.getNamedItem("file").nodeValue;
-				globalActionHandler.PlayAudio(AudioFile);
+				globalActionHandler.PlayAudio(arguments.file);
 				break;
 			case "startExternalMission":
 				globalActionHandler.StartExternalMission();
@@ -111,7 +109,9 @@ function RulesProcessor(rulesToProcess){
 			if (conditions){
 				for (var condIndex = 0; condIndex<conditions.length; condIndex++){
 					var condition = conditions[condIndex];
-					allConditionsTrue &= this.evaluateCondition(condition);
+					var evaluationResult = this.evaluateCondition(condition);
+					allConditionsTrue &= evaluationResult;
+					
 				}
 			}
 			if (allConditionsTrue){

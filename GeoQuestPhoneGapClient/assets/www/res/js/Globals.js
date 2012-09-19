@@ -3,6 +3,7 @@ var globalGameHandler = new Handler();
 var globalMap; // Das globale Map Objekt, wird mit addMap() ueberschrieben
 var GEOQUEST_RESUME = false;
 var DEBUG = false;
+var GAMEFILENAME = "";
 
 var STATUS_NEW = "new",
 	STATUS_RUNNING = "running",
