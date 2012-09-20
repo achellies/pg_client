@@ -138,6 +138,7 @@
     <div data-role="page" id="page_NPCTalk">
         <div data-role="header" id="header_NPCTalk" data-backbtn="false">
 	        <a href="#" onClick = "globalActionHandler.showMap();" class="ui-btn-right">Map</a>
+	        <a href="#page_settings" data-icon="gear" data-iconpos="notext" class="ui-btn-left"></a>
             <h1>NPCTalk</h1>
         </div>
         <div data-role="content" id="image_NPCTalk" class="centered">    
@@ -157,6 +158,8 @@
 <!-- QuestionAndAnswer -->
     <div data-role="page" id="page_QuestionAndAnswer" >
         <div data-role="header" id="header_QuestionAndAnswer" data-backbtn="false" class="centered" align="center">
+	        <a href="#" onClick = "globalActionHandler.showMap();" class="ui-btn-right">Map</a>
+	        <a href="#page_settings" data-icon="gear" data-iconpos="notext" class="ui-btn-left"></a>
             <h1>QuestionAndAnswer</h1>
         </div>
         
@@ -199,6 +202,8 @@
 <!-- QRTagReading -->
     <div data-role="page" id="page_QRTagReading">
         <div data-role="header" id="header_QRTagReading" data-backbtn="false" class="centered">
+	        <a href="#" onClick = "globalActionHandler.showMap();" class="ui-btn-right">Map</a>
+	        <a href="#page_settings" data-icon="gear" data-iconpos="notext" class="ui-btn-left"></a>
             <h1>QRTagReading</h1>
         </div>
         <div data-role="content" id="image_QRTagReading" class="centered">    
@@ -226,14 +231,12 @@
 
 <!-- Settings Page -->
 	<div data-role="page" id="page_settings">
-	    <div data-role="header" id="header_settings" data-backbtn="false">
-	        <a href="#" data-icon="delete" onClick="globalGameHandler.activateMap(); return false;" class="ui-btn-left">Schliessen</a>
-	        <h1>Optionen</h1>
+	    <div data-role="header" id="header_settings" data-backbtn="true">
+	        <h1>Options</h1>
 	    </div>
-	    <div data-role="controlgroup">  
-	        <a href="#" data-role="button" onClick="localStorage.clear(); return false;">Localstorage Leeren</a>
-<!-- 	        <a href="#" data-role="button", onClick="alertLocalStorage(); return false;">Localstorage Anzeigen</a> -->
-	    </div>  
+	    <div data-role="content">
+	        <a href="#" data-role="button" onClick="localStorage.clear(); return false;">Clear local storage</a>
+	   	 	<a href="#" data-role="button" onClick="globalGameHandler.endGame(); return false;">End game</a>
 	    
 <!-- 	    <div data-role="controlgroup">   -->
 <!-- 	        <a href="#" data-role="button", onClick="hotspotA.activate(); return false;">Aktiviere Hotspot A</a> -->
@@ -243,7 +246,7 @@
 <!-- 	    </div>   -->
 	    
 <!-- 	    <a href="#" data-role="button" data-icon="alert" onClick="globalGameHandler.decativateGPS(); return false;">EndGPS</a> -->
-	    <a href="#" data-role="button" onClick="globalGameHandler.endGame(); return false;">EndGame</a>
+	    </div>
 	</div>
 <!-- End Settings -->
 

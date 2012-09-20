@@ -145,7 +145,7 @@
         //unbind all game related events, that have been registered by the GameElement objects earlier
     	unbindAllFunctionsFromMissionButtons();
     	//intialize new game handler
-    	globalGameHandler = new Handler(); 
+//    	globalGameHandler = new Handler(); 
     	//parse the game file into mission objects
 		if (globalGameHandler.parseJsonToOldFormat(gameJson)){
 			//start the game if the json was parsed succesfully
