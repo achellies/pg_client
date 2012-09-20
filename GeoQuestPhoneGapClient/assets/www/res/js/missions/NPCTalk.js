@@ -5,7 +5,7 @@ function NPCTalkMission(gameElementArg){
 		gameElement = gameElementArg,
 		ID = gameElement.id,
 		dialogItems = gameElement.dialogItem,
-		charimage = 'file:///mnt/sdcard/GeoQuest/resources/walkingcomputergeek.jpg';
+		charimage = null;
 	
 	if (!GEOQUEST_RESUME){
 			localStorage[localStorage["game"]+ID] = "new"; //default
