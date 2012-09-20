@@ -1,11 +1,12 @@
 function NPCTalkMission(gameElementArg){
 
+	var hardcodedResourcesPath = "file:///mnt/sdcard/GeoQuest/resources/";
 	var endButtonText = "Default End", 			//default
 		nextDialogButtonText = "Default Next", 		//default
 		gameElement = gameElementArg,
 		ID = gameElement.id,
 		dialogItems = gameElement.dialogItem,
-		charimage = null;
+		charimage = gameElement.charimage;
 	
 	if (!GEOQUEST_RESUME){
 			localStorage[localStorage["game"]+ID] = "new"; //default
@@ -71,7 +72,8 @@ function NPCTalkMission(gameElementArg){
 
 
 		if (charimage){
-				$('#image_NPCTalk').empty().append("<img style='max-width:100%; max-height:100%' id='theImg' src='" + charimage + "'/>");
+			var fullPathCharimage = hardcodedResourcesPath + charimage;
+			$('#image_NPCTalk').empty().append("<img style='max-width:100%; max-height:100%' id='theImg' src='" + fullPathCharimage + "'/>");
 		} else {
 			$('#image_NPCTalk').empty();
 		}
@@ -82,9 +84,7 @@ function NPCTalkMission(gameElementArg){
 		//Nur ein dialogitem
 		if (dialogIndex === dialogLength-1){
 			finishMission();
-		}
-		//mehr als ein dialogitem
-		else{
+		} else { //mehr als ein dialogitem
 			$('#footer_NPCTalk').empty().append("<h3>" + nextDialogButtonText + "</h3>" );
 			$('#footer_NPCTalk').bind('click', function(){
 				text_out(++dialogIndex);
