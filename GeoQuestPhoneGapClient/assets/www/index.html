@@ -6,10 +6,12 @@
 	<link rel="stylesheet" href="res/css/geoquest.css" />
 
     <script type="text/javascript" src="res/js/libs/cordova-2.0.0.js"></script>
-
+	
 	<script type="text/javascript" src="res/js/libs/jquery.js"></script>
     <script type="text/javascript" src="res/js/libs/jquery.mobile.js"></script>
 
+	<script type="text/javascript" src="res/js/libs/OpenLayers.js"></script>
+	<script type="text/javascript" src="res/js/libs/OpenStreetMap.js"></script>
     
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
    
@@ -22,6 +24,7 @@
     <script type="text/javascript" charset="utf-8" src="res/js/Download.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/RulesProcessor.js"></script>
 	<script type="text/javascript" charset="utf-8" src="res/js/Map.js"></script>
+	<script type="text/javascript" charset="utf-8" src="res/js/MapOSM.js"></script>
 	
     <script type="text/javascript" charset="utf-8" src="res/js/missions/NPCTalk.js"></script>
     <script type="text/javascript" charset="utf-8" src="res/js/missions/QuestionAndAnswer.js"></script>
@@ -114,7 +117,11 @@
     <div data-role="header" id="header_map">
         <h1>Map</h1>	   
 	</div>
-	<div data-role="content" id="content_map" style="height:100%;">Initialisiere die Karte ...</div>
+	
+	<div data-role="content">
+		<div id="content_map" style="width: 100%; height:100%;"></div>
+		<div id="no_tiles_warning" style="position: absolute; top: 65px; left: 0px; width: 100%; height: 100%; background-image: url('res/drawable/startup.png')"></div>
+	</div>
 </div>
 
 <!-- MapOverview Page -->
@@ -230,8 +237,8 @@
 
 
 <!-- Settings Page -->
-	<div data-role="page" id="page_settings">
-	    <div data-role="header" id="header_settings" data-backbtn="true">
+	<div data-role="page" id="page_settings" data-add-back-btn="true">
+	    <div data-role="header" id="header_settings">
 	        <h1>Options</h1>
 	    </div>
 	    <div data-role="content">

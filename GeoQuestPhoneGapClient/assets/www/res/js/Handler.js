@@ -38,7 +38,11 @@ function Handler() {
 		
 		GAMEFILENAME = gameJson.name;
 		if (mapAvailable){
-			globalMap = new Map(gameJson.content.hotspots);
+			//globalMap = new Map(gameJson.content.hotspots);
+			
+			// OSM local tiles map
+			globalMap = new MapOSM(gameJson.content.hotspots);
+			globalMap.init();
 		}
 		
 		var gameElements = gameJson.content.gameElements;

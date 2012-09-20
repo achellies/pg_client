@@ -11,6 +11,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/com.google.zxing.client.android.CaptureActivity"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/com.google.zxing.client.android.CaptureActivity"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
