@@ -49,6 +49,11 @@ function Handler() {
 					// globalGameHandler.addMission(missionID, mission);
 					missions[id] = mission;
 					break;
+				case "questionAndAnswer":
+					var mission = new QuestionAndAnswer(gameElement);
+					// globalGameHandler.addMission(missionID, mission);
+					missions[id] = mission;
+					break;
 				default :
 					alert("unsupported game element");
 			}
@@ -222,7 +227,7 @@ function Handler() {
 		if (globalMap){
 			globalMap.deactivate(); // GPS ausschalten
 		}
-		localStorage[localStorage["game"] + "currentMission"] = null;
+		localStorage.clear();
 		alert("Game Over.");
 		$.mobile.changePage($('#page_start'), "slide");
 	};

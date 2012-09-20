@@ -10,40 +10,31 @@ function arrayShuffle(){
 Array.prototype.shuffle = arrayShuffle;
 
 
-function QuestionAndAnswerMission(missionNode){
+function QuestionAndAnswer(gameElementArg){
+	var gameElement = gameElementArg;
 	var correctAnswers = 0,
-		missionAttributes = missionNode.attributes,
-		ID = missionAttributes.getNamedItem("id").nodeValue,
-		questionQuantity = missionNode.getElementsByTagName('question').length,
-		correctAnswersNeeded = missionAttributes.getNamedItem("correctAnswersNeeded").textContent,
-		shuffle,
-		missionName,
-		questionArray = [],
-		answerArray = [];
+		ID = gameElement.id,
+		questionQuantity = gameElement.questions.length,
+		correctAnswersNeeded = gameElement.correctAnswersNeeded,
+		shuffle = gameElement.shuffle,
+		missionName = gameElement.name,
+		questionArray = [];
 	
 	if (!GEOQUEST_RESUME){
-			localStorage[localStorage["game"]+ID] = "new"; //default
-	}	
-	
-	if (missionAttributes.getNamedItem("shuffle")){
-		shuffle = missionAttributes.getNamedItem("shuffle").textContent;
-	}
-	if (missionAttributes.getNamedItem("name")) {
-		missionName =  missionAttributes.getNamedItem("name").textContent;
+			localStorage[localStorage["game"]+ID] = STATUS_NEW; //default
 	}
 	
 	function askQuestion(index) {
 		
-			var questionNode = missionNode.getElementsByTagName('question')[index],
-				answerQuantity = questionNode.getElementsByTagName('answer').length
+			var questionNode = gameElement.questions[questionArray[index]],
+				answerQuantity = questionNode.answers.length,
 				answerArray = [];
-				answerIndex = 0;
 			
 			for (var shuffleIndex = 0; shuffleIndex < answerQuantity; shuffleIndex++) {
 				answerArray.push(shuffleIndex);
 			}
 
-			if (shuffle === "answers" | shuffle === "all" ){
+			if (shuffle === "answers" || shuffle === "all" ){
 				answerArray.shuffle();
 			}
 		
@@ -52,42 +43,42 @@ function QuestionAndAnswerMission(missionNode){
 			
 			
 			$('#question_QuestionAndAnswer').empty().append(	"<h3>" + 
-																questionNode.getElementsByTagName('questiontext')[0].textContent +
+																questionNode.questionText +
 																"</h3>");
 			
 			for (var answerIndex = 0; answerIndex < answerQuantity; answerIndex++){
-				answerNode = questionNode.getElementsByTagName('answer')[answerArray[answerIndex]];
-				answerAttributes = answerNode.attributes;
-				$('#question_QuestionAndAnswer').append("<hr><div id='answer_index_" + answerIndex + "'><h2>" + answerNode.textContent + "</h2></div>");
+				answerNode = questionNode.answers[answerArray[answerIndex]];
+				$('#question_QuestionAndAnswer').append('<a href="#" data-role="button" id="answer_index_' + answerIndex + '">' + answerNode.answerText + '</a>');
+				$('#question_QuestionAndAnswer a').button();
 	
 				//Closure um die richtigen answerAttributes zu behalten
 				$('#answer_index_'+ answerIndex).bind('click', function(currentAttributes){
 				    return function() {
 
-				    	if (currentAttributes.getNamedItem("correct").nodeValue === "1"){
-				    		correctAnswers++;
-				    	}
+				    	correctAnswers+= currentAttributes.correct;
 				    	
-				    	if (currentAttributes.getNamedItem("onChoose")) {
-							$('#question_QuestionAndAnswer').empty().append(currentAttributes.getNamedItem("onChoose").nodeValue);
-						}
-						else {
-							$('#question_QuestionAndAnswer').empty().append("Richtig!");
+				    	if (currentAttributes.responseText) {
+							$('#question_QuestionAndAnswer').empty().append(currentAttributes.responseText);
+						}else {
+							if (currentAttributes.correct>0){
+								$('#question_QuestionAndAnswer').empty().append("Correct!");
+							}else{
+								$('#question_QuestionAndAnswer').empty().append("Sorry. Wrong answer!");
+							}
 						}
 						$('#footer_QuestionAndAnswer').show().bind('click', function(){
 							$('#footer_QuestionAndAnswer').unbind();
-							if (++index < missionNode.getElementsByTagName('question').length){
-								askQuestion(questionArray[index]);
+							if (++index < questionQuantity){
+								askQuestion(index);
 							}
 							else{
 								finishQuestion();
 							}
 						});
 				    	
-				    }
-				}(answerAttributes));
+				    };
+				}(answerNode));
 			}
-			$('#question_QuestionAndAnswer').append("<hr>");
 
 	}
 	
@@ -97,12 +88,12 @@ function QuestionAndAnswerMission(missionNode){
 	
 	this.getStatus = function(){
 		return localStorage[localStorage["game"]+ID];
-	}
+	};
 		
 
 	this.play = function() {
 
-		setStatus("running");
+		setStatus(STATUS_RUNNING);
 		
 		for (var index = 0; index < questionQuantity; index++) {
 			questionArray.push(index);
@@ -114,39 +105,39 @@ function QuestionAndAnswerMission(missionNode){
 		
 		
 		$('#footer_QuestionAndAnswer').show();
+
+		$('#header_QuestionAndAnswer h1').empty().append(missionName);
 		
-		$('#header_QuestionAndAnswer').hide();
-		
-		if (missionNode.getElementsByTagName('intro').length){		
+		if (gameElement.introText){		
 			$('#question_QuestionAndAnswer').empty().append(	"<h3>" + 
-																missionNode.getElementsByTagName('intro')[0].textContent + 
+																	gameElement.introText + 
 																"</h3>");	
 			$('#footer_QuestionAndAnswer').bind('click', function(){
 				$('#footer_QuestionAndAnswer').unbind();
-				askQuestion(questionArray[0]);
+				askQuestion(0);
 			});
 		}
 		else {
-			askQuestion(questionArray[0]);
+			askQuestion(0);
 		}
 		$.mobile.changePage($('#page_QuestionAndAnswer'), "slide");
-	}
+	};
 	
 	function finishQuestion(){
 		
 			if (correctAnswersNeeded > correctAnswers){
-				$('#question_QuestionAndAnswer').empty().append("Mission gescheitert!");
-				setStatus("fail");
+				$('#question_QuestionAndAnswer').empty().append(gameElement.outroFailText);
+				setStatus(STATUS_FAILED);
 			}
 			
 			else {
-				$('#question_QuestionAndAnswer').empty().append("Genügend Fragen richtig beantwortet!<br>Mission erfolgreich abgeschlossen!");
-				setStatus("success");
+				$('#question_QuestionAndAnswer').empty().append(gameElement.outroSuccessText);
+				setStatus(STATUS_SUCCESS);
 			}
 
 		$('#footer_QuestionAndAnswer').bind('click', function(){
 			$('#footer_QuestionAndAnswer').unbind();
-			globalGameHandler.finishMission(missionAttributes.getNamedItem("id").nodeValue);
+			globalGameHandler.finishMission(ID);
 		});	
 	}	
 	
