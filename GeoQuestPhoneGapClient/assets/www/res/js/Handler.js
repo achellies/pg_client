@@ -25,6 +25,9 @@ function Handler() {
 	// End Singleton
 
 	//parsing json from agile2012 version to old version
+	/*
+	 * @return true, if gameFile was parsed successfully, else false (e.g. if unsupported game type occured)
+	 */
 	this.parseJsonToOldFormat = function(gameJson){
 		GAMEFILENAME = gameJson.name;
 		if (mapAvailable){
@@ -49,6 +52,11 @@ function Handler() {
 					// globalGameHandler.addMission(missionID, mission);
 					missions[id] = mission;
 					break;
+				case "questionAndAnswer":
+					var mission = new QuestionAndAnswer(gameElement);
+					// globalGameHandler.addMission(missionID, mission);
+					missions[id] = mission;
+					break;
 				case "QRTagReading":
 					var mission = new QRTagReadingMission(gameElement);
 					missions[id] = mission;
@@ -56,10 +64,11 @@ function Handler() {
 					
 				default :
 					alert("unsupported game element");
+					return false;
 			}
 			
 		}
-		
+		return true;
 	};
 	
 	this.parseXML = function() {
@@ -227,7 +236,7 @@ function Handler() {
 		if (globalMap){
 			globalMap.deactivate(); // GPS ausschalten
 		}
-		localStorage[localStorage["game"] + "currentMission"] = null;
+		localStorage.clear();
 		alert("Game Over.");
 		$.mobile.changePage($('#page_start'), "slide");
 	};

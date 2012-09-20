@@ -67,10 +67,15 @@
         for (var gameId= 0; gameId<games['games'].length; gameId++){
             var game = games['games'][gameId];
             //add button
-            $('#game_list').append('<a href="#" id="'+game['_id']+'" data-role="button" onClick = "downloadOrStartGame(\''+game['_id']+'\')" data-theme="c" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">'+game.content.name+'</span></span></a>');
+            $('#game_list').append('<a href="#" data-role="button" onClick = "downloadOrStartGame(\''+game['_id']+'\')" id="'+game['_id']+'">'+game.content.name+'</a>');
+            
+//            $('#game_list').append('<a href="#" id="'+game['_id']+'" data-role="button" onClick = "downloadOrStartGame(\''+game['_id']+'\')" data-theme="c" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">'+game.content.name+'</span></span></a>');
         }
+        
         if (games['games'].length==0){
         	$('#game_list').append('No games available :(');
+        }else{
+        	$('#game_list a').button();
         }
        }
 	
@@ -127,8 +132,13 @@
     }	
 	
     function startGame(gameJson){
-		globalGameHandler.parseJsonToOldFormat(gameJson);
-		globalGameHandler.startGame();
+    	//parse the game file into mission objects
+		if (globalGameHandler.parseJsonToOldFormat(gameJson)){
+			//start the game if the json was parsed succesfully
+			globalGameHandler.startGame();
+		}else{
+			alert("Game could not be started");
+		}
     }
     
     function loadGameAndStart(gameId){
