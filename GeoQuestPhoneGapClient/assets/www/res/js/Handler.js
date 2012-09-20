@@ -25,6 +25,9 @@ function Handler() {
 	// End Singleton
 
 	//parsing json from agile2012 version to old version
+	/*
+	 * @return true, if gameFile was parsed successfully, else false (e.g. if unsupported game type occured)
+	 */
 	this.parseJsonToOldFormat = function(gameJson){
 		GAMEFILENAME = gameJson.name;
 		if (mapAvailable){
@@ -56,10 +59,11 @@ function Handler() {
 					break;
 				default :
 					alert("unsupported game element");
+					return false;
 			}
 			
 		}
-		
+		return true;
 	};
 	
 	this.parseXML = function() {

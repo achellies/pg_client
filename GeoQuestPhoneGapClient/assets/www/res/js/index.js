@@ -132,8 +132,13 @@
     }	
 	
     function startGame(gameJson){
-		globalGameHandler.parseJsonToOldFormat(gameJson);
-		globalGameHandler.startGame();
+    	//parse the game file into mission objects
+		if (globalGameHandler.parseJsonToOldFormat(gameJson)){
+			//start the game if the json was parsed succesfully
+			globalGameHandler.startGame();
+		}else{
+			alert("Game could not be started");
+		}
     }
     
     function loadGameAndStart(gameId){
