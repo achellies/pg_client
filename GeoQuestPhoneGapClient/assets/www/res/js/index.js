@@ -5,7 +5,7 @@
 		storedGames = new Array();
 	var phonegapReady = false;
 	var downloadFinished = false;
-	var serverAddress = "http://geoquest.qeevee.org:3000";
+	var serverAddress = "http://131.220.149.155:3000";
 	
 	// Test code for QR Code 
 	
@@ -34,15 +34,7 @@
 							document.addEventListener("deviceready",
 								phoneGapReadyCallback, false);
 						    
-						      
-					        $.ajax({
-						        type: 'GET',
-						        url: serverAddress+'/games/findAll?jsonCallback=populateGameList',
-						        async: false,
-						        jsonpCallback: 'populateGameList',
-						        contentType: "application/json",
-						        dataType: 'jsonp'
-					       });
+						    refreshGameList();
 
 
 						});
@@ -53,6 +45,16 @@
 		
 	}
 	
+	function refreshGameList(){
+        $.ajax({
+	        type: 'GET',
+	        url: serverAddress+'/games/findAll?jsonCallback=populateGameList',
+	        async: false,
+	        jsonpCallback: 'populateGameList',
+	        contentType: "application/json",
+	        dataType: 'jsonp'
+       });
+	}
 	// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
 	function phoneGapReadyCallback() {
 		// document.addEventListener("backbutton", onBackKeyDown, false);
@@ -63,25 +65,28 @@
 	}
 	
 	//for the game list populator
-	function populateGameList(games){
-        for (var gameId= 0; gameId<games['games'].length; gameId++){
-            var game = games['games'][gameId];
-            //add button
-            $('#game_list').append('<a href="#" data-role="button" onClick = "downloadOrStartGame(\''+game['_id']+'\')" id="'+game['_id']+'">'+game.content.name+'</a>');
-            
-//            $('#game_list').append('<a href="#" id="'+game['_id']+'" data-role="button" onClick = "downloadOrStartGame(\''+game['_id']+'\')" data-theme="c" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">'+game.content.name+'</span></span></a>');
-        }
-        
-        if (games['games'].length==0){
-        	$('#game_list').append('No games available :(');
-        }else{
-        	$('#game_list a').button();
-        }
-       }
+	function populateGameList(games) {
+		$('#game_list').empty();
+		for ( var gameId = 0; gameId < games['games'].length; gameId++) {
+			var game = games['games'][gameId];
+			// add button
+			$('#game_list').append(
+					'<a href="#" data-role="button" onClick = "downloadOrStartGame(\''
+							+ game['_id'] + '\')" id="' + game['_id'] + '">'
+							+ game.content.name + '</a>');
+		}
+	
+		if (games['games'].length == 0) {
+			$('#game_list').append('No games available :(');
+		} else {
+			$('#game_list a').button();
+		}
+		updateTicksDownloadedGamesUI();
+	}
 	
 
 	
-	/** Check if games is downloaded **/
+	/** Check if games is downloaded * */
 	function checkExistingDownloadedGames(){
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
 				geoDir = fileSystem.root.getDirectory("GeoQuest", {
@@ -131,7 +136,16 @@
     	}
     }	
 	
+    //unbinds all game related events, that have been registered by the GameElement objects earlier
+    function unbindAllFunctionsFromMissionButtons(){
+    	$(".gameDependency").unbind();
+    }
+    
     function startGame(gameJson){
+        //unbind all game related events, that have been registered by the GameElement objects earlier
+    	unbindAllFunctionsFromMissionButtons();
+    	//intialize new game handler
+    	globalGameHandler = new Handler(); 
     	//parse the game file into mission objects
 		if (globalGameHandler.parseJsonToOldFormat(gameJson)){
 			//start the game if the json was parsed succesfully

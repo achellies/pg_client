@@ -1,5 +1,5 @@
 var globalActionHandler = new ActionHandler(); // Das Aktionshandler Objekt
-var globalGameHandler = new Handler();
+var globalGameHandler = null;
 var globalMap; // Das globale Map Objekt, wird mit addMap() ueberschrieben
 var GEOQUEST_RESUME = false;
 var DEBUG = false;

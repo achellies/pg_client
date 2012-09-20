@@ -18,7 +18,12 @@ function QuestionAndAnswer(gameElementArg){
 		correctAnswersNeeded = gameElement.correctAnswersNeeded,
 		shuffle = gameElement.shuffle,
 		missionName = gameElement.name,
+		nextButtonText = "Continue...";
 		questionArray = [];
+		
+	if(gameElement.nextButtonText){
+		nextButtonText = gameElement.nextButtonText;
+	}
 	
 	if (!GEOQUEST_RESUME){
 			localStorage[localStorage["game"]+ID] = STATUS_NEW; //default
@@ -102,10 +107,10 @@ function QuestionAndAnswer(gameElementArg){
 		if (shuffle === "questions" | shuffle === "all" ){
 			questionArray.shuffle();
 		}
-		
-		
-		$('#footer_QuestionAndAnswer').show();
 
+		$('#footer_QuestionAndAnswer h4').empty().append(nextButtonText);
+		$('#footer_QuestionAndAnswer').show();
+		
 		$('#header_QuestionAndAnswer h1').empty().append(missionName);
 		
 		if (gameElement.introText){		
