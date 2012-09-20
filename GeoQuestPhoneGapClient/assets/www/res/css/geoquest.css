@@ -1,3 +1,6 @@
 #iframe_WebPage{height:100%;
 				width:100%;}
 .centered{style="margin: auto;"}
+.ui-page {
+    -webkit-backface-visibility: hidden;
+}

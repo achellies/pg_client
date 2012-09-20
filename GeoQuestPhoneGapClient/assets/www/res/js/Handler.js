@@ -28,13 +28,13 @@ function Handler() {
 	 */
 	this.parseJsonToOldFormat = function(gameJson){
 		//reset gameHandlerObject
-		hotspots = {}; // Dieses Objekt speichert die HotSpots
-		missions = {}; // Dieses Objekt speichert die Missionen
-		onStart = {}; // Dieses Objekt speichert die onStart Knoten zur Mission
-		onEnd = {}; // Dieses Objekt speichert die onEnd Knoten zur Mission
-		onEnter = {}; // Dieses Objekt speichert die onEnter Knoten zum HotSpot
-		onLeave = {}; // Dieses Objekt speichert die onLeave Knoten zum HotSpot
-		firstMission = null;
+//		hotspots = {}; // Dieses Objekt speichert die HotSpots
+//		missions = {}; // Dieses Objekt speichert die Missionen
+//		onStart = {}; // Dieses Objekt speichert die onStart Knoten zur Mission
+//		onEnd = {}; // Dieses Objekt speichert die onEnd Knoten zur Mission
+//		onEnter = {}; // Dieses Objekt speichert die onEnter Knoten zum HotSpot
+//		onLeave = {}; // Dieses Objekt speichert die onLeave Knoten zum HotSpot
+//		firstMission = null;
 		
 		GAMEFILENAME = gameJson.name;
 		if (mapAvailable){
