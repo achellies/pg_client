@@ -57,6 +57,11 @@ function Handler() {
 					// globalGameHandler.addMission(missionID, mission);
 					missions[id] = mission;
 					break;
+				case "QRTagReading":
+					var mission = new QRTagReadingMission(gameElement);
+					missions[id] = mission;
+					break;
+					
 				default :
 					alert("unsupported game element");
 					return false;
