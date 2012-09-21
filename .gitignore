@@ -9,3 +9,11 @@ com.google.zxing.client.android.CaptureActivity/bin/classes/com/google/zxing/one
 com.google.zxing.client.android.CaptureActivity/bin/com.google.zxing.client.android.captureactivity.jar
 
 com.google.zxing.client.android.CaptureActivity/gen/com/google/zxing/client/android/R.java
+
+.project
+
+.settings/.jsdtscope
+
+.settings/org.eclipse.wst.jsdt.ui.superType.container
+
+.settings/org.eclipse.wst.jsdt.ui.superType.name
