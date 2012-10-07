@@ -77,7 +77,7 @@ function MapOverview(mapNode) {
 	instance = this;
 	MapOverview = function(){
 		return instance;
-	}
+	};
 	MapOverview.prototype = this;
 	instance = new MapOverview();
 	instance.constructor = MapOverview;
@@ -99,20 +99,20 @@ function MapOverview(mapNode) {
 //		watchID = navigator.geolocation.watchPosition(updatePosition, gpsError, gpsOptions);
 //		$.mobile.loadingMessage = "Warte auf GPS Signal."
 //		$.mobile.showPageLoadingMsg();
-	}
+	};
 	
 	
 	//ALT muss rausgenommen, MAP ist bald keine Mission mehr sondern ein TOOL 
 	this.play = function() {
 		this.activate();
-	}
+	};
 	
 	this.decativate = function(){
 		//deaktiviert das GPS wenn es nicht benoetigt wird
 		navigator.geolocation.clearWatch(watchID);
 		//Macht das Sinn?
 		setStatus("success");
-	}
+	};
 
 	
 	function initialCenterMap(myPosition){
@@ -151,7 +151,7 @@ function MapOverview(mapNode) {
 	
 	this.getStatus = function(){
 		return localStorage[localStorage["game"]+ID];
-	}
+	};
 	
 	this.addMarker = function(id, visible, lat, long, image) {
 		var latlng = new google.maps.LatLng(lat, long);
@@ -201,11 +201,11 @@ function MapOverview(mapNode) {
 	//getter functions for testing
 	this.getGoogleMarkers = function(){
 		return googleMarkers;
-	}
+	};
 	
 	this.getMyPositionMarker = function(){
 		return myPositionMarker;
-	}
+	};
 
 	//setter functions for testing
 	this.setPositionAndUpdate = function (lat, long) {
@@ -215,6 +215,6 @@ function MapOverview(mapNode) {
 			myCircle.setRadius(10);
 			googleMap.setCenter(latlng);
 			globalGameHandler.updateHotspotsDistance(lat, long);
-	}
+	};
 	return instance;
 }

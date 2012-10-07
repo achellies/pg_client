@@ -24,7 +24,7 @@ function StartAndExitScreenMission(missionNode){
 	
 	this.getStatus = function(){
 		return localStorage[localStorage["game"]+ID];
-	}
+	};
 	
 	this.play = function(){
 		setStatus("running");
@@ -42,9 +42,9 @@ function StartAndExitScreenMission(missionNode){
 		else {
 			var timeoutID = window.setTimeout("that.finishStartAndExitScreenMission();", duration);
 		}
-	}
+	};
 	this.finishStartAndExitScreenMission = function(){ //Hilfsfunktion da setTimeout nicht auf den globalGameHandler zugreift.
 		setStatus("success");
 		globalGameHandler.finishMission(ID);
-	}
+	};
 }
