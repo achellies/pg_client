@@ -1,0 +1,69 @@
+<game>
+	<mission type="NPCTalk" id="test_NPC" name="Ein guter Kumpel"
+		charimage="drawable/test.png">
+		<onStart type="Test">
+			<rule>
+				<if>
+				</if>
+                <action type="SetVariable" var="hatSchluessel">
+                    <value>
+                        <bool>true</bool>
+                    </value>
+                </action>
+                <action type="SetVariable" var="punkte">
+                    <value>
+                        <num>42</num>
+                    </value>
+                </action>
+                <action type="IncrementVariable" var="punkte" />
+  				<action type="DecrementVariable" var="punkte" />
+<!-- 				<action type="PlayAudio" file="sound/Mr_Tux_Laughing.mp3" /> -->
+<!-- 				<action type="Vibrate" duration="500" /> -->
+<!-- 				<action type="ShowMessage" message="Du hast einen Schlüssel gefunden!" /> -->
+<!-- 				<action type="SetHotspotVisibility" id="H_BrandenburgerTor" visible="true" /> -->
+<!-- 				<action type="StartMission" id="test_QR" /> -->
+
+			</rule>
+		</onStart>
+		<onEnd>
+		  <rule>
+            <action type="EndGame" />
+		  </rule>
+		</onEnd>
+		<dialogitem speaker="Fachschaftler">Test 1</dialogitem>
+		<dialogitem>Test 2</dialogitem>
+	</mission>
+
+<!-- 	<mission type="QRTagReading" id="test_QR"
+		buttontext="QR-Tag gefunden!" initial_image="drawable/QR-Tag_Hint.png"
+		taskdescription="Finde den versteckten Zettel, auf dem kodierte Informationen abgebildet sind. Dein Handy wird dir beim entschlüsseln Helfen."
+		mode="treasure" cancel="no" feedbacktext="@result@">
+	</mission>
+	 -->
+
+	<hotspot id="Andy_Follow_3_Hotspot" latitude="50.751101" longitude="7.097184" radius="20">
+	    <img src="drawable/Char_Red.png"/>
+	    <onEnter>
+	        <reqAttribute name="Andy_Follow_Val" value="2" />
+	        <comPlaySound file="sound/beep_long.mp3" />
+	        <comAttribute name="Andy_Follow_Val" value="3" />
+	    </onEnter>
+	    <visible>
+	        <reqAttribute name="Andy_Follow_Val" value="2" />
+	    </visible>
+	</hotspot> 
+	
+	<hotspot id="Andy_Follow_4_Hotspot" latitude="50.751242" longitude="7.097634" radius="20">
+	    <img src="drawable/Char_Red.png"/>
+	    <onEnter>
+	        <reqAttribute name="Andy_Follow_Val" value="3" />
+	        <comPlaySound file="sound/beep_long.mp3" />
+	        <comAttribute name="Andy_Follow_Val" value="4" />
+	    </onEnter>
+	    <visible>
+	        <reqAttribute name="Andy_Follow_Val" value="3" />
+	    </visible>
+	</hotspot> 
+	
+	
+</game>
