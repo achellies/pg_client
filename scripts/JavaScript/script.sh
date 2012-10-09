@@ -1,4 +1,4 @@
 #!/bin/sh
-cd GeoQuestPhoneGapClient/assets
+cd GQ_Player_PG_Android/assets
 pwd
 npm test

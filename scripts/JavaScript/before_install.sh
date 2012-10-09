@@ -2,5 +2,5 @@
 pwd
 sudo apt-get install jscoverage
 sudo apt-get install libhtml-parser-perl
-cd GeoQuestPhoneGapClient/assets
+cd GQ_Player_PG_Android/assets
 npm install
