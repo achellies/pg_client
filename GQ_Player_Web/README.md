@@ -1,6 +1,6 @@
 ## PhoneGap Client ##
 
-This folder contains the JavaScript part of the PhoneGap client.
+This folder contains the Webtech part of the client which can be used either stand alone or as part of platform specific Phonegap projects.
 
 Run the following command to install required node modules:
 
@@ -8,7 +8,7 @@ Run the following command to install required node modules:
     
 Use this command to run the JavaScript unit tests:
 
-    npm update
+    npm test
     
 To generate a code coverage report in build/coverage.html run the following command:
 
