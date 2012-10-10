@@ -1,6 +1,6 @@
 var assert = require("assert");
 
-require("../www/res/js/Action");
+require("../www/src/js/Action");
 
 describe('Array', function(){
   describe('#indexOf()', function(){
