@@ -1,4 +1,4 @@
 #!/bin/sh
-cd GQ_Player_PG_Android/assets
+cd GQ_Player_Web
 npm run-script coverage
-perl ../../scripts/coverage2text.pl build/coverage.html
+perl ../scripts/coverage2text.pl build/coverage.html

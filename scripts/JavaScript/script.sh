@@ -1,4 +1,4 @@
 #!/bin/sh
-cd GQ_Player_PG_Android/assets
+cd GQ_Player_Web
 pwd
 npm test
