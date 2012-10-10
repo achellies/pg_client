@@ -12,7 +12,8 @@ public class WupperSeleniumTest {
 	private DefaultSelenium selenium;
 	private String pathToIndex;
 
-	public static String APP_INDEX_HTML = "../GQ_Player_PG_Android/assets/www/index.html";
+//	public static String APP_INDEX_HTML = "../GQ_Player_PG_Android/assets/www/index.html";
+	public static String APP_INDEX_HTML = "../GQ_Player_Web/src/index.html";
 	
 	@Before
 	public void setUp() throws Exception {
