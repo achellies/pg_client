@@ -1,8 +1,5 @@
 package org.geoquest.test.selenium;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 
 import org.junit.After;
