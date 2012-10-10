@@ -1,0 +1,55 @@
+package org.geoquest.test;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+import junit.framework.TestCase;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import com.phonegap.geoquestweb.MainActivity;
+import com.phonegap.geoquestweb.R;
+import com.xtremelabs.robolectric.RobolectricTestRunner;
+
+@RunWith(RobolectricTestRunner.class)
+public class GeoQuestClientTests extends TestCase {
+
+	MainActivity activity;
+	
+	@Before
+	public void setUp() throws Exception {
+	  activity = new MainActivity();
+	}
+	
+	@Test
+	public void shouldHaveHappySmiles() throws Exception {
+		// Call "getActivity" in Test to actually get it (see http://stackoverflow.com/questions/5627903/android-unit-testing-and-interfaces)
+		String hello = activity.getActivity().getResources().getString(R.string.app_name);
+		assertThat(hello, equalTo("Geoquest Client"));
+	}
+
+
+/*
+	@Test
+	public void testParse() throws Exception {
+		
+		FormBuilder mockedBuilder = mock(FormBuilder.class);
+		
+		verify(mockedBuilder).buildSection(startsWith("welcome_"), anyString());
+		verify(mockedBuilder).buildText(eq("welcome_text"), anyString());
+		verify(mockedBuilder).buildSection(eq("contact"), anyString());
+		verify(mockedBuilder,times(2)).startTable(anyString());
+		verify(mockedBuilder,times(3)).startRow();
+		verify(mockedBuilder).buildLabeledTextField(eq("phone_nr"), anyString(),eq(true),eq("phone"));
+		verify(mockedBuilder).buildLabeledTextField(eq("mobile_phone_nr"), anyString(),eq(false),eq("phone"));
+		verify(mockedBuilder,times(3)).endRow();
+
+		verify(mockedBuilder).buildMatrix(eq("disease"),
+				eq(false),
+				argThat(new IdLabelListMatcher(new String[]{"yes","no","maybe"})),
+				argThat(new IdLabelListMatcher(new String[]{"gout","cancer"})));
+
+	}
+*/
+}
