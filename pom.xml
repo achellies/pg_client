@@ -9,7 +9,7 @@
 <modules>
   <module>com.google.zxing.client.android.CaptureActivity</module>
 <!--  <module>GQ_Player_PG_Android</module> -->
-  <module>GeoquestRobolectricTest</module>
+<!--    <module>GeoquestRobolectricTest</module> -->
   <module>GeoquestSeleniumClientTest</module>
 </modules>
   
